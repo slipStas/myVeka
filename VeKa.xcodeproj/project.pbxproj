@@ -23,6 +23,7 @@
 		8E75928A234C26D4000E89F1 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E759289234C26D4000E89F1 /* CustomSegue.swift */; };
 		8E759290234C37D6000E89F1 /* CustomPushTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75928F234C37D6000E89F1 /* CustomPushTransitionAnimator.swift */; };
 		8E759292234C3E8E000E89F1 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E759291234C3E8E000E89F1 /* CustomNavigationController.swift */; };
+		8E9534BD23FD933B00444375 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9534BC23FD933B00444375 /* Session.swift */; };
 		8EB24E2F232C0A6E00CF3F9C /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB24E2E232C0A6E00CF3F9C /* FriendsListViewController.swift */; };
 		8EB24E31232C0C3600CF3F9C /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB24E30232C0C3600CF3F9C /* FriendsListTableViewCell.swift */; };
 		8EB637BB234CC75B00C5AF57 /* CustomPopTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB637BA234CC75B00C5AF57 /* CustomPopTransitionAnimator.swift */; };
@@ -32,7 +33,6 @@
 		8ED7DB43233EE7DB00DCD205 /* Likes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED7DB42233EE7DB00DCD205 /* Likes.swift */; };
 		8EDA8E7B2345ECB5002BB4E3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDA8E7A2345ECB5002BB4E3 /* LoadingView.swift */; };
 		8EDB222D23386E8B00185A6C /* LikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB222C23386E8B00185A6C /* LikesView.swift */; };
-		8EDEA5852360BC5300BF77DC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDEA5842360BC5300BF77DC /* Session.swift */; };
 		8EE7A34E233D9AD5008CDE46 /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EE7A34D233D9AD5008CDE46 /* Header.xib */; };
 		8EE7A350233D9C73008CDE46 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE7A34F233D9C73008CDE46 /* Header.swift */; };
 		8EF1192E23297677000B30E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF1192D23297677000B30E3 /* AppDelegate.swift */; };
@@ -62,6 +62,7 @@
 		8E759289234C26D4000E89F1 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		8E75928F234C37D6000E89F1 /* CustomPushTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushTransitionAnimator.swift; sourceTree = "<group>"; };
 		8E759291234C3E8E000E89F1 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		8E9534BC23FD933B00444375 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		8EB24E2E232C0A6E00CF3F9C /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		8EB24E30232C0C3600CF3F9C /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
 		8EB637BA234CC75B00C5AF57 /* CustomPopTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		8ED7DB42233EE7DB00DCD205 /* Likes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Likes.swift; sourceTree = "<group>"; };
 		8EDA8E7A2345ECB5002BB4E3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8EDB222C23386E8B00185A6C /* LikesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesView.swift; sourceTree = "<group>"; };
-		8EDEA5842360BC5300BF77DC /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		8EE7A34D233D9AD5008CDE46 /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
 		8EE7A34F233D9C73008CDE46 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		8EF1192A23297677000B30E3 /* VeKa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeKa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,7 +264,7 @@
 				8ED7DB40233EE70D00DCD205 /* News.swift */,
 				8ED7DB42233EE7DB00DCD205 /* Likes.swift */,
 				8E759291234C3E8E000E89F1 /* CustomNavigationController.swift */,
-				8EDEA5842360BC5300BF77DC /* Session.swift */,
+				8E9534BC23FD933B00444375 /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,7 +353,7 @@
 				8E0971C12335884500BF2473 /* AvatarView.swift in Sources */,
 				8E0971C52336B49300BF2473 /* AvatarSettings.swift in Sources */,
 				8EB637BB234CC75B00C5AF57 /* CustomPopTransitionAnimator.swift in Sources */,
-				8EDEA5852360BC5300BF77DC /* Session.swift in Sources */,
+				8E9534BD23FD933B00444375 /* Session.swift in Sources */,
 				8E3EA79F232D66BF00F118DB /* FriendInfoCollectionViewCell.swift in Sources */,
 				8E5C694E234AF05E002C745A /* DownloadView.swift in Sources */,
 				8ED7DB43233EE7DB00DCD205 /* Likes.swift in Sources */,

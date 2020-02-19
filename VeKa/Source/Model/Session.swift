@@ -2,8 +2,8 @@
 //  Session.swift
 //  VeKa
 //
-//  Created by Stanislav Slipchenko on 23.10.2019.
-//  Copyright © 2019 Stanislav Slipchenko. All rights reserved.
+//  Created by Stanislav Slipchenko on 19.02.2020.
+//  Copyright © 2020 Stanislav Slipchenko. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +15,8 @@ class Session {
     
     let token = String()
     let userId = Int()
-    var login = "qwe"
-    var password = "123"
+    
+    var login = ""
+    var password = ""
     
 }
