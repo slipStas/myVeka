@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A859B559C32034D040BE434 /* Pods_VeKa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7410748A9FD80EB66F3B457 /* Pods_VeKa.framework */; };
 		8E0971C12335884500BF2473 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0971C02335884500BF2473 /* AvatarView.swift */; };
 		8E0971C32336B27900BF2473 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0971C22336B27900BF2473 /* ShadowView.swift */; };
 		8E0971C52336B49300BF2473 /* AvatarSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0971C42336B49300BF2473 /* AvatarSettings.swift */; };
@@ -84,6 +85,9 @@
 		8EF1A304233166B100D81510 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		8EF62775233F4A2D00AF1144 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		8EF93C272329883600EBEC86 /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
+		B7410748A9FD80EB66F3B457 /* Pods_VeKa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeKa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC9D64D851A3DBEBCCE85D74 /* Pods-VeKa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeKa.release.xcconfig"; path = "Target Support Files/Pods-VeKa/Pods-VeKa.release.xcconfig"; sourceTree = "<group>"; };
+		D35E2B5A7C4229A1662B730C /* Pods-VeKa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeKa.debug.xcconfig"; path = "Target Support Files/Pods-VeKa/Pods-VeKa.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A859B559C32034D040BE434 /* Pods_VeKa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +239,8 @@
 			children = (
 				8EF1192C23297677000B30E3 /* VeKa */,
 				8EF1192B23297677000B30E3 /* Products */,
+				9F9DBEDC5FBE1BD9215C1955 /* Pods */,
+				A57951B5D0137CCA2A8BB373 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,6 +276,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9F9DBEDC5FBE1BD9215C1955 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D35E2B5A7C4229A1662B730C /* Pods-VeKa.debug.xcconfig */,
+				CC9D64D851A3DBEBCCE85D74 /* Pods-VeKa.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A57951B5D0137CCA2A8BB373 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7410748A9FD80EB66F3B457 /* Pods_VeKa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,9 +301,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EF1193C2329767A000B30E3 /* Build configuration list for PBXNativeTarget "VeKa" */;
 			buildPhases = (
+				F6692A5232E27E884E6E6198 /* [CP] Check Pods Manifest.lock */,
 				8EF1192623297677000B30E3 /* Sources */,
 				8EF1192723297677000B30E3 /* Frameworks */,
 				8EF1192823297677000B30E3 /* Resources */,
+				A334140315B277770E84A479 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,6 +362,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A334140315B277770E84A479 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VeKa/Pods-VeKa-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VeKa/Pods-VeKa-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VeKa/Pods-VeKa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6692A5232E27E884E6E6198 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VeKa-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8EF1192623297677000B30E3 /* Sources */ = {
@@ -516,6 +585,7 @@
 		};
 		8EF1193D2329767A000B30E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D35E2B5A7C4229A1662B730C /* Pods-VeKa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +605,7 @@
 		};
 		8EF1193E2329767A000B30E3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC9D64D851A3DBEBCCE85D74 /* Pods-VeKa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

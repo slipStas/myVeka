@@ -1,0 +1,6 @@
+framework module Pods_VeKa {
+  umbrella header "Pods-VeKa-umbrella.h"
+
+  export *
+  module * { export * }
+}
