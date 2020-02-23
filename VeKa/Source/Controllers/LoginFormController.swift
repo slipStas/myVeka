@@ -22,6 +22,8 @@ class LoginFormController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var internetLoginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +35,7 @@ class LoginFormController: UIViewController {
         passwordTextField.placeholder = "enter password"
         
         loginButton.setTitle("Log In", for: .normal)
+        internetLoginButton.setTitle("authorise in VK", for: .normal)
         
         // Жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -80,6 +83,11 @@ class LoginFormController: UIViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "fromLoginController" {
             return checkUsersData()
+        }
+        if identifier == "authorise" {
+            if let resultController = storyboard!.instantiateViewController(withIdentifier: "authoriseInVK") as? AuthoriseViewController {
+                present(resultController, animated: true, completion: nil)
+            }
         }
         return false
     }
