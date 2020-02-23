@@ -35,13 +35,13 @@ class AuthoriseViewController: UIViewController {
         let request = URLRequest(url: urlComponents.url!)
         
         webView.load(request)
-        //webView.navigationDelegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         authoriseInVk()
+        
     }
 }
 
@@ -64,12 +64,26 @@ extension AuthoriseViewController: WKNavigationDelegate {
                 dict[key] = value
                 return dict
         }
+                
+        if let token = params["access_token"] {
+            Session.shared.token = token
+        }
+        if let userId = params["user_id"] {
+            Session.shared.userId = userId
+        }
         
-        let token = params["access_token"]
         
-        print(token)
+        print("token - \(Session.shared.token)")
+        print("User ID - \(Session.shared.userId)")
         
         
         decisionHandler(.cancel)
+        
+        
+        VkFriendsRequest.friendsRequest.showFriends()
+        VkGroupsRequsts.vkGroupsRequest.getGroups()
+        VkGroupsRequsts.vkGroupsRequest.groupSearch(search: "Ios", printCounts: 8)
+        VkPhotosRequests.vkPhotoRequests.getPhotos()
     }
 }
+
