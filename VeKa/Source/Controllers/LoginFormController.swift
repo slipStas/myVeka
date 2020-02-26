@@ -35,7 +35,7 @@ class LoginFormController: UIViewController {
         passwordTextField.placeholder = "enter password"
         
         loginButton.setTitle("Log In", for: .normal)
-        internetLoginButton.setTitle("authorise in VK", for: .normal)
+        internetLoginButton.setTitle("Authorise in VK", for: .normal)
         
         // Жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))

@@ -38,7 +38,8 @@ class VkFriendsRequest {
         ]
         
         AF.request(urlFriends.url!, method: .get, parameters: accessParameters).responseJSON { (response) in
-            print(response)
+            guard let json = response.value else { return }
+            print(json)
         }
     }
 }

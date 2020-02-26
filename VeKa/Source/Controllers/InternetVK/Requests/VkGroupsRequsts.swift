@@ -34,7 +34,8 @@ class VkGroupsRequsts {
         ]
         
         AF.request(urlGroups.url!, method: .get, parameters: accessParameters).responseJSON { (response) in
-            print(response)
+            guard let json = response.value else { return }
+            print(json)
         }
     }
     
