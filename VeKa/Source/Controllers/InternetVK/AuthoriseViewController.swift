@@ -76,14 +76,19 @@ extension AuthoriseViewController: WKNavigationDelegate {
         print("token - \(Session.shared.token)")
         print("User ID - \(Session.shared.userId)")
         
-        
         decisionHandler(.cancel)
         
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
-        VkFriendsRequest.friendsRequest.showFriends()
-        VkGroupsRequsts.vkGroupsRequest.getGroups()
-        VkGroupsRequsts.vkGroupsRequest.groupSearch(search: "Ios", printCounts: 8)
-        VkPhotosRequests.vkPhotoRequests.getPhotos()
+        if Session.shared.token.count > 0 {
+            if let resultController = storyboard!.instantiateViewController(withIdentifier: "FriendListVkApi") as? FriendsVkApiViewController {
+                present(resultController, animated: true, completion: nil)
+            }
+        }
+        
+        return false
     }
 }
 

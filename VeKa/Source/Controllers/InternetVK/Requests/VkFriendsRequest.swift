@@ -14,13 +14,14 @@ class VkFriendsRequest {
     static let friendsRequest = VkFriendsRequest()
     private init () {}
     
+    var vkApiFriends : UserVkAPI?
     let userID = Session.shared.userId
     let token = Session.shared.token
     
     /**
     Send a request to the server to get the friends list
     */
-    func showFriends() {
+    func showFriends(completionHandler: @escaping(UserVkAPI) -> ()) {
         
         let accessParameters: Parameters = ["access_token" : token, "user_id" : userID]
 
@@ -37,9 +38,12 @@ class VkFriendsRequest {
             URLQueryItem(name: "v", value: "5.102")
         ]
         
-        AF.request(urlFriends.url!, method: .get, parameters: accessParameters).responseJSON { (response) in
-            guard let json = response.value else { return }
-            print(json)
+        AF.request(urlFriends.url!, parameters: accessParameters).responseData { (data) in
+            guard let data = data.value else { return }
+            
+            let friends = try! JSONDecoder().decode(UserVkAPI.self, from: data)
+            self.vkApiFriends = friends
+            completionHandler(friends)
         }
     }
 }
