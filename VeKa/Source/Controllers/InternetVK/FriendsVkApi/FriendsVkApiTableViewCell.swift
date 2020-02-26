@@ -14,15 +14,10 @@ class FriendsVkApiTableViewCell: UITableViewCell {
     
     @IBOutlet weak var friendsVkApiAvatar: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        friendsVkApiAvatar.image = nil
+        friendsVkApiNameLabel.text = nil
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

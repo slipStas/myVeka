@@ -163,7 +163,7 @@
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YE1-Vs-X2l">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
@@ -188,19 +188,19 @@
             </objects>
             <point key="canvasLocation" x="471" y="796"/>
         </scene>
-        <!--Friends Vk Api View Controller-->
+        <!--Friends-->
         <scene sceneID="1ZT-Xy-YRC">
             <objects>
-                <viewController storyboardIdentifier="FriendListVkApi" id="3lb-bs-e7W" customClass="FriendsVkApiViewController" customModule="VeKa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendListVkApi" modalPresentationStyle="fullScreen" id="3lb-bs-e7W" customClass="FriendsVkApiViewController" customModule="VeKa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FUz-2o-0ru">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qx6-YN-5CQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="vkApiFriendsCell" rowHeight="92" id="TMk-Bi-RyD" customClass="FriendsVkApiTableViewCell" customModule="VeKa" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="vkApiFriendsIdentifier" rowHeight="92" id="TMk-Bi-RyD" customClass="FriendsVkApiTableViewCell" customModule="VeKa" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TMk-Bi-RyD" id="RE7-kg-h2X">
@@ -232,6 +232,7 @@
                                                 <constraint firstItem="iPN-pF-EhV" firstAttribute="top" secondItem="RE7-kg-h2X" secondAttribute="top" constant="2" id="yml-9I-osP"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="friendsVkApiAvatar" destination="iPN-pF-EhV" id="Jgz-Kz-sqs"/>
                                             <outlet property="friendsVkApiNameLabel" destination="xPc-gj-Rba" id="4RZ-Kf-sBB"/>
@@ -249,10 +250,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MTt-Tl-uEa"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Friends" id="1Bj-kA-3OW"/>
+                    <connections>
+                        <outlet property="friendsVkApiTableView" destination="Qx6-YN-5CQ" id="6n5-io-Dit"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mhu-in-pDZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469.56521739130437" y="1455.8035714285713"/>
+            <point key="canvasLocation" x="1379.7101449275362" y="1455.8035714285713"/>
         </scene>
         <!--Список моих групп-->
         <scene sceneID="wZx-ss-EBq">
@@ -953,6 +958,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsw-7W-zbv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1983" y="411"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="TTS-gc-pKc">
+            <objects>
+                <tabBarController storyboardIdentifier="VkApi" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="HPW-O6-PVo" customClass="TabBarViewController" customModule="VeKa" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Tn-Id-8ii">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3lb-bs-e7W" kind="relationship" relationship="viewControllers" id="oM4-fg-qDS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M9D-sh-iga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="469.56521739130437" y="1455.8035714285713"/>
         </scene>
     </scenes>
     <resources>

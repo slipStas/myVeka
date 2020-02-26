@@ -40,8 +40,7 @@ class AuthoriseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        authoriseInVk()
-        
+        authoriseInVk()        
     }
 }
 
@@ -76,19 +75,13 @@ extension AuthoriseViewController: WKNavigationDelegate {
         print("token - \(Session.shared.token)")
         print("User ID - \(Session.shared.userId)")
         
+        if !Session.shared.token.isEmpty {
+            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
+            self.present(newViewController, animated: true, completion: nil)
+        }
         decisionHandler(.cancel)
         
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
-        if Session.shared.token.count > 0 {
-            if let resultController = storyboard!.instantiateViewController(withIdentifier: "FriendListVkApi") as? FriendsVkApiViewController {
-                present(resultController, animated: true, completion: nil)
-            }
-        }
-        
-        return false
     }
 }
 
