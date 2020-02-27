@@ -12,10 +12,10 @@
 		8E0971C32336B27900BF2473 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0971C22336B27900BF2473 /* ShadowView.swift */; };
 		8E0971C52336B49300BF2473 /* AvatarSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0971C42336B49300BF2473 /* AvatarSettings.swift */; };
 		8E155E002406FC8200995089 /* UserVkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E155DFF2406FC8200995089 /* UserVkAPI.swift */; };
-		8E155E022406FCD700995089 /* GetVkApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E155E012406FCD700995089 /* GetVkApiRequests.swift */; };
 		8E155E042407004F00995089 /* FriendsVkApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E155E032407004F00995089 /* FriendsVkApiViewController.swift */; };
 		8E155E072407033800995089 /* FriendsVkApiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E155E062407033800995089 /* FriendsVkApiTableViewCell.swift */; };
 		8E155E0924070B7800995089 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E155E0824070B7800995089 /* TabBarViewController.swift */; };
+		8E155E0B2408197E00995089 /* GetFriendsVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E155E0A2408197E00995089 /* GetFriendsVkApi.swift */; };
 		8E3EA79D232D668000F118DB /* FriendInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3EA79C232D668000F118DB /* FriendInfoViewController.swift */; };
 		8E3EA79F232D66BF00F118DB /* FriendInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3EA79E232D66BF00F118DB /* FriendInfoCollectionViewCell.swift */; };
 		8E3EA7A2232D800600F118DB /* MyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3EA7A1232D800600F118DB /* MyGroupsViewController.swift */; };
@@ -60,10 +60,10 @@
 		8E0971C22336B27900BF2473 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		8E0971C42336B49300BF2473 /* AvatarSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSettings.swift; sourceTree = "<group>"; };
 		8E155DFF2406FC8200995089 /* UserVkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVkAPI.swift; sourceTree = "<group>"; };
-		8E155E012406FCD700995089 /* GetVkApiRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVkApiRequests.swift; sourceTree = "<group>"; };
 		8E155E032407004F00995089 /* FriendsVkApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVkApiViewController.swift; sourceTree = "<group>"; };
 		8E155E062407033800995089 /* FriendsVkApiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVkApiTableViewCell.swift; sourceTree = "<group>"; };
 		8E155E0824070B7800995089 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		8E155E0A2408197E00995089 /* GetFriendsVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendsVkApi.swift; sourceTree = "<group>"; };
 		8E3EA79C232D668000F118DB /* FriendInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfoViewController.swift; sourceTree = "<group>"; };
 		8E3EA79E232D66BF00F118DB /* FriendInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E3EA7A1232D800600F118DB /* MyGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				8E155DFF2406FC8200995089 /* UserVkAPI.swift */,
-				8E155E012406FCD700995089 /* GetVkApiRequests.swift */,
+				8E155E0A2408197E00995089 /* GetFriendsVkApi.swift */,
 			);
 			path = "VkApi models";
 			sourceTree = "<group>";
@@ -477,7 +477,6 @@
 				8ED7DB3D233ECEE000DCD205 /* NewsViewController.swift in Sources */,
 				8E75928A234C26D4000E89F1 /* CustomSegue.swift in Sources */,
 				8E759292234C3E8E000E89F1 /* CustomNavigationController.swift in Sources */,
-				8E155E022406FCD700995089 /* GetVkApiRequests.swift in Sources */,
 				8EF1A305233166B100D81510 /* Group.swift in Sources */,
 				8EDA8E7B2345ECB5002BB4E3 /* LoadingView.swift in Sources */,
 				8E0971C12335884500BF2473 /* AvatarView.swift in Sources */,
@@ -502,6 +501,7 @@
 				8E155E0924070B7800995089 /* TabBarViewController.swift in Sources */,
 				8EDB222D23386E8B00185A6C /* LikesView.swift in Sources */,
 				8EF62776233F4A2D00AF1144 /* NewsCollectionViewCell.swift in Sources */,
+				8E155E0B2408197E00995089 /* GetFriendsVkApi.swift in Sources */,
 				8E3EA7A7232D808D00F118DB /* AllGroupsTableViewCell.swift in Sources */,
 				8E5C694C23480792002C745A /* FriendsPhotosCollectionViewCell.swift in Sources */,
 				8E155E072407033800995089 /* FriendsVkApiTableViewCell.swift in Sources */,

@@ -250,14 +250,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MTt-Tl-uEa"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" id="1Bj-kA-3OW"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="person.3.fill" catalog="system" id="1Bj-kA-3OW"/>
                     <connections>
                         <outlet property="friendsVkApiTableView" destination="Qx6-YN-5CQ" id="6n5-io-Dit"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mhu-in-pDZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1379.7101449275362" y="1455.8035714285713"/>
+            <point key="canvasLocation" x="1983" y="1153"/>
         </scene>
         <!--Список моих групп-->
         <scene sceneID="wZx-ss-EBq">
@@ -974,7 +974,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9D-sh-iga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469.56521739130437" y="1455.8035714285713"/>
+            <point key="canvasLocation" x="1219" y="1471"/>
         </scene>
     </scenes>
     <resources>
