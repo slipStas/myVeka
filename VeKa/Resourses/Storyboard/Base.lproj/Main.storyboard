@@ -260,7 +260,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MTt-Tl-uEa"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" image="person.3.fill" catalog="system" id="1Bj-kA-3OW"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="person.2.fill" catalog="system" id="1Bj-kA-3OW"/>
                     <connections>
                         <outlet property="friendsVkApiTableView" destination="Qx6-YN-5CQ" id="6n5-io-Dit"/>
                     </connections>
@@ -980,15 +980,119 @@
                     </tabBar>
                     <connections>
                         <segue destination="3lb-bs-e7W" kind="relationship" relationship="viewControllers" id="oM4-fg-qDS"/>
+                        <segue destination="dZ7-w9-y5l" kind="relationship" relationship="viewControllers" id="Sw5-8e-lQF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9D-sh-iga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1219" y="1471"/>
         </scene>
+        <!--My groups-->
+        <scene sceneID="dyH-hQ-VxP">
+            <objects>
+                <viewController id="dZ7-w9-y5l" customClass="GroupsVkApiViewController" customModule="VeKa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zkb-QK-eFL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qvV-dq-Ck1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="vkApiGroupsIdentifier" rowHeight="112" id="Wy6-Ap-zeb" customClass="GroupsVkApiTableViewCell" customModule="VeKa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="112"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wy6-Ap-zeb" id="D9X-iP-HS2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vm-Y3-rpn">
+                                                    <rect key="frame" x="30" y="45.5" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="sy1-Fu-Ege"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH7-3s-sXX" customClass="ShadowView" customModule="VeKa" customModuleProvider="target">
+                                                    <rect key="frame" x="312" y="10" width="92" height="92"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FkX-Wg-6r8" customClass="AvatarView" customModule="VeKa" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="92"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q2R-V4-4U0">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="92"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="Q2R-V4-4U0" firstAttribute="leading" secondItem="FkX-Wg-6r8" secondAttribute="leading" id="0WJ-CM-YCs"/>
+                                                                <constraint firstItem="Q2R-V4-4U0" firstAttribute="top" secondItem="FkX-Wg-6r8" secondAttribute="top" id="6e7-ZZ-0fF"/>
+                                                                <constraint firstItem="Q2R-V4-4U0" firstAttribute="centerX" secondItem="FkX-Wg-6r8" secondAttribute="centerX" id="FGD-na-UOH"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Q2R-V4-4U0" secondAttribute="trailing" id="cu2-4m-3xy"/>
+                                                                <constraint firstItem="Q2R-V4-4U0" firstAttribute="centerY" secondItem="FkX-Wg-6r8" secondAttribute="centerY" id="hmi-Vp-OFw"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Q2R-V4-4U0" secondAttribute="bottom" id="lcg-Om-BG0"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="FkX-Wg-6r8" secondAttribute="bottom" id="0uG-ip-QFR"/>
+                                                        <constraint firstItem="FkX-Wg-6r8" firstAttribute="leading" secondItem="oH7-3s-sXX" secondAttribute="leading" id="28h-0W-hmr"/>
+                                                        <constraint firstAttribute="width" secondItem="oH7-3s-sXX" secondAttribute="height" multiplier="1:1" id="9IV-v0-zsO"/>
+                                                        <constraint firstItem="FkX-Wg-6r8" firstAttribute="centerY" secondItem="oH7-3s-sXX" secondAttribute="centerY" id="HRP-3d-3HX"/>
+                                                        <constraint firstItem="FkX-Wg-6r8" firstAttribute="top" secondItem="oH7-3s-sXX" secondAttribute="top" id="Rc1-rB-WXh"/>
+                                                        <constraint firstItem="FkX-Wg-6r8" firstAttribute="centerX" secondItem="oH7-3s-sXX" secondAttribute="centerX" id="dpu-wn-8tH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="FkX-Wg-6r8" secondAttribute="trailing" id="peZ-aS-uKT"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                            <color key="value" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1Vm-Y3-rpn" firstAttribute="leading" secondItem="D9X-iP-HS2" secondAttribute="leadingMargin" constant="10" id="A5U-CU-r1C"/>
+                                                <constraint firstAttribute="trailing" secondItem="oH7-3s-sXX" secondAttribute="trailing" constant="10" id="IQX-Gp-K6z"/>
+                                                <constraint firstItem="oH7-3s-sXX" firstAttribute="top" secondItem="D9X-iP-HS2" secondAttribute="top" constant="10" id="Nye-04-HHY"/>
+                                                <constraint firstAttribute="bottom" secondItem="oH7-3s-sXX" secondAttribute="bottom" constant="10" id="Tkp-jr-hEq"/>
+                                                <constraint firstItem="1Vm-Y3-rpn" firstAttribute="centerY" secondItem="D9X-iP-HS2" secondAttribute="centerY" id="Wxw-9b-NOG"/>
+                                                <constraint firstItem="oH7-3s-sXX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1Vm-Y3-rpn" secondAttribute="trailing" constant="10" id="th7-3R-76U"/>
+                                                <constraint firstItem="oH7-3s-sXX" firstAttribute="centerY" secondItem="1Vm-Y3-rpn" secondAttribute="centerY" id="xyk-Sl-IUt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="groupVkApiAvatar" destination="Q2R-V4-4U0" id="1hv-vC-VSa"/>
+                                            <outlet property="groupVkApiNameLabel" destination="1Vm-Y3-rpn" id="Fue-5l-el2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="HWf-xg-law" firstAttribute="bottom" secondItem="qvV-dq-Ck1" secondAttribute="bottom" id="59W-ly-kKB"/>
+                            <constraint firstItem="qvV-dq-Ck1" firstAttribute="top" secondItem="HWf-xg-law" secondAttribute="top" id="9lb-uN-cyf"/>
+                            <constraint firstItem="HWf-xg-law" firstAttribute="trailing" secondItem="qvV-dq-Ck1" secondAttribute="trailing" id="Mdr-Rm-hjg"/>
+                            <constraint firstItem="qvV-dq-Ck1" firstAttribute="leading" secondItem="HWf-xg-law" secondAttribute="leading" id="lQj-LD-8DP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HWf-xg-law"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My groups" image="person.3.fill" catalog="system" id="x3Z-fR-mo5"/>
+                    <connections>
+                        <outlet property="groupsVkApi" destination="qvV-dq-Ck1" id="Og5-qW-qLg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQm-em-lnw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1992.753623188406" y="1821.4285714285713"/>
+        </scene>
     </scenes>
     <resources>
         <image name="news" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="person.2.fill" catalog="system" width="64" height="40"/>
         <image name="person.3.fill" catalog="system" width="71" height="34"/>
         <image name="person.crop.square" catalog="system" width="64" height="56"/>
         <image name="photo.on.rectangle" catalog="system" width="64" height="48"/>

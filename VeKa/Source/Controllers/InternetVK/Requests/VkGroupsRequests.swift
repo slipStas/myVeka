@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 
-class VkGroupsRequsts {
+class VkGroupsRequests {
     
-    static let vkGroupsRequest = VkGroupsRequsts()
+    static let vkGroupsRequest = VkGroupsRequests()
     private init () {}
     
     let userID = Session.shared.userId
@@ -29,13 +29,14 @@ class VkGroupsRequsts {
         urlGroups.host = "api.vk.com"
         urlGroups.path = "/method/groups.get"
         urlGroups.queryItems = [
-            URLQueryItem(name: "order", value: "hints"),
+            URLQueryItem(name: "extended", value: "1"),
             URLQueryItem(name: "v", value: "5.102")
         ]
         
         AF.request(urlGroups.url!, method: .get, parameters: accessParameters).responseJSON { (response) in
             guard let json = response.value else { return }
             print(json)
+            print(urlGroups.url!)
         }
     }
     
