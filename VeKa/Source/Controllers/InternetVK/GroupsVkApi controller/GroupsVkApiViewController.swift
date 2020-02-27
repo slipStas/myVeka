@@ -13,7 +13,7 @@ class GroupsVkApiViewController: UIViewController {
     @IBOutlet weak var groupsVkApiTableView: UITableView!
     
     let getGroups = GetGroupsVkApi()
-    var groupsAvatars : [UIImage] = []
+    var groupsArray : [UIImage] = []
     let avatarSetings = AvatarSettings()
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class GroupsVkApiViewController: UIViewController {
         self.groupsVkApiTableView.dataSource = self
         
         getGroups.getGroups { (groups, imageArray) in
-            self.groupsAvatars.append(contentsOf: imageArray)
+            self.groupsArray.append(contentsOf: imageArray)
             self.getGroups.getGroupsVkApi = groups
             
             self.groupsVkApiTableView.reloadData()
@@ -41,7 +41,7 @@ extension GroupsVkApiViewController : UITableViewDataSource {
         
         cell.groupVkApiNameLabel.text = getGroups.getGroupsVkApi?.response.items[indexPath.row].name
         
-        cell.groupVkApiAvatar.image = self.groupsAvatars[indexPath.row]
+        cell.groupVkApiAvatar.image = self.groupsArray[indexPath.row]
         
         return cell
     }

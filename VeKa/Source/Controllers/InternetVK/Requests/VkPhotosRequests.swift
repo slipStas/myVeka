@@ -36,6 +36,7 @@ class VkPhotosRequests {
         AF.request(urlPhotos.url!, method: .get, parameters: accessParameters).responseJSON { (response) in
             guard let json = response.value else { return }
             print(json)
+            print(urlPhotos.url!)
         }
     }
 }
