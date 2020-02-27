@@ -12,24 +12,37 @@ class FriendsVkApiViewController: UIViewController {
 
     @IBOutlet weak var friendsVkApiTableView: UITableView!
     
+    let getFriends = GetVkApi()
+    var friendsAvatars : [UIImage] = []
+    let avatarSetings = AvatarSettings()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        friendsVkApiTableView.rowHeight = 50
+        friendsVkApiTableView.rowHeight = CGFloat(avatarSetings.tableViewHeight + 4)
         friendsVkApiTableView.dataSource = self
+        
+        getFriends.getFriends { (friends, imageArray) in
+            self.friendsAvatars.append(contentsOf: imageArray)
+            self.getFriends.serverFriendList = friends
+            
+            self.friendsVkApiTableView.reloadData()
+        }
     }
 }
 
 extension FriendsVkApiViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
+        return self.getFriends.serverFriendList?.response.items.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsVkApiTableView.dequeueReusableCell(withIdentifier: "vkApiFriendsIdentifier", for: indexPath) as! FriendsVkApiTableViewCell
         
-        cell.friendsVkApiNameLabel.text = "qqq"
+        cell.friendsVkApiNameLabel.text = (getFriends.serverFriendList?.response.items[indexPath.row].firstName ?? "") + " " + (getFriends.serverFriendList?.response.items[indexPath.row].lastName ?? "")
+        
+        cell.friendsVkApiAvatar.image = self.friendsAvatars[indexPath.row]
     
         
         return cell

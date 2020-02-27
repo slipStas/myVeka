@@ -216,23 +216,33 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iPN-pF-EhV">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDH-43-W8z" customClass="AvatarView" customModule="VeKa" customModuleProvider="target">
                                                     <rect key="frame" x="316" y="2" width="88" height="88"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iPN-pF-EhV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="iPN-pF-EhV" secondAttribute="height" multiplier="1:1" id="A68-9z-Lll"/>
+                                                        <constraint firstAttribute="trailing" secondItem="iPN-pF-EhV" secondAttribute="trailing" id="Bfu-jO-Acs"/>
+                                                        <constraint firstItem="iPN-pF-EhV" firstAttribute="top" secondItem="oDH-43-W8z" secondAttribute="top" id="E7I-z8-9Rb"/>
+                                                        <constraint firstItem="iPN-pF-EhV" firstAttribute="width" secondItem="oDH-43-W8z" secondAttribute="width" id="GrI-lf-P1R"/>
+                                                        <constraint firstItem="iPN-pF-EhV" firstAttribute="height" secondItem="oDH-43-W8z" secondAttribute="height" id="IJz-ly-tzn"/>
+                                                        <constraint firstAttribute="width" secondItem="oDH-43-W8z" secondAttribute="height" multiplier="1:1" id="Sez-1z-uTL"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="iPN-pF-EhV" firstAttribute="centerY" secondItem="xPc-gj-Rba" secondAttribute="centerY" id="5Zf-1x-zCu"/>
-                                                <constraint firstItem="iPN-pF-EhV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xPc-gj-Rba" secondAttribute="trailing" constant="8" symbolic="YES" id="8nW-ZY-UJy"/>
-                                                <constraint firstAttribute="trailing" secondItem="iPN-pF-EhV" secondAttribute="trailing" constant="10" id="BVu-GS-fYe"/>
+                                                <constraint firstItem="oDH-43-W8z" firstAttribute="top" secondItem="RE7-kg-h2X" secondAttribute="top" constant="2" id="4hN-fp-QaV"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xPc-gj-Rba" secondAttribute="trailing" constant="20" symbolic="YES" id="7nr-ks-9Ui"/>
+                                                <constraint firstItem="oDH-43-W8z" firstAttribute="centerY" secondItem="xPc-gj-Rba" secondAttribute="centerY" id="CqS-jA-EBC"/>
+                                                <constraint firstAttribute="bottom" secondItem="oDH-43-W8z" secondAttribute="bottom" constant="2" id="MeN-y4-ShI"/>
+                                                <constraint firstAttribute="trailing" secondItem="oDH-43-W8z" secondAttribute="trailing" constant="10" id="S7C-va-xfO"/>
                                                 <constraint firstItem="xPc-gj-Rba" firstAttribute="leading" secondItem="RE7-kg-h2X" secondAttribute="leading" constant="10" id="XVy-1S-Z7W"/>
                                                 <constraint firstItem="xPc-gj-Rba" firstAttribute="centerY" secondItem="RE7-kg-h2X" secondAttribute="centerY" id="nWy-Hn-Rlu"/>
-                                                <constraint firstItem="iPN-pF-EhV" firstAttribute="top" secondItem="RE7-kg-h2X" secondAttribute="top" constant="2" id="yml-9I-osP"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="friendsVkApiAvatar" destination="iPN-pF-EhV" id="Jgz-Kz-sqs"/>
                                             <outlet property="friendsVkApiNameLabel" destination="xPc-gj-Rba" id="4RZ-Kf-sBB"/>
@@ -257,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mhu-in-pDZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983" y="1153"/>
+            <point key="canvasLocation" x="1982.608695652174" y="1152.4553571428571"/>
         </scene>
         <!--Список моих групп-->
         <scene sceneID="wZx-ss-EBq">

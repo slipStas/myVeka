@@ -49,7 +49,7 @@ class GetVkApi {
                     imageArray.append(UIImage(data: image! as Data)!)
                 }
             }
-            completionHandler(friends, imageArray)
+            completionHandler(self.serverFriendList!, imageArray)
         }
     }
 }
