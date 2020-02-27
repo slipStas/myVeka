@@ -19,7 +19,7 @@ class FriendsVkApiViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        friendsVkApiTableView.rowHeight = CGFloat(avatarSetings.tableViewHeight + 4)
+        friendsVkApiTableView.rowHeight = CGFloat(avatarSetings.tableViewHeight)
         friendsVkApiTableView.dataSource = self
         
         getFriends.getFriends { (friends, imageArray) in

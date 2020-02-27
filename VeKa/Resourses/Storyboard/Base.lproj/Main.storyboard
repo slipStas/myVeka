@@ -217,10 +217,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDH-43-W8z" customClass="AvatarView" customModule="VeKa" customModuleProvider="target">
-                                                    <rect key="frame" x="316" y="2" width="88" height="88"/>
+                                                    <rect key="frame" x="332" y="10" width="72" height="72"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iPN-pF-EhV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -234,10 +234,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="oDH-43-W8z" firstAttribute="top" secondItem="RE7-kg-h2X" secondAttribute="top" constant="2" id="4hN-fp-QaV"/>
+                                                <constraint firstItem="oDH-43-W8z" firstAttribute="top" secondItem="RE7-kg-h2X" secondAttribute="top" constant="10" id="4hN-fp-QaV"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xPc-gj-Rba" secondAttribute="trailing" constant="20" symbolic="YES" id="7nr-ks-9Ui"/>
                                                 <constraint firstItem="oDH-43-W8z" firstAttribute="centerY" secondItem="xPc-gj-Rba" secondAttribute="centerY" id="CqS-jA-EBC"/>
-                                                <constraint firstAttribute="bottom" secondItem="oDH-43-W8z" secondAttribute="bottom" constant="2" id="MeN-y4-ShI"/>
+                                                <constraint firstAttribute="bottom" secondItem="oDH-43-W8z" secondAttribute="bottom" constant="10" id="MeN-y4-ShI"/>
                                                 <constraint firstAttribute="trailing" secondItem="oDH-43-W8z" secondAttribute="trailing" constant="10" id="S7C-va-xfO"/>
                                                 <constraint firstItem="xPc-gj-Rba" firstAttribute="leading" secondItem="RE7-kg-h2X" secondAttribute="leading" constant="10" id="XVy-1S-Z7W"/>
                                                 <constraint firstItem="xPc-gj-Rba" firstAttribute="centerY" secondItem="RE7-kg-h2X" secondAttribute="centerY" id="nWy-Hn-Rlu"/>

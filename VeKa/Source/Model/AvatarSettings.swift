@@ -10,10 +10,10 @@ import UIKit
 
 struct AvatarSettings {
     
-    let tableViewHeight = 66
+    let tableViewHeight = 88
     var cornerRadius : CGFloat {
         get {
-            return CGFloat(tableViewHeight / 2)
+            return CGFloat((tableViewHeight - 20) / 2)
         }
     }
 }
