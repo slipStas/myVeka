@@ -202,8 +202,8 @@
 		8E155E0D240827C400995089 /* Groups VKApi */ = {
 			isa = PBXGroup;
 			children = (
-				8E155E102408287500995089 /* GetGroupVkApi.swift */,
 				8E347C7A240836CE00E9A90B /* GroupsVkApi.swift */,
+				8E155E102408287500995089 /* GetGroupVkApi.swift */,
 			);
 			path = "Groups VKApi";
 			sourceTree = "<group>";

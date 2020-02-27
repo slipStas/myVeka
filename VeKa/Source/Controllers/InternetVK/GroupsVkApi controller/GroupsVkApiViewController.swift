@@ -10,34 +10,39 @@ import UIKit
 
 class GroupsVkApiViewController: UIViewController {
 
-    @IBOutlet weak var groupsVkApi: UITableView!
+    @IBOutlet weak var groupsVkApiTableView: UITableView!
     
+    let getGroups = GetGroupsVkApi()
+    var groupsAvatars : [UIImage] = []
     let avatarSetings = AvatarSettings()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VkGroupsRequests.vkGroupsRequest.getGroups()
-        groupsVkApi.rowHeight = CGFloat(avatarSetings.tableViewHeight)
-        self.groupsVkApi.dataSource = self
+        groupsVkApiTableView.rowHeight = CGFloat(avatarSetings.tableViewHeight)
+        self.groupsVkApiTableView.dataSource = self
+        
+        getGroups.getGroups { (groups, imageArray) in
+            self.groupsAvatars.append(contentsOf: imageArray)
+            self.getGroups.getGroupsVkApi = groups
+            
+            self.groupsVkApiTableView.reloadData()
+        }
     }
-
 }
 
 extension GroupsVkApiViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return getGroups.getGroupsVkApi?.response.items.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = groupsVkApi.dequeueReusableCell(withIdentifier: "vkApiGroupsIdentifier", for: indexPath) as! GroupsVkApiTableViewCell
+        let cell = groupsVkApiTableView.dequeueReusableCell(withIdentifier: "vkApiGroupsIdentifier", for: indexPath) as! GroupsVkApiTableViewCell
         
-        cell.groupVkApiNameLabel.text = "qwerty"
+        cell.groupVkApiNameLabel.text = getGroups.getGroupsVkApi?.response.items[indexPath.row].name
         
-        cell.groupVkApiAvatar.image = #imageLiteral(resourceName: "heart")
+        cell.groupVkApiAvatar.image = self.groupsAvatars[indexPath.row]
         
         return cell
     }
-    
-    
 }

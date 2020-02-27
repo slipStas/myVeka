@@ -975,12 +975,13 @@
                 <tabBarController storyboardIdentifier="VkApi" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="HPW-O6-PVo" customClass="TabBarViewController" customModule="VeKa" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Tn-Id-8ii">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="3lb-bs-e7W" kind="relationship" relationship="viewControllers" id="oM4-fg-qDS"/>
-                        <segue destination="dZ7-w9-y5l" kind="relationship" relationship="viewControllers" id="Sw5-8e-lQF"/>
+                        <segue destination="dZ7-w9-y5l" kind="relationship" relationship="viewControllers" id="qip-Ji-gEm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9D-sh-iga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1082,7 +1083,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="My groups" image="person.3.fill" catalog="system" id="x3Z-fR-mo5"/>
                     <connections>
-                        <outlet property="groupsVkApi" destination="qvV-dq-Ck1" id="Og5-qW-qLg"/>
+                        <outlet property="groupsVkApiTableView" destination="qvV-dq-Ck1" id="tav-tx-TaN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQm-em-lnw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
