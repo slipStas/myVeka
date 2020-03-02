@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 class UserVkAPI: Codable {
+    //@objc dynamic var response: Response
     let response: Response
 
     init(response: Response) {

@@ -9,6 +9,7 @@ target 'VeKa' do
   use_frameworks!
 
 	pod 'Alamofire', '~> 5.0'
+	pod 'RealmSwift'
 
   # Pods for VeKa
 

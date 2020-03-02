@@ -48,7 +48,6 @@ class GetMyPhotosVkApi {
                             imageArray.append(UIImage(data: image! as Data)!)
                         }
                     }
-                    
                 }
            }
            completionHandler(self.getPhotoVkApi!, imageArray)
