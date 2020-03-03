@@ -39,11 +39,11 @@ class GetVkApi {
         
         AF.request(urlFriends.url!).responseData { data in
             guard let data = data.value else { return }
-            
+                        
             let friends = try! JSONDecoder().decode(UserVkAPI.self, from: data)
             self.serverFriendList = friends
-            
             for i in friends.response.items {
+                
                 if let url = NSURL(string: i.photo50) {
                     let image = NSData(contentsOf: url as URL)
                     imageArray.append(UIImage(data: image! as Data)!)

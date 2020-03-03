@@ -19,6 +19,7 @@
 		8E155E112408287500995089 /* GetGroupVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E155E102408287500995089 /* GetGroupVkApi.swift */; };
 		8E155E14240828DC00995089 /* GroupsVkApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E155E13240828DC00995089 /* GroupsVkApiViewController.swift */; };
 		8E155E162408292700995089 /* GroupsVkApiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E155E152408292700995089 /* GroupsVkApiTableViewCell.swift */; };
+		8E30F79E240D7D460055CA19 /* FriendsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E30F79D240D7D460055CA19 /* FriendsRealm.swift */; };
 		8E347C7B240836CE00E9A90B /* GroupsVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E347C7A240836CE00E9A90B /* GroupsVkApi.swift */; };
 		8E347C7E240841AF00E9A90B /* MyPhotosVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E347C7D240841AF00E9A90B /* MyPhotosVkApi.swift */; };
 		8E347C80240841D300E9A90B /* GetMyPhotosVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E347C7F240841D300E9A90B /* GetMyPhotosVkApi.swift */; };
@@ -75,6 +76,7 @@
 		8E155E102408287500995089 /* GetGroupVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupVkApi.swift; sourceTree = "<group>"; };
 		8E155E13240828DC00995089 /* GroupsVkApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsVkApiViewController.swift; sourceTree = "<group>"; };
 		8E155E152408292700995089 /* GroupsVkApiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsVkApiTableViewCell.swift; sourceTree = "<group>"; };
+		8E30F79D240D7D460055CA19 /* FriendsRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRealm.swift; sourceTree = "<group>"; };
 		8E347C7A240836CE00E9A90B /* GroupsVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsVkApi.swift; sourceTree = "<group>"; };
 		8E347C7D240841AF00E9A90B /* MyPhotosVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhotosVkApi.swift; sourceTree = "<group>"; };
 		8E347C7F240841D300E9A90B /* GetMyPhotosVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyPhotosVkApi.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				8E155DFF2406FC8200995089 /* UserVkAPI.swift */,
 				8E155E0A2408197E00995089 /* GetFriendsVkApi.swift */,
+				8E30F79D240D7D460055CA19 /* FriendsRealm.swift */,
 			);
 			path = "Friends VKApi";
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				8E0971C52336B49300BF2473 /* AvatarSettings.swift in Sources */,
 				8EB637BB234CC75B00C5AF57 /* CustomPopTransitionAnimator.swift in Sources */,
 				8E9534BD23FD933B00444375 /* Session.swift in Sources */,
+				8E30F79E240D7D460055CA19 /* FriendsRealm.swift in Sources */,
 				8E347C7E240841AF00E9A90B /* MyPhotosVkApi.swift in Sources */,
 				8EC60CE02402E884002364A5 /* VkGroupsRequests.swift in Sources */,
 				8E3EA79F232D66BF00F118DB /* FriendInfoCollectionViewCell.swift in Sources */,
