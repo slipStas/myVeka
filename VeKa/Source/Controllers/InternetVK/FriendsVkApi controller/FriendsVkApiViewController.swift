@@ -29,7 +29,7 @@ class FriendsVkApiViewController: UIViewController {
             if state {
                 self.friendsVkApiTableView.reloadData()
             } else {
-                print("error")
+                print("Error with data from Realm")
             }
         }
         

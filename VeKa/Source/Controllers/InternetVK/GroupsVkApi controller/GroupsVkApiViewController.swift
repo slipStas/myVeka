@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GroupsVkApiViewController: UIViewController {
 
     @IBOutlet weak var groupsVkApiTableView: UITableView!
     
     let getGroups = GetGroupsVkApi()
-    var groupsArray : [UIImage] = []
     let avatarSetings = AvatarSettings()
+    let groups = Session.shared.realm.objects(GroupRealm.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,26 +23,29 @@ class GroupsVkApiViewController: UIViewController {
         groupsVkApiTableView.rowHeight = CGFloat(avatarSetings.tableViewHeight)
         self.groupsVkApiTableView.dataSource = self
         
-        getGroups.getGroups { (groups, imageArray) in
-            self.groupsArray.append(contentsOf: imageArray)
-            self.getGroups.getGroupsVkApi = groups
-            
-            self.groupsVkApiTableView.reloadData()
+        getGroups.getGroups { (state) in
+            if state {
+                self.groupsVkApiTableView.reloadData()
+            } else {
+                print("Error with data from Realm")
+            }
         }
     }
 }
 
 extension GroupsVkApiViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getGroups.getGroupsVkApi?.response.items.count ?? 0
+        return groups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groupsVkApiTableView.dequeueReusableCell(withIdentifier: "vkApiGroupsIdentifier", for: indexPath) as! GroupsVkApiTableViewCell
         
-        cell.groupVkApiNameLabel.text = getGroups.getGroupsVkApi?.response.items[indexPath.row].name
+        let urlImage = URL(string: groups[indexPath.row].photo)
+        let cacheKey = String(groups[indexPath.row].id) + groups[indexPath.row].photo
         
-        cell.groupVkApiAvatar.image = self.groupsArray[indexPath.row]
+        cell.groupVkApiNameLabel.text = groups[indexPath.row].name
+        cell.groupVkApiAvatar.kf.setImage(with: ImageResource(downloadURL: urlImage!, cacheKey: cacheKey))
         
         return cell
     }
