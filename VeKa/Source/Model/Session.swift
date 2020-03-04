@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class Session {
     
+    let realm = try! Realm()
     static let shared = Session()
     private init () {}
     

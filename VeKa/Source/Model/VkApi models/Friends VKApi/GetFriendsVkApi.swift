@@ -17,10 +17,8 @@ class GetVkApi {
     let userId = Session.shared.userId
     let url = "https://api.vk.com.method/"
     
-    func getFriends(completionHandler: @escaping(UserVkAPI, [UIImage]) -> ()) {
-               
-        var imageArray : [UIImage] = []
-        
+    func getFriends(completionHandler: @escaping(Bool) -> ()) {
+                       
         var urlFriends = URLComponents()
         urlFriends.scheme = "https"
         urlFriends.host = "api.vk.com"
@@ -37,19 +35,35 @@ class GetVkApi {
             URLQueryItem(name: "v", value: "5.102")
         ]
         
-        AF.request(urlFriends.url!).responseData { data in
-            guard let data = data.value else { return }
+        guard let url = urlFriends.url else {return}
+        
+        AF.request(url).responseData { data in
+            guard let data = data.value else {
+                completionHandler(false)
+                return }
                         
             let friends = try! JSONDecoder().decode(UserVkAPI.self, from: data)
             self.serverFriendList = friends
-            for i in friends.response.items {
+            let items = friends.response.items
+            for i in 0..<items.count {
                 
-                if let url = NSURL(string: i.photo50) {
-                    let image = NSData(contentsOf: url as URL)
-                    imageArray.append(UIImage(data: image! as Data)!)
+                let friend = FriendRealm()
+                
+                friend.firstName = items[i].firstName
+                friend.lastName = items[i].lastName
+                friend.id = items[i].id
+                friend.photo = items[i].photo50
+                
+                do {
+                    try Session.shared.realm.write {
+                        Session.shared.realm.add(friend, update: .all)
+                    }
+                } catch {
+                    completionHandler(false)
+                    print("error")
                 }
             }
-            completionHandler(self.serverFriendList!, imageArray)
+            completionHandler(true)
         }
     }
 }

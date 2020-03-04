@@ -12,6 +12,10 @@ import RealmSwift
 class FriendRealm: Object {
     @objc dynamic var firstName = ""
     @objc dynamic var lastName = ""
+    @objc dynamic var photo = ""
     @objc dynamic var id = 0
     
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }
