@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MyPhotosVkApiViewController: UIViewController {
 
@@ -16,7 +17,7 @@ class MyPhotosVkApiViewController: UIViewController {
     var minimumLineSpacing: CGFloat = 1
     
     let myPhotos = GetMyPhotosVkApi()
-    var myPhotosVkApiArray : [UIImage] = []
+    let photos = Session.shared.realm.objects(MyPhotosRealm.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,27 +28,30 @@ class MyPhotosVkApiViewController: UIViewController {
         layout.minimumLineSpacing = minimumLineSpacing
         layout.minimumInteritemSpacing = minimumLineSpacing
         
-        myPhotos.getPhotos { (photosItems, photosArray) in
-            self.myPhotosVkApiArray.append(contentsOf: photosArray)
-            self.myPhotosVkApi.reloadData()
+        myPhotos.getPhotos { (state) in
+            if state {
+                self.myPhotosVkApi.reloadData()
+            } else {
+                print("Error with data from Realm")
+            }
         }
-        
         self.myPhotosVkApi.dataSource = self
     }
 }
 
 extension MyPhotosVkApiViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myPhotosVkApiArray.count
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = myPhotosVkApi.dequeueReusableCell(withReuseIdentifier: "myPhotosVkApi", for: indexPath) as! MyPhotosVkApiCollectionViewCell
         
-        cell.myPhotosVkApi.image = myPhotosVkApiArray[indexPath.row]
+        let urlImage = URL(string: photos[indexPath.row].photo)
+        let cacheKey = String(photos[indexPath.row].id) + photos[indexPath.row].photo
+        
+        cell.myPhotosVkApi.kf.setImage(with: ImageResource(downloadURL: urlImage!, cacheKey: cacheKey))
         
         return cell
     }
-    
-    
 }

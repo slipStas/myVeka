@@ -17,10 +17,8 @@ class GetMyPhotosVkApi {
     let userId = Session.shared.userId
     let url = "https://api.vk.com.method/"
     
-    func getPhotos(completionHandler: @escaping(MyPhotosVkAPI, [UIImage]) -> ()) {
+    func getPhotos(completionHandler: @escaping(Bool) -> ()) {
         
-        var imageArray : [UIImage] = []
-
         let accessParameters: Parameters = ["access_token" : token, "user_id" : userId]
 
         var urlPhotos = URLComponents()
@@ -34,23 +32,37 @@ class GetMyPhotosVkApi {
             URLQueryItem(name: "v", value: "5.102")
         ]
         
-        AF.request(urlPhotos.url!, parameters: accessParameters).responseData { data in
-           guard let data = data.value else { return }
+        guard let urlPhoto = urlPhotos.url else {return}
+
+        AF.request(urlPhoto, parameters: accessParameters).responseData { data in
+            guard let data = data.value else {
+                completionHandler(false)
+                return}
            
-           let photos = try! JSONDecoder().decode(MyPhotosVkAPI.self, from: data)
-           self.getPhotoVkApi = photos
-           
-            for i in photos.response.items {
-                for j in i.sizes {
-                    if j.type == .m {
-                        if let url = NSURL(string: j.url) {
-                            let image = NSData(contentsOf: url as URL)
-                            imageArray.append(UIImage(data: image! as Data)!)
-                        }
+            let photos = try! JSONDecoder().decode(MyPhotosVkAPI.self, from: data)
+            self.getPhotoVkApi = photos
+            let items = photos.response.items
+
+            for i in 0..<items.count {
+                
+                let photos = MyPhotosRealm()
+                
+                photos.id = items[i].id
+                
+                for j in 0..<items[i].sizes.count {
+                    photos.photo = items[i].sizes[j].url
+                }
+                
+                do {
+                    try Session.shared.realm.write {
+                        Session.shared.realm.add(photos, update: .all)
                     }
+                } catch {
+                    completionHandler(false)
+                    print("error")
                 }
            }
-           completionHandler(self.getPhotoVkApi!, imageArray)
+           completionHandler(true)
         }
     }
 }

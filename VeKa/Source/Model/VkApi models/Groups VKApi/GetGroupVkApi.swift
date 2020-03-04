@@ -34,7 +34,9 @@ class GetGroupsVkApi {
         guard let url = urlGroups.url else {return}
         
         AF.request(url, parameters: accessParameters).responseData { data in
-            guard let data = data.value else { return }
+            guard let data = data.value else {
+                completionHandler(false)
+                return }
            
             let groups = try! JSONDecoder().decode(GroupsVkAPI.self, from: data)
             self.getGroupsVkApi = groups
