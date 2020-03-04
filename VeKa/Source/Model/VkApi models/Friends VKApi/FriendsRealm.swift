@@ -14,22 +14,4 @@ class FriendRealm: Object {
     @objc dynamic var lastName = ""
     @objc dynamic var id = 0
     
-    func saveFriends(_ friends : [FriendRealm]) {
-        do {
-        // получаем доступ к хранилищу
-            let realm = try Realm()
-                    
-        // начинаем изменять хранилище
-            realm.beginWrite()
-                    
-        // кладем все объекты класса погоды в хранилище
-            realm.add(friends)
-                    
-        // завершаем изменения хранилища
-            try realm.commitWrite()
-        } catch {
-        // если произошла ошибка, выводим ее в консоль
-            print(error)
-        }
-    }
 }
