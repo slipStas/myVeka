@@ -24,6 +24,17 @@ class LoginFormController: UIViewController {
     
     @IBOutlet weak var internetLoginButton: UIButton!
     
+    @IBAction func authVkButton(_ sender: Any) {
+        if Session.shared.hardToken.isEmpty {
+            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
+            self.present(newViewController, animated: true, completion: nil)
+        } else {
+            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "authoriseInVK") as! AuthoriseViewController
+            self.present(newViewController, animated: true, completion: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

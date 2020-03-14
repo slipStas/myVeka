@@ -8,17 +8,22 @@
 
 import Foundation
 import Alamofire
+import SwiftKeychainWrapper
 
 class GetVkApi {
     
     var serverFriendList: UserVkAPI?
 
-    let token = Session.shared.token
-    let userId = Session.shared.userId
+    let userId = KeychainWrapper.standard.string(forKey: Session.Keys.hardUserId.rawValue) ?? ""
+    let token = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
     let url = "https://api.vk.com.method/"
     
     func getFriends(completionHandler: @escaping(Bool) -> ()) {
-                       
+        print("----------------")
+        print(token)
+        print(userId)
+        print("----------------")
+
         var urlFriends = URLComponents()
         urlFriends.scheme = "https"
         urlFriends.host = "api.vk.com"

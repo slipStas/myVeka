@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import Alamofire
+import SwiftKeychainWrapper
 
 class AuthoriseViewController: UIViewController {
 
@@ -40,10 +41,9 @@ class AuthoriseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        authoriseInVk()        
+        authoriseInVk()
     }
 }
-
 
 extension AuthoriseViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -65,17 +65,15 @@ extension AuthoriseViewController: WKNavigationDelegate {
         }
                 
         if let token = params["access_token"] {
-            Session.shared.token = token
+            KeychainWrapper.standard.set(token, forKey: Session.Keys.hardToken.rawValue)
+            Session.shared.hardToken = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
         }
         if let userId = params["user_id"] {
-            Session.shared.userId = userId
+            KeychainWrapper.standard.set(userId, forKey: Session.Keys.hardUserId.rawValue)
+            Session.shared.hardUserId = KeychainWrapper.standard.string(forKey: Session.Keys.hardUserId.rawValue) ?? ""
         }
         
-        
-        print("token - \(Session.shared.token)")
-        print("User ID - \(Session.shared.userId)")
-        
-        if !Session.shared.token.isEmpty {
+        if Session.shared.hardToken != "" {
             let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
             self.present(newViewController, animated: true, completion: nil)

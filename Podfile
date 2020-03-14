@@ -8,5 +8,6 @@ target 'VeKa' do
   	pod 'Alamofire'
 	pod 'RealmSwift'
 	pod 'Kingfisher'
+        pod 'SwiftKeychainWrapper'
 
 end

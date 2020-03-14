@@ -8,13 +8,14 @@
 
 import Foundation
 import Alamofire
+import SwiftKeychainWrapper
 
 class GetGroupsVkApi {
     
     var getGroupsVkApi : GroupsVkAPI?
     
-    let token = Session.shared.token
-    let userId = Session.shared.userId
+    let userId = KeychainWrapper.standard.string(forKey: Session.Keys.hardUserId.rawValue) ?? ""
+    let token = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
     let url = "https://api.vk.com.method/"
     
     func getGroups(completionHandler: @escaping(Bool) -> ()) {

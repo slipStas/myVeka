@@ -17,13 +17,36 @@ class FriendsVkApiViewController: UIViewController {
     let friends = Session.shared.realm.objects(FriendRealm.self)
     let getFriends = GetVkApi()
     let avatarSetings = AvatarSettings()
+    var token : NotificationToken?
     
+
+    func pairTableAndRealm() {
+            
+        token = self.friends.observe { [weak self] (changes: RealmCollectionChange) in
+                guard let tableView = self?.friendsVkApiTableView else { return }
+                switch changes {
+                case .initial:
+                    tableView.reloadData()
+                case .update(_, let deletions, let insertions, let modifications):
+                    tableView.beginUpdates()
+                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .right)
+                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                         with: .left)
+                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .automatic)
+                    tableView.endUpdates()
+                case .error(let error):
+                    fatalError("\(error)")
+                }
+            }
+        }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         friendsVkApiTableView.rowHeight = CGFloat(avatarSetings.tableViewHeight)
-        
         
         getFriends.getFriends { (state) in
             if state {
@@ -32,6 +55,8 @@ class FriendsVkApiViewController: UIViewController {
                 print("Error with data from Realm")
             }
         }
+        
+        //pairTableAndRealm()
         
         friendsVkApiTableView.dataSource = self
     }

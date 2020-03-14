@@ -8,15 +8,23 @@
 
 import UIKit
 import RealmSwift
+import SwiftKeychainWrapper
+
+
 
 class Session {
+   
+    enum Keys : String {
+        case hardToken = "hardToken"
+        case hardUserId = "hardUserId"
+    }
     
     let realm = try! Realm()
     static let shared = Session()
     private init () {}
     
-    var token = String()
-    var userId = String()
+    var hardToken = String()
+    var hardUserId = String()
     
     var login = ""
     var password = ""

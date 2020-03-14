@@ -8,14 +8,15 @@
 
 import Foundation
 import Alamofire
+import SwiftKeychainWrapper
 
 class VkPhotosRequests {
     
     static let vkPhotoRequests = VkPhotosRequests()
     private init () {}
     
-    let userID = Session.shared.userId
-    let token = Session.shared.token
+    let userID = String(describing: KeychainWrapper.standard.string(forKey: Session.Keys.hardUserId.rawValue))
+    let token = String(describing: KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue))
     
     /**
     Send a request to the server to get the photos
