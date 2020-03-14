@@ -32,17 +32,14 @@ class FriendsVkApiViewController: UIViewController {
                 case .update(_, let deletions, let insertions, let modifications):
                     tableView.beginUpdates()
                     if insertions.count > 0 {
-                        print("insertion count = \(insertions.count)")
                         tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
                                              with: .right)
                     }
                     if deletions.count > 0 {
-                        print("deletions count = \(deletions.count)")
                         tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
                                              with: .left)
                     }
                     if modifications.count > 0 {
-                        print("modifications count = \(modifications.description)")
                         tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
                                              with: .right)
                     }
