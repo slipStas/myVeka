@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class GroupsVkApiViewController: UIViewController {
 
@@ -16,6 +17,37 @@ class GroupsVkApiViewController: UIViewController {
     let getGroups = GetGroupsVkApi()
     let avatarSetings = AvatarSettings()
     let groups = Session.shared.realm.objects(GroupRealm.self)
+    var token : NotificationToken?
+    
+    func pairTableAndRealm() {
+        
+    token = self.groups.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.groupsVkApiTableView else { return }
+            switch changes {
+            case .initial(let changedData):
+                if self?.groups.count != changedData.count {
+                    tableView.reloadData()
+                }
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.beginUpdates()
+                if insertions.count > 0 {
+                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .right)
+                }
+                if deletions.count > 0 {
+                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                         with: .left)
+                }
+                if modifications.count > 0 {
+                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .right)
+                }
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +55,16 @@ class GroupsVkApiViewController: UIViewController {
         groupsVkApiTableView.rowHeight = CGFloat(avatarSetings.tableViewHeight)
         self.groupsVkApiTableView.dataSource = self
         
-        getGroups.getGroups { (state) in
-            if state {
-                self.groupsVkApiTableView.reloadData()
-            } else {
-                print("Error with data from Realm")
+        if groups.count == 0 {
+            getGroups.getGroups { (state) in
+                if state {
+                    print("Groups was added")
+                } else {
+                    print("Error with data from Realm")
+                }
             }
         }
+        pairTableAndRealm()
     }
 }
 

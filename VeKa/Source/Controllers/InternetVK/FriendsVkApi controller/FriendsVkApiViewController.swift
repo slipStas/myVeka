@@ -58,7 +58,7 @@ class FriendsVkApiViewController: UIViewController {
         if self.friends.count == 0 {
             getFriends.getFriends { (state) in
                 if state {
-                    print("friends was getted")
+                    print("friends was added")
                 } else {
                     print("Error with data from Realm")
                 }
