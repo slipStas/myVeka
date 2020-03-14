@@ -25,38 +25,50 @@ class FriendsVkApiViewController: UIViewController {
         token = self.friends.observe { [weak self] (changes: RealmCollectionChange) in
                 guard let tableView = self?.friendsVkApiTableView else { return }
                 switch changes {
-                case .initial:
-                    tableView.reloadData()
+                case .initial(let changedData):
+                    if self?.friends.count != changedData.count {
+                        tableView.reloadData()
+                    }
                 case .update(_, let deletions, let insertions, let modifications):
                     tableView.beginUpdates()
-                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
-                                         with: .right)
-                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
-                                         with: .left)
-                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
-                                         with: .automatic)
+                    if insertions.count > 0 {
+                        print("insertion count = \(insertions.count)")
+                        tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                             with: .right)
+                    }
+                    if deletions.count > 0 {
+                        print("deletions count = \(deletions.count)")
+                        tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                             with: .left)
+                    }
+                    if modifications.count > 0 {
+                        print("modifications count = \(modifications.description)")
+                        tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                             with: .right)
+                    }
                     tableView.endUpdates()
                 case .error(let error):
                     fatalError("\(error)")
                 }
             }
         }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         friendsVkApiTableView.rowHeight = CGFloat(avatarSetings.tableViewHeight)
         
-        getFriends.getFriends { (state) in
-            if state {
-                self.friendsVkApiTableView.reloadData()
-            } else {
-                print("Error with data from Realm")
+        if self.friends.count == 0 {
+            getFriends.getFriends { (state) in
+                if state {
+                    print("friends was getted")
+                } else {
+                    print("Error with data from Realm")
+                }
             }
         }
         
-        //pairTableAndRealm()
+        pairTableAndRealm()
         
         friendsVkApiTableView.dataSource = self
     }
