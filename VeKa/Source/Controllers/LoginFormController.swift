@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class LoginFormController: UIViewController {
     
@@ -25,7 +26,8 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var internetLoginButton: UIButton!
     
     @IBAction func authVkButton(_ sender: Any) {
-        if Session.shared.hardToken.isEmpty {
+        let token = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
+        if !token.isEmpty {
             let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
             self.present(newViewController, animated: true, completion: nil)
@@ -35,6 +37,7 @@ class LoginFormController: UIViewController {
             self.present(newViewController, animated: true, completion: nil)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

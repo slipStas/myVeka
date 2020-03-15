@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class MyPhotosVkApiViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class MyPhotosVkApiViewController: UIViewController {
     
     let myPhotos = GetMyPhotosVkApi()
     let photos = Session.shared.realm.objects(MyPhotosRealm.self)
+    var token : NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()

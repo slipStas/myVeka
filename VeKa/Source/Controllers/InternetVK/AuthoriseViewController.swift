@@ -72,14 +72,12 @@ extension AuthoriseViewController: WKNavigationDelegate {
             KeychainWrapper.standard.set(userId, forKey: Session.Keys.hardUserId.rawValue)
             Session.shared.hardUserId = KeychainWrapper.standard.string(forKey: Session.Keys.hardUserId.rawValue) ?? ""
         }
-        
-        if Session.shared.hardToken != "" {
+        if !Session.shared.hardToken.isEmpty {
             let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
             self.present(newViewController, animated: true, completion: nil)
         }
         decisionHandler(.cancel)
-        
     }
 }
 
