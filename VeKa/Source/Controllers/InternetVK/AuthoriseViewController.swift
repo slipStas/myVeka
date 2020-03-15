@@ -76,6 +76,7 @@ extension AuthoriseViewController: WKNavigationDelegate {
             let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
             self.present(newViewController, animated: true, completion: nil)
+            print("token = \(Session.shared.hardToken)")
         }
         decisionHandler(.cancel)
     }
