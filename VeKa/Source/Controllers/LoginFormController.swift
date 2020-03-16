@@ -11,6 +11,19 @@ import SwiftKeychainWrapper
 
 class LoginFormController: UIViewController {
     
+    private lazy var alertView: RegistrationAlert = {
+        let alertView : RegistrationAlert = (Bundle.main.loadNibNamed("RegistrationAlert", owner: self, options: nil)?.first as? RegistrationAlert)!
+        alertView.delegate = self
+        return alertView
+    }()
+    
+    let visualEffectView : UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
@@ -24,6 +37,14 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var internetLoginButton: UIButton!
+    
+    @IBOutlet weak var registrationFireBaseButton: UIButton!
+    
+    @IBAction func registrationInFareBase(_ sender: Any) {
+        setupBlurBackground()
+        setupAlert()
+        animateAlertIn()
+    }
     
     @IBAction func authVkButton(_ sender: Any) {
         let token = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
@@ -49,6 +70,7 @@ class LoginFormController: UIViewController {
         passwordTextField.placeholder = "enter password"
         
         loginButton.setTitle("Log In", for: .normal)
+        registrationFireBaseButton.setTitle("Registration", for: .normal)
         internetLoginButton.setTitle("Authorise in VK", for: .normal)
         
         // Жест нажатия
@@ -98,11 +120,6 @@ class LoginFormController: UIViewController {
         if identifier == "fromLoginController" {
             return checkUsersData()
         }
-        if identifier == "authorise" {
-            if let resultController = storyboard!.instantiateViewController(withIdentifier: "authoriseInVK") as? AuthoriseViewController {
-                present(resultController, animated: true, completion: nil)
-            }
-        }
         return false
     }
     
@@ -130,4 +147,50 @@ class LoginFormController: UIViewController {
         present(alert, animated: true)
     }
     
+    func setupAlert() {
+        view.addSubview(alertView)
+        alertView.center = view.center
+        alertView.fillAlertText()
+        alertView.layer.cornerRadius = 10
+        alertView.layer.masksToBounds = true
+    }
+    func setupBlurBackground() {
+        view.addSubview(visualEffectView)
+        visualEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        visualEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        visualEffectView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        visualEffectView.alpha = 0
+    }
+    func animateAlertIn() {
+        alertView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        alertView.alpha = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.visualEffectView.alpha = 0.7
+            self.alertView.alpha = 1
+            self.alertView.transform = CGAffineTransform.identity
+        }
+    }
+    func animateAlertOut() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.visualEffectView.alpha = 0
+            self.alertView.alpha = 0
+            self.alertView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        }) { (_) in
+            self.alertView.removeFromSuperview()
+            self.visualEffectView.removeFromSuperview()
+        }
+    }
+}
+
+extension LoginFormController : AlertDelegate {
+    func okButtonTapped() {
+        print("ok")
+        animateAlertOut()
+    }
+    
+    func cancelButtonTapped() {
+        animateAlertOut()
+    }
 }

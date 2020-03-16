@@ -26,7 +26,7 @@ class Session {
     var hardToken = String()
     var hardUserId = String()
     
-    var login = ""
-    var password = ""
+    var login = "11"
+    var password = "11"
     
 }

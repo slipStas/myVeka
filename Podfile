@@ -9,5 +9,8 @@ target 'VeKa' do
 	pod 'RealmSwift'
 	pod 'Kingfisher'
         pod 'SwiftKeychainWrapper'
+        pod 'Firebase'
+        pod 'Firebase/Auth'
+
 
 end

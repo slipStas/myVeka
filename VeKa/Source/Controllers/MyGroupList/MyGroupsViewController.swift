@@ -11,6 +11,7 @@ import UIKit
 class MyGroupsViewController: UIViewController {
     
     var myGroupsArray: [Group] = []
+    let avatarSetings = AvatarSettings()
 
     @IBOutlet weak var myGroupsTableView: UITableView!
     
@@ -18,7 +19,7 @@ class MyGroupsViewController: UIViewController {
         super.viewDidLoad()
         
         
-        myGroupsTableView.rowHeight = 66
+        myGroupsTableView.rowHeight = CGFloat(self.avatarSetings.tableViewHeight)
         
         myGroupsTableView.dataSource = self
         myGroupsTableView.delegate = self

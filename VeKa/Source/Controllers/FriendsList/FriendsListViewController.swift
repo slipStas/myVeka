@@ -15,6 +15,7 @@ class FriendsListViewController: UIViewController {
     
     var sections: [String] = []
     var friendsInSections: [String: [User]] = [:]
+    let avatarSetings = AvatarSettings()
     
     private var selectedFriend: User?
     
@@ -23,7 +24,7 @@ class FriendsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        friendsListTableView.rowHeight = 66
+        friendsListTableView.rowHeight = CGFloat(self.avatarSetings.tableViewHeight)
         
         friendsListTableView.dataSource = self
         friendsListTableView.delegate = self

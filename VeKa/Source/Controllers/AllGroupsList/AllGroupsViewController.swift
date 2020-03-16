@@ -12,6 +12,7 @@ class AllGroupsViewController: UIViewController {
     
     var allGroupsArray: [Group] = []
     var filteredGroups: [Group] = []
+    let avatarSetings = AvatarSettings()
 
     @IBOutlet weak var allGroupsTableView: UITableView!
     
@@ -20,7 +21,7 @@ class AllGroupsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        allGroupsTableView.rowHeight = 66
+        allGroupsTableView.rowHeight = CGFloat(self.avatarSetings.tableViewHeight)
         allGroupsTableView.dataSource = self
         
         setUpSearchBar()
