@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import FirebaseAuth
 
 class LoginFormController: UIViewController {
     
@@ -29,7 +30,6 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var loadingView: LoadingView!
-    
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -58,6 +58,11 @@ class LoginFormController: UIViewController {
             self.present(newViewController, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func checkUserDataFireBase(_ sender: Any) {
+        checkUsersData()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,32 +121,27 @@ class LoginFormController: UIViewController {
             self.scrollView?.endEditing(true)
         }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "fromLoginController" {
-            return checkUsersData()
-        }
-        return false
-    }
-    
-    func checkUsersData() -> Bool {
+    func checkUsersData() {
         // Получаем текст логина
         let login = loginTextField.text!
         // Получаем текст-пароль
         let password = passwordTextField.text!
         
-        // Проверяем, верны ли они
-        if login == Session.shared.login && password == Session.shared.password {
-            print("успешная авторизация")
-            return true
-        } else {
-            print("неуспешная авторизация")
-            showIdentificationError()
-            return false
+        Auth.auth().signIn(withEmail: login, password: password) { (result, error) in
+            if let error = error {
+                self.showIdentificationError(title: "Ooops", message: error.localizedDescription, style: .actionSheet)
+            } else {
+                print("\(result?.user.email ?? "no email") was enter")
+                print("успешная авторизация")
+                let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "fireBase") as! FireBaseTabBarViewController
+                self.present(newViewController, animated: true, completion: nil)
+            }
         }
     }
     
-    func showIdentificationError() {
-        let alert = UIAlertController(title: "Error", message: "Invalid login or password", preferredStyle: .alert)
+    func showIdentificationError(title: String, message: String, style : UIAlertController.Style) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         let action = UIAlertAction(title: "Ok", style: .default)
         alert.addAction(action)
         present(alert, animated: true)
