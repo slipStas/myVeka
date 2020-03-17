@@ -40,7 +40,7 @@ class LoginFormController: UIViewController {
     
     @IBOutlet weak var registrationFireBaseButton: UIButton!
     
-    @IBAction func registrationInFareBase(_ sender: Any) {
+    @IBAction func registrationInFireBase(_ sender: Any) {
         setupBlurBackground()
         setupAlert()
         animateAlertIn()
@@ -186,8 +186,20 @@ class LoginFormController: UIViewController {
 
 extension LoginFormController : AlertDelegate {
     func okButtonTapped() {
+        if let password = alertView.passwordAuthTextField.text, !password.isEmpty {
+            if password == alertView.repeatPasswordAuthTextfield.text ?? "" {
+                Auth.auth().createUser(withEmail: alertView.emailTextField.text!, password: password) { (result, error) in
+                    if let error = error {
+                        self.showIdentificationError(title: "Error", message: error.localizedDescription, style: .actionSheet)
+                    } else {
+                        self.animateAlertOut()
+                    }
+                }
+            } else {
+                showIdentificationError(title: "Error", message: "passwords is not equal", style: .actionSheet)
+            }
+        }
         print("ok")
-        animateAlertOut()
     }
     
     func cancelButtonTapped() {

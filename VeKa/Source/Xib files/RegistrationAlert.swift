@@ -19,8 +19,8 @@ class RegistrationAlert: UIView {
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var repeatPasswordTextfield: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var repeatPasswordAuthTextfield: UITextField!
+    @IBOutlet weak var passwordAuthTextField: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
     
@@ -38,13 +38,13 @@ class RegistrationAlert: UIView {
         self.emailTextField.textContentType = .emailAddress
         self.emailTextField.placeholder = "enter your email"
         
-        self.passwordTextField.textContentType = .password
-        self.passwordTextField.placeholder = "enter password"
-        self.passwordTextField.isSecureTextEntry = true
+        self.passwordAuthTextField.textContentType = .password
+        self.passwordAuthTextField.placeholder = "enter password"
+        self.passwordAuthTextField.isSecureTextEntry = true
         
-        self.repeatPasswordTextfield.textContentType = .password
-        self.repeatPasswordTextfield.placeholder = "repeat password"
-        self.repeatPasswordTextfield.isSecureTextEntry = true
+        self.repeatPasswordAuthTextfield.textContentType = .password
+        self.repeatPasswordAuthTextfield.placeholder = "repeat password"
+        self.repeatPasswordAuthTextfield.isSecureTextEntry = true
         
         self.okButton.setTitle("Ok", for: .normal)
         

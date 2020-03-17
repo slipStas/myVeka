@@ -109,7 +109,7 @@
                                         <color key="tintColor" red="0.95712417360000002" green="0.9675115943" blue="0.47831219429999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="registrationInFareBase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7MS-tw-AvP"/>
+                                            <action selector="registrationInFireBase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7MS-tw-AvP"/>
                                         </connections>
                                     </button>
                                 </subviews>

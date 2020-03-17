@@ -24,18 +24,18 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vqX-bU-zBq">
-                            <rect key="frame" x="8" y="99" width="224" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="34" id="DVi-X2-Vxd"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZKf-lz-AwX">
                             <rect key="frame" x="8" y="57" width="224" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="7W2-GV-610"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vqX-bU-zBq">
+                            <rect key="frame" x="8" y="99" width="224" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="DVi-X2-Vxd"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -97,8 +97,8 @@
                 <outlet property="cancelButton" destination="To4-tb-Ljv" id="CCe-Fp-2bN"/>
                 <outlet property="emailTextField" destination="92N-Mi-Hbc" id="Va7-dX-oYq"/>
                 <outlet property="okButton" destination="6cY-vh-aM5" id="Aj6-yy-cnJ"/>
-                <outlet property="passwordTextField" destination="ZKf-lz-AwX" id="EzW-uM-Vys"/>
-                <outlet property="repeatPasswordTextfield" destination="vqX-bU-zBq" id="MiV-d5-6lt"/>
+                <outlet property="passwordAuthTextField" destination="ZKf-lz-AwX" id="EzW-uM-Vys"/>
+                <outlet property="repeatPasswordAuthTextfield" destination="vqX-bU-zBq" id="MiV-d5-6lt"/>
             </connections>
             <point key="canvasLocation" x="15.217391304347828" y="-97.433035714285708"/>
         </view>
