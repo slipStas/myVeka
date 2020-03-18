@@ -61,7 +61,7 @@ extension MyGroupsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myGroupsTableView.dequeueReusableCell(withIdentifier: "myGroupsIdentifire", for: indexPath) as! MyGroupsTableViewCell
         
-        cell.myGroupsImageView.image = myGroupsArray[indexPath.row].icon
+        cell.myGroupsImageView.image = UIImage(named: myGroupsArray[indexPath.row].icon) 
         cell.myGroupsNameLabel.text = myGroupsArray[indexPath.row].name
         
         return cell
@@ -76,7 +76,7 @@ extension MyGroupsViewController: UITableViewDataSource {
             
             if !myGroupsArray.contains(where: {$0.name == group.name}) {
                 myGroupsArray.append(allGroupController.filteredGroups[indexPath.row])
-                ref.child("\(myGroupsArray.count)").setValue(["name" : group.name, "image" : group.icon.description])
+                ref.child("\(myGroupsArray.count)").setValue(["name" : group.name, "image" : group.icon])
                 myGroupsTableView.reloadData()
             }
         }

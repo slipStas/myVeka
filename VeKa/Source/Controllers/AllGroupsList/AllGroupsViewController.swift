@@ -34,16 +34,16 @@ class AllGroupsViewController: UIViewController {
     }
     
     private func setUpGroups() {
-        allGroupsArray.append(Group(name: "AppStores", icon: UIImage(named: "icon_1")!))
-        allGroupsArray.append(Group(name: "Safaries", icon: UIImage(named: "icon_2")!))
-        allGroupsArray.append(Group(name: "Mails", icon: UIImage(named: "icon_3")!))
-        allGroupsArray.append(Group(name: "ApleTVs", icon: UIImage(named: "icon_4")!))
-        allGroupsArray.append(Group(name: "Homes", icon: UIImage(named: "icon_5")!))
-        allGroupsArray.append(Group(name: "Siries", icon: UIImage(named: "icon_6")!))
-        allGroupsArray.append(Group(name: "Locators", icon: UIImage(named: "icon_7")!))
-        allGroupsArray.append(Group(name: "Photo Boothes", icon: UIImage(named: "icon_8")!))
-        allGroupsArray.append(Group(name: "Shares", icon: UIImage(named: "icon_9")!))
-        allGroupsArray.append(Group(name: "Maps", icon: UIImage(named: "icon_10")!))
+        allGroupsArray.append(Group(name: "AppStores", icon: "icon_1"))
+        allGroupsArray.append(Group(name: "Safaries", icon: "icon_2"))
+        allGroupsArray.append(Group(name: "Mails", icon: "icon_3"))
+        allGroupsArray.append(Group(name: "ApleTVs", icon: "icon_4"))
+        allGroupsArray.append(Group(name: "Homes", icon: "icon_5"))
+        allGroupsArray.append(Group(name: "Siries", icon: "icon_6"))
+        allGroupsArray.append(Group(name: "Locators", icon: "icon_7"))
+        allGroupsArray.append(Group(name: "Photo Boothes", icon: "icon_8"))
+        allGroupsArray.append(Group(name: "Shares", icon: "icon_9"))
+        allGroupsArray.append(Group(name: "Maps", icon: "icon_10"))
         
         filteredGroups = allGroupsArray
     }
@@ -78,7 +78,7 @@ extension AllGroupsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = allGroupsTableView.dequeueReusableCell(withIdentifier: "allGroupsIdentifier", for: indexPath) as! AllGroupsTableViewCell
         
-        cell.allGroupImageView.image = filteredGroups[indexPath.row].icon
+        cell.allGroupImageView.image = UIImage(named: filteredGroups[indexPath.row].icon)
         cell.allGroupLabel.text = filteredGroups[indexPath.row].name
         
         return cell
