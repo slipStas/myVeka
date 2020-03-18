@@ -76,7 +76,7 @@ extension MyGroupsViewController: UITableViewDataSource {
             
             if !myGroupsArray.contains(where: {$0.name == group.name}) {
                 myGroupsArray.append(allGroupController.filteredGroups[indexPath.row])
-                ref.child("\(myGroupsArray.count - 1)").setValue(["name" : group.name, "image" : group.icon])
+                ref.child("\(myGroupsArray.count)").setValue(["name" : group.name, "image" : group.icon.description])
                 myGroupsTableView.reloadData()
             }
         }
