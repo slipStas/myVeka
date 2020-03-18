@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class MyGroupsViewController: UIViewController {
     
     var myGroupsArray: [Group] = []
     let avatarSetings = AvatarSettings()
+    var ref : DatabaseReference!
 
     @IBOutlet weak var myGroupsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ref = Database.database().reference(withPath: "groups")
         
         myGroupsTableView.rowHeight = CGFloat(self.avatarSetings.tableViewHeight)
         
@@ -72,8 +75,9 @@ extension MyGroupsViewController: UITableViewDataSource {
             let group = allGroupController.allGroupsArray[indexPath.row]
             
             if !myGroupsArray.contains(where: {$0.name == group.name}) {
-                 myGroupsArray.append(allGroupController.filteredGroups[indexPath.row])
-                 myGroupsTableView.reloadData()
+                myGroupsArray.append(allGroupController.filteredGroups[indexPath.row])
+                ref.child("\(myGroupsArray.count - 1)").setValue(["name" : group.name, "image" : group.icon])
+                myGroupsTableView.reloadData()
             }
         }
     }
