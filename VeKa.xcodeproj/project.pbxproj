@@ -41,10 +41,10 @@
 		8E759290234C37D6000E89F1 /* CustomPushTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75928F234C37D6000E89F1 /* CustomPushTransitionAnimator.swift */; };
 		8E759292234C3E8E000E89F1 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E759291234C3E8E000E89F1 /* CustomNavigationController.swift */; };
 		8E9534BD23FD933B00444375 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9534BC23FD933B00444375 /* Session.swift */; };
-		8EA2E5C9241D8BD6006B64E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2E5C8241D8BD5006B64E8 /* GoogleService-Info.plist */; };
 		8EA2E5CB241F6FB1006B64E8 /* RegistrationAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2E5CA241F6FB1006B64E8 /* RegistrationAlert.xib */; };
 		8EA2E5CD241F7554006B64E8 /* RegistrationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA2E5CC241F7554006B64E8 /* RegistrationAlert.swift */; };
 		8EA2E5CF2420721A006B64E8 /* FireBaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA2E5CE2420721A006B64E8 /* FireBaseTabBarViewController.swift */; };
+		8EA2E5D12422FC73006B64E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2E5D02422FC73006B64E8 /* GoogleService-Info.plist */; };
 		8EB24E2F232C0A6E00CF3F9C /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB24E2E232C0A6E00CF3F9C /* FriendsListViewController.swift */; };
 		8EB24E31232C0C3600CF3F9C /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB24E30232C0C3600CF3F9C /* FriendsListTableViewCell.swift */; };
 		8EB637BB234CC75B00C5AF57 /* CustomPopTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB637BA234CC75B00C5AF57 /* CustomPopTransitionAnimator.swift */; };
@@ -104,10 +104,10 @@
 		8E75928F234C37D6000E89F1 /* CustomPushTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushTransitionAnimator.swift; sourceTree = "<group>"; };
 		8E759291234C3E8E000E89F1 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		8E9534BC23FD933B00444375 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		8EA2E5C8241D8BD5006B64E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8EA2E5CA241F6FB1006B64E8 /* RegistrationAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationAlert.xib; sourceTree = "<group>"; };
 		8EA2E5CC241F7554006B64E8 /* RegistrationAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAlert.swift; sourceTree = "<group>"; };
 		8EA2E5CE2420721A006B64E8 /* FireBaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseTabBarViewController.swift; sourceTree = "<group>"; };
+		8EA2E5D02422FC73006B64E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8EB24E2E232C0A6E00CF3F9C /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		8EB24E30232C0C3600CF3F9C /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
 		8EB637BA234CC75B00C5AF57 /* CustomPopTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -400,7 +400,7 @@
 				8E0971BC233586AF00BF2473 /* Resourses */,
 				8E0971BE2335874300BF2473 /* Source */,
 				8EF119392329767A000B30E3 /* Info.plist */,
-				8EA2E5C8241D8BD5006B64E8 /* GoogleService-Info.plist */,
+				8EA2E5D02422FC73006B64E8 /* GoogleService-Info.plist */,
 			);
 			path = VeKa;
 			sourceTree = "<group>";
@@ -499,10 +499,10 @@
 			files = (
 				8EE7A34E233D9AD5008CDE46 /* Header.xib in Resources */,
 				8EF119382329767A000B30E3 /* LaunchScreen.storyboard in Resources */,
-				8EA2E5C9241D8BD6006B64E8 /* GoogleService-Info.plist in Resources */,
 				8EF119352329767A000B30E3 /* Assets.xcassets in Resources */,
 				8EF1193323297677000B30E3 /* Main.storyboard in Resources */,
 				8EA2E5CB241F6FB1006B64E8 /* RegistrationAlert.xib in Resources */,
+				8EA2E5D12422FC73006B64E8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
