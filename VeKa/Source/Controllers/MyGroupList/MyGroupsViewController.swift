@@ -21,7 +21,19 @@ class MyGroupsViewController: UIViewController {
         super.viewDidLoad()
         
         ref = Database.database().reference(withPath: "groups")
-        
+        let _ = ref.observe(.value) { (data) in
+            for i in data.children {
+                if let value = i as? DataSnapshot {
+                    let json = value.value as! [String:Any]
+                    let group = Group(name: json["name"] as! String, icon: json["image"] as! String)
+                    if !self.myGroupsArray.contains(group) {
+                        self.myGroupsArray.append(group)
+                        print("the are append group \(group.name)")
+                        self.myGroupsTableView.reloadData()
+                    }
+                }
+            }
+        }
         myGroupsTableView.rowHeight = CGFloat(self.avatarSetings.tableViewHeight)
         
         myGroupsTableView.dataSource = self
@@ -87,6 +99,7 @@ extension MyGroupsViewController: UITableViewDataSource {
         if editingStyle == .delete {
             myGroupsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         }
     }
     
