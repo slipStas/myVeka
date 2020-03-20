@@ -21,7 +21,7 @@ class MyGroupsViewController: UIViewController {
         super.viewDidLoad()
         
         ref = Database.database().reference(withPath: "groups")
-        let _ = ref.observe(.value) { (data) in
+        ref.observe(.value) { (data) in
             for i in data.children {
                 if let value = i as? DataSnapshot {
                     let json = value.value as! [String:Any]
@@ -34,6 +34,7 @@ class MyGroupsViewController: UIViewController {
                 }
             }
         }
+        
         myGroupsTableView.rowHeight = CGFloat(self.avatarSetings.tableViewHeight)
         
         myGroupsTableView.dataSource = self
@@ -88,7 +89,7 @@ extension MyGroupsViewController: UITableViewDataSource {
             
             if !myGroupsArray.contains(where: {$0.name == group.name}) {
                 myGroupsArray.append(allGroupController.filteredGroups[indexPath.row])
-                ref.child("\(myGroupsArray.count)").setValue(["name" : group.name, "image" : group.icon])
+                ref.child("\(self.myGroupsArray.count - 1)").setValue(["name" : group.name, "image" : group.icon])
                 myGroupsTableView.reloadData()
             }
         }
@@ -99,7 +100,14 @@ extension MyGroupsViewController: UITableViewDataSource {
         if editingStyle == .delete {
             myGroupsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            ref.child("\(indexPath.row)").setValue(["name" : nil, "image" : nil])
+            ref.child("groups").removeValue()
+            for (i, j) in self.myGroupsArray.enumerated() {
+                ref.child("\(i)").setValue(["name" : j.name, "image" : j.icon])
+                ref.child("\(i + 1)").setValue(["name" : nil, "image" : nil])
+            }
             
+            print(indexPath.row)
         }
     }
     
