@@ -1229,7 +1229,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarOwnerNews" destination="0CT-l6-T2o" id="TYG-Q4-f2M"/>
-                                            <outlet property="nameOwnerNewsImage" destination="Iq2-yM-oUB" id="MdI-X5-lnN"/>
+                                            <outlet property="nameOwnerNewsLabel" destination="Iq2-yM-oUB" id="MdI-X5-lnN"/>
                                             <outlet property="textOfNews" destination="idF-ca-6W0" id="51V-xF-6T6"/>
                                         </connections>
                                     </tableViewCell>

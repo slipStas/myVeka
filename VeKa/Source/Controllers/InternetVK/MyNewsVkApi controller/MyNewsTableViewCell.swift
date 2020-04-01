@@ -12,6 +12,19 @@ class MyNewsTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var avatarOwnerNews: UIImageView!
-    @IBOutlet weak var nameOwnerNewsImage: UILabel!
+    @IBOutlet weak var nameOwnerNewsLabel: UILabel!
     @IBOutlet weak var textOfNews: UITextView!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        avatarOwnerNews.image = nil
+        nameOwnerNewsLabel.text = nil
+        textOfNews.text = nil
+
+        isHidden = false
+        isSelected = false
+        isHighlighted = false
+    }
+    
 }
