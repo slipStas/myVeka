@@ -34,6 +34,7 @@
 		8E3EA7A7232D808D00F118DB /* AllGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3EA7A6232D808D00F118DB /* AllGroupsTableViewCell.swift */; };
 		8E3EA7A9232D80A900F118DB /* AllGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3EA7A8232D80A900F118DB /* AllGroupsViewController.swift */; };
 		8E4DABB7233C8EF00091BE70 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DABB6233C8EF00091BE70 /* HelperExtensions.swift */; };
+		8E587CBD24376A9E005A950D /* GetNewsVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E587CBC24376A9E005A950D /* GetNewsVkApi.swift */; };
 		8E5C694A23480774002C745A /* FriendsPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5C694923480774002C745A /* FriendsPhotosViewController.swift */; };
 		8E5C694C23480792002C745A /* FriendsPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5C694B23480792002C745A /* FriendsPhotosCollectionViewCell.swift */; };
 		8E5C694E234AF05E002C745A /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5C694D234AF05E002C745A /* DownloadView.swift */; };
@@ -99,6 +100,7 @@
 		8E3EA7A6232D808D00F118DB /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		8E3EA7A8232D80A900F118DB /* AllGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsViewController.swift; sourceTree = "<group>"; };
 		8E4DABB6233C8EF00091BE70 /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
+		8E587CBC24376A9E005A950D /* GetNewsVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewsVkApi.swift; sourceTree = "<group>"; };
 		8E5C694923480774002C745A /* FriendsPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosViewController.swift; sourceTree = "<group>"; };
 		8E5C694B23480792002C745A /* FriendsPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E5C694D234AF05E002C745A /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		8E155DFE2406FC4900995089 /* VkApi models */ = {
 			isa = PBXGroup;
 			children = (
+				8E587CBB24376A34005A950D /* MyNews VKApi */,
 				8E347C7C2408417B00E9A90B /* MyPhotos VKApi */,
 				8E155E0D240827C400995089 /* Groups VKApi */,
 				8E155E0C240827A800995089 /* Friends VKApi */,
@@ -316,6 +319,14 @@
 				8E3EA7A6232D808D00F118DB /* AllGroupsTableViewCell.swift */,
 			);
 			path = AllGroupsList;
+			sourceTree = "<group>";
+		};
+		8E587CBB24376A34005A950D /* MyNews VKApi */ = {
+			isa = PBXGroup;
+			children = (
+				8E587CBC24376A9E005A950D /* GetNewsVkApi.swift */,
+			);
+			path = "MyNews VKApi";
 			sourceTree = "<group>";
 		};
 		8E5C274B234C24B100898AAC /* Animations */ = {
@@ -587,6 +598,7 @@
 				8E0971C12335884500BF2473 /* AvatarView.swift in Sources */,
 				8E347C85240843D500E9A90B /* MyPhotosVkApiCollectionViewCell.swift in Sources */,
 				8EC60CD92402C914002364A5 /* AuthoriseViewController.swift in Sources */,
+				8E587CBD24376A9E005A950D /* GetNewsVkApi.swift in Sources */,
 				8E8E6931243366E500F11AA7 /* MyNewsTableViewCell.swift in Sources */,
 				8E0971C52336B49300BF2473 /* AvatarSettings.swift in Sources */,
 				8EB637BB234CC75B00C5AF57 /* CustomPopTransitionAnimator.swift in Sources */,
