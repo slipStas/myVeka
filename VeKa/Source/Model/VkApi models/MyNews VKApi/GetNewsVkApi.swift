@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 
 class GetNewsVkApi {
     
-    var getGroupsVkApi : GroupsVkAPI?
+    var getNewsVkApi : NewsVkAPI?
     
     let userId = KeychainWrapper.standard.string(forKey: Session.Keys.hardUserId.rawValue) ?? ""
     let token = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
@@ -39,16 +39,16 @@ class GetNewsVkApi {
                 completionHandler(false)
                 return }
            
-            let groups = try! JSONDecoder().decode(GroupsVkAPI.self, from: data)
-            self.getGroupsVkApi = groups
-            let items = groups.response.items
+            let news = try! JSONDecoder().decode(NewsVkAPI.self, from: data)
+            self.getNewsVkApi = news
+            let items = news.response.items
             for i in 0..<items.count {
                 
                 let groups = GroupRealm()
                 
-                groups.name = items[i].name
-                groups.id = items[i].id
-                groups.photo = items[i].photo50
+//                groups.name = items[i].name
+//                groups.id = items[i].id
+//                groups.photo = items[i].photo50
                 
                 do {
                     try Session.shared.realm.write {

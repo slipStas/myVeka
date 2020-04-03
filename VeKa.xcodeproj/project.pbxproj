@@ -35,6 +35,7 @@
 		8E3EA7A9232D80A900F118DB /* AllGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3EA7A8232D80A900F118DB /* AllGroupsViewController.swift */; };
 		8E4DABB7233C8EF00091BE70 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DABB6233C8EF00091BE70 /* HelperExtensions.swift */; };
 		8E587CBD24376A9E005A950D /* GetNewsVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E587CBC24376A9E005A950D /* GetNewsVkApi.swift */; };
+		8E587CBF24377873005A950D /* NewsVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E587CBE24377873005A950D /* NewsVkApi.swift */; };
 		8E5C694A23480774002C745A /* FriendsPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5C694923480774002C745A /* FriendsPhotosViewController.swift */; };
 		8E5C694C23480792002C745A /* FriendsPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5C694B23480792002C745A /* FriendsPhotosCollectionViewCell.swift */; };
 		8E5C694E234AF05E002C745A /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5C694D234AF05E002C745A /* DownloadView.swift */; };
@@ -101,6 +102,7 @@
 		8E3EA7A8232D80A900F118DB /* AllGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsViewController.swift; sourceTree = "<group>"; };
 		8E4DABB6233C8EF00091BE70 /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		8E587CBC24376A9E005A950D /* GetNewsVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewsVkApi.swift; sourceTree = "<group>"; };
+		8E587CBE24377873005A950D /* NewsVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVkApi.swift; sourceTree = "<group>"; };
 		8E5C694923480774002C745A /* FriendsPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosViewController.swift; sourceTree = "<group>"; };
 		8E5C694B23480792002C745A /* FriendsPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E5C694D234AF05E002C745A /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 		8E587CBB24376A34005A950D /* MyNews VKApi */ = {
 			isa = PBXGroup;
 			children = (
+				8E587CBE24377873005A950D /* NewsVkApi.swift */,
 				8E587CBC24376A9E005A950D /* GetNewsVkApi.swift */,
 			);
 			path = "MyNews VKApi";
@@ -610,6 +613,7 @@
 				8E5C694E234AF05E002C745A /* DownloadView.swift in Sources */,
 				8ED7DB43233EE7DB00DCD205 /* Likes.swift in Sources */,
 				8E0971C32336B27900BF2473 /* ShadowView.swift in Sources */,
+				8E587CBF24377873005A950D /* NewsVkApi.swift in Sources */,
 				8E4DABB7233C8EF00091BE70 /* HelperExtensions.swift in Sources */,
 				8E155E002406FC8200995089 /* UserVkAPI.swift in Sources */,
 				8E3EA79D232D668000F118DB /* FriendInfoViewController.swift in Sources */,
