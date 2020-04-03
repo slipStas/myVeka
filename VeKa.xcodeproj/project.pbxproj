@@ -39,6 +39,7 @@
 		8E5C694A23480774002C745A /* FriendsPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5C694923480774002C745A /* FriendsPhotosViewController.swift */; };
 		8E5C694C23480792002C745A /* FriendsPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5C694B23480792002C745A /* FriendsPhotosCollectionViewCell.swift */; };
 		8E5C694E234AF05E002C745A /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5C694D234AF05E002C745A /* DownloadView.swift */; };
+		8E6D342524379FD900D675FF /* RealmNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D342424379FD900D675FF /* RealmNews.swift */; };
 		8E75928A234C26D4000E89F1 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E759289234C26D4000E89F1 /* CustomSegue.swift */; };
 		8E759290234C37D6000E89F1 /* CustomPushTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75928F234C37D6000E89F1 /* CustomPushTransitionAnimator.swift */; };
 		8E759292234C3E8E000E89F1 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E759291234C3E8E000E89F1 /* CustomNavigationController.swift */; };
@@ -106,6 +107,7 @@
 		8E5C694923480774002C745A /* FriendsPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosViewController.swift; sourceTree = "<group>"; };
 		8E5C694B23480792002C745A /* FriendsPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E5C694D234AF05E002C745A /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		8E6D342424379FD900D675FF /* RealmNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNews.swift; sourceTree = "<group>"; };
 		8E759289234C26D4000E89F1 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		8E75928F234C37D6000E89F1 /* CustomPushTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushTransitionAnimator.swift; sourceTree = "<group>"; };
 		8E759291234C3E8E000E89F1 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			children = (
 				8E587CBE24377873005A950D /* NewsVkApi.swift */,
 				8E587CBC24376A9E005A950D /* GetNewsVkApi.swift */,
+				8E6D342424379FD900D675FF /* RealmNews.swift */,
 			);
 			path = "MyNews VKApi";
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				8E155E0B2408197E00995089 /* GetFriendsVkApi.swift in Sources */,
 				8E155E112408287500995089 /* GetGroupVkApi.swift in Sources */,
 				8E347C7B240836CE00E9A90B /* GroupsVkApi.swift in Sources */,
+				8E6D342524379FD900D675FF /* RealmNews.swift in Sources */,
 				8EA2E5CD241F7554006B64E8 /* RegistrationAlert.swift in Sources */,
 				8E3EA7A7232D808D00F118DB /* AllGroupsTableViewCell.swift in Sources */,
 				8E5C694C23480792002C745A /* FriendsPhotosCollectionViewCell.swift in Sources */,
