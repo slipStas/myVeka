@@ -64,15 +64,13 @@ class MyNewsViewController: UIViewController {
                 }
             }
         }
-        
         myNewsTableView.dataSource = self
     }
-    
 }
 
 extension MyNewsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 10//news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
