@@ -7,15 +7,64 @@
 //
 
 import UIKit
+import RealmSwift
+import Kingfisher
 
 class MyNewsViewController: UIViewController {
 
     @IBOutlet weak var myNewsTableView: UITableView!
     
+    let news = Session.shared.realm.objects(NewsRealm.self)
+    let getNews = GetNewsVkApi()
+    let avatarSetings = AvatarSettings()
+    var token : NotificationToken?
+    
+    func pairTableAndRealm() {
+        
+    token = self.news.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.myNewsTableView else { return }
+            switch changes {
+            case .initial(let changedData):
+                if self?.news.count != changedData.count {
+                    tableView.reloadData()
+                }
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.beginUpdates()
+                if insertions.count > 0 {
+                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .right)
+                }
+                if deletions.count > 0 {
+                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                         with: .left)
+                }
+                if modifications.count > 0 {
+                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .right)
+                }
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         myNewsTableView.rowHeight = 200
+        
+        if self.news.count == 0 {
+            
+            getNews.getNews { (state) in
+                if state {
+                    print("friends was added")
+                } else {
+                    print("Error with data from Realm")
+                }
+            }
+        }
+        
         myNewsTableView.dataSource = self
     }
     

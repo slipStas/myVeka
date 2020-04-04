@@ -18,7 +18,7 @@ class GetNewsVkApi {
     let token = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
     let url = "https://api.vk.com.method/"
     
-    func getNewss(completionHandler: @escaping(Bool) -> ()) {
+    func getNews(completionHandler: @escaping(Bool) -> ()) {
         
         
         let accessParameters: Parameters = ["access_token" : token, "user_id" : userId]
@@ -52,9 +52,6 @@ class GetNewsVkApi {
                 news.name = profiles[i].firstName + " " + profiles[i].lastName
                 news.text = items[i].text
                 news.id = i
-//                groups.name = items[i].name
-//                groups.id = items[i].id
-//                groups.photo = items[i].photo50
                 
                 do {
                     try Session.shared.realm.write {
