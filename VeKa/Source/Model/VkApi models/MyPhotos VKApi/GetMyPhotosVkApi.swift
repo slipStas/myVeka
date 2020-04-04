@@ -35,8 +35,8 @@ class GetMyPhotosVkApi {
         
         guard let urlPhoto = urlPhotos.url else {return}
 
-        AF.request(urlPhoto, parameters: accessParameters).responseData { data in
-            guard let data = data.value else {
+        AF.request(urlPhoto, parameters: accessParameters).responseData { response in
+            guard let data = response.data else {
                 completionHandler(false)
                 return}
            

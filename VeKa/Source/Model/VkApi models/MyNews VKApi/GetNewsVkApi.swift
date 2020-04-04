@@ -34,8 +34,8 @@ class GetNewsVkApi {
         
         guard let url = urlNews.url else {return}
         
-        AF.request(url, parameters: accessParameters).responseData { data in
-            guard let data = data.value else {
+        AF.request(url, parameters: accessParameters).responseData { response in
+            guard let data = response.data else {
                 completionHandler(false)
                 return }
            
@@ -49,10 +49,7 @@ class GetNewsVkApi {
             for i in 0..<items.count {
                 
                 let newsRealm = NewsRealm()
-                
-//                news.avatar = profiles[i].photo100
-//                news.name = profiles[i].firstName + " " + profiles[i].lastName
-                
+                print("profiles count - \(profiles.count)")
                 print("items count - \(items.count)")
                 print("i - \(i)")
                 newsRealm.text = items[i].text

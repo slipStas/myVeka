@@ -65,6 +65,7 @@ class MyNewsViewController: UIViewController {
             }
         }
         myNewsTableView.dataSource = self
+        pairTableAndRealm()
     }
 }
 
