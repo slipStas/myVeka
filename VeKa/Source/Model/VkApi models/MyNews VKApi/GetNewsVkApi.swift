@@ -44,24 +44,43 @@ class GetNewsVkApi {
             let items = news.response.items
             let profiles = news.response.profiles
             
+            
+            
             for i in 0..<items.count {
                 
-                let news = NewsRealm()
+                let newsRealm = NewsRealm()
                 
-                news.avatar = profiles[i].photo100
-                news.name = profiles[i].firstName + " " + profiles[i].lastName
-                news.text = items[i].text
-                news.id = i
+//                news.avatar = profiles[i].photo100
+//                news.name = profiles[i].firstName + " " + profiles[i].lastName
+                
+                print("items count - \(items.count)")
+                print("i - \(i)")
+                newsRealm.text = items[i].text
+                newsRealm.id = i
                 
                 do {
                     try Session.shared.realm.write {
-                        Session.shared.realm.add(news, update: .all)
+                        Session.shared.realm.add(newsRealm, update: .all)
                     }
                 } catch {
                     completionHandler(false)
                     print("error")
                 }
             }
+//            for i in 0..<profiles.count {
+//                
+//                newsRealm.avatar = profiles[i].photo100
+//                newsRealm.name = profiles[i].firstName + " " + profiles[i].lastName
+//                
+//                do {
+//                    try Session.shared.realm.write {
+//                        Session.shared.realm.add(newsRealm, update: .all)
+//                    }
+//                } catch {
+//                    completionHandler(false)
+//                    print("error")
+//                }
+//            }
            completionHandler(true)
         }
     }
