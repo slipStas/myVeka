@@ -80,12 +80,10 @@ class NewsVkAPI: Codable {
     // MARK: - Item
     class Item: Codable {
         let canDoubtCategory, canSetCategory: Bool?
-        let topicID: Int?
         let type: PostTypeEnum
         let sourceID, date: Int
         let postType: PostTypeEnum
         let text: String
-        let signerID: Int?
         let markedAsAds: Int
         let attachments: [ItemAttachment]?
         let postSource: ItemPostSource
@@ -95,39 +93,38 @@ class NewsVkAPI: Codable {
         let views: Views
         let isFavorite: Bool
         let postID: Int
+        let topicID, signerID: Int?
         let copyHistory: [CopyHistory]?
         let categoryAction: CategoryAction?
 
         enum CodingKeys: String, CodingKey {
             case canDoubtCategory = "can_doubt_category"
             case canSetCategory = "can_set_category"
-            case topicID = "topic_id"
             case type
             case sourceID = "source_id"
             case date
             case postType = "post_type"
             case text
-            case signerID = "signer_id"
             case markedAsAds = "marked_as_ads"
             case attachments
             case postSource = "post_source"
             case comments, likes, reposts, views
             case isFavorite = "is_favorite"
             case postID = "post_id"
+            case topicID = "topic_id"
+            case signerID = "signer_id"
             case copyHistory = "copy_history"
             case categoryAction = "category_action"
         }
 
-        init(canDoubtCategory: Bool?, canSetCategory: Bool?, topicID: Int?, type: PostTypeEnum, sourceID: Int, date: Int, postType: PostTypeEnum, text: String, signerID: Int?, markedAsAds: Int, attachments: [ItemAttachment]?, postSource: ItemPostSource, comments: Comments, likes: Likes, reposts: Reposts, views: Views, isFavorite: Bool, postID: Int, copyHistory: [CopyHistory]?, categoryAction: CategoryAction?) {
+        init(canDoubtCategory: Bool?, canSetCategory: Bool?, type: PostTypeEnum, sourceID: Int, date: Int, postType: PostTypeEnum, text: String, markedAsAds: Int, attachments: [ItemAttachment]?, postSource: ItemPostSource, comments: Comments, likes: Likes, reposts: Reposts, views: Views, isFavorite: Bool, postID: Int, topicID: Int?, signerID: Int?, copyHistory: [CopyHistory]?, categoryAction: CategoryAction?) {
             self.canDoubtCategory = canDoubtCategory
             self.canSetCategory = canSetCategory
-            self.topicID = topicID
             self.type = type
             self.sourceID = sourceID
             self.date = date
             self.postType = postType
             self.text = text
-            self.signerID = signerID
             self.markedAsAds = markedAsAds
             self.attachments = attachments
             self.postSource = postSource
@@ -137,6 +134,8 @@ class NewsVkAPI: Codable {
             self.views = views
             self.isFavorite = isFavorite
             self.postID = postID
+            self.topicID = topicID
+            self.signerID = signerID
             self.copyHistory = copyHistory
             self.categoryAction = categoryAction
         }
@@ -145,15 +144,15 @@ class NewsVkAPI: Codable {
     // MARK: - ItemAttachment
     class ItemAttachment: Codable {
         let type: VideoType
+        let video: Video?
         let photo: PurplePhoto?
         let audio: Audio?
-        let video: Video?
 
-        init(type: VideoType, photo: PurplePhoto?, audio: Audio?, video: Video?) {
+        init(type: VideoType, video: Video?, photo: PurplePhoto?, audio: Audio?) {
             self.type = type
+            self.video = video
             self.photo = photo
             self.audio = audio
-            self.video = video
         }
     }
 
@@ -194,34 +193,35 @@ class NewsVkAPI: Codable {
     // MARK: - PurplePhoto
     class PurplePhoto: Codable {
         let id, albumID, ownerID: Int
+        let userID: Int?
         let sizes: [Size]
         let text: String
         let date: Int
+        let postID: Int?
         let accessKey: String
-        let userID, postID: Int?
         let lat, long: Double?
 
         enum CodingKeys: String, CodingKey {
             case id
             case albumID = "album_id"
             case ownerID = "owner_id"
-            case sizes, text, date
-            case accessKey = "access_key"
             case userID = "user_id"
+            case sizes, text, date
             case postID = "post_id"
+            case accessKey = "access_key"
             case lat, long
         }
 
-        init(id: Int, albumID: Int, ownerID: Int, sizes: [Size], text: String, date: Int, accessKey: String, userID: Int?, postID: Int?, lat: Double?, long: Double?) {
+        init(id: Int, albumID: Int, ownerID: Int, userID: Int?, sizes: [Size], text: String, date: Int, postID: Int?, accessKey: String, lat: Double?, long: Double?) {
             self.id = id
             self.albumID = albumID
             self.ownerID = ownerID
+            self.userID = userID
             self.sizes = sizes
             self.text = text
             self.date = date
-            self.accessKey = accessKey
-            self.userID = userID
             self.postID = postID
+            self.accessKey = accessKey
             self.lat = lat
             self.long = long
         }

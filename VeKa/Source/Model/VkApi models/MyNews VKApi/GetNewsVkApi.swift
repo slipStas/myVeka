@@ -40,7 +40,9 @@ class GetNewsVkApi {
                 return }
            
             let news = try! JSONDecoder().decode(NewsVkAPI.self, from: data)
+            
             self.getNewsVkApi = news
+            
             let items = news.response.items
             let profiles = news.response.profiles
             let groups = news.response.groups
