@@ -52,7 +52,7 @@ class MyNewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myNewsTableView.rowHeight = 200
+        //myNewsTableView.rowHeight = 200
         
         if self.news.count == 0 {
             
@@ -92,6 +92,14 @@ extension MyNewsViewController : UITableViewDataSource {
 
         cell.nameOwnerNewsLabel.text = news[indexPath.row].name
         cell.textOfNews.text = news[indexPath.row].text
+        
+        if cell.textOfNews.contentSize.height > 300 {
+            myNewsTableView.rowHeight = 300
+        } else {
+            myNewsTableView.rowHeight = cell.textOfNews.contentSize.height + cell.avatarOwnerNews.frame.height + 32
+        }
+        
+        
         
         return cell
     }

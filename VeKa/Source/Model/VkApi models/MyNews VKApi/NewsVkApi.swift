@@ -79,7 +79,6 @@ class NewsVkAPI: Codable {
 
     // MARK: - Item
     class Item: Codable {
-        let canDoubtCategory, canSetCategory: Bool?
         let type: PostTypeEnum
         let sourceID, date: Int
         let postType: PostTypeEnum
@@ -93,6 +92,7 @@ class NewsVkAPI: Codable {
         let views: Views
         let isFavorite: Bool
         let postID: Int
+        let canDoubtCategory, canSetCategory: Bool?
         let topicID, signerID: Int?
         let copyHistory: [CopyHistory]?
         let categoryAction: CategoryAction?
@@ -100,8 +100,6 @@ class NewsVkAPI: Codable {
         let geo: Geo?
 
         enum CodingKeys: String, CodingKey {
-            case canDoubtCategory = "can_doubt_category"
-            case canSetCategory = "can_set_category"
             case type
             case sourceID = "source_id"
             case date
@@ -113,6 +111,8 @@ class NewsVkAPI: Codable {
             case comments, likes, reposts, views
             case isFavorite = "is_favorite"
             case postID = "post_id"
+            case canDoubtCategory = "can_doubt_category"
+            case canSetCategory = "can_set_category"
             case topicID = "topic_id"
             case signerID = "signer_id"
             case copyHistory = "copy_history"
@@ -120,9 +120,7 @@ class NewsVkAPI: Codable {
             case copyright, geo
         }
 
-        init(canDoubtCategory: Bool?, canSetCategory: Bool?, type: PostTypeEnum, sourceID: Int, date: Int, postType: PostTypeEnum, text: String, markedAsAds: Int?, attachments: [ItemAttachment]?, postSource: ItemPostSource, comments: Comments, likes: Likes, reposts: Reposts, views: Views, isFavorite: Bool, postID: Int, topicID: Int?, signerID: Int?, copyHistory: [CopyHistory]?, categoryAction: CategoryAction?, copyright: Copyright?, geo: Geo?) {
-            self.canDoubtCategory = canDoubtCategory
-            self.canSetCategory = canSetCategory
+        init(type: PostTypeEnum, sourceID: Int, date: Int, postType: PostTypeEnum, text: String, markedAsAds: Int?, attachments: [ItemAttachment]?, postSource: ItemPostSource, comments: Comments, likes: Likes, reposts: Reposts, views: Views, isFavorite: Bool, postID: Int, canDoubtCategory: Bool?, canSetCategory: Bool?, topicID: Int?, signerID: Int?, copyHistory: [CopyHistory]?, categoryAction: CategoryAction?, copyright: Copyright?, geo: Geo?) {
             self.type = type
             self.sourceID = sourceID
             self.date = date
@@ -137,6 +135,8 @@ class NewsVkAPI: Codable {
             self.views = views
             self.isFavorite = isFavorite
             self.postID = postID
+            self.canDoubtCategory = canDoubtCategory
+            self.canSetCategory = canSetCategory
             self.topicID = topicID
             self.signerID = signerID
             self.copyHistory = copyHistory
@@ -149,15 +149,15 @@ class NewsVkAPI: Codable {
     // MARK: - ItemAttachment
     class ItemAttachment: Codable {
         let type: AttachmentType
-        let photo: AttachmentPhoto?
         let video: Video?
+        let photo: AttachmentPhoto?
         let audio: Audio?
         let link: Link?
 
-        init(type: AttachmentType, photo: AttachmentPhoto?, video: Video?, audio: Audio?, link: Link?) {
+        init(type: AttachmentType, video: Video?, photo: AttachmentPhoto?, audio: Audio?, link: Link?) {
             self.type = type
-            self.photo = photo
             self.video = video
+            self.photo = photo
             self.audio = audio
             self.link = link
         }
@@ -390,18 +390,19 @@ class NewsVkAPI: Codable {
     class Video: Codable {
         let accessKey: String
         let canComment, canLike, canRepost, canSubscribe: Int
-        let canAddToFaves, canAdd, comments, date: Int
+        let canAddToFaves, canAdd, date: Int
         let videoDescription: String
         let duration: Int
         let image: [Size]
+        let firstFrame: [Size]?
+        let width, height: Int?
         let id, ownerID: Int
         let title, trackCode: String
+        let videoRepeat: Int?
         let type: AttachmentType
         let views: Int
-        let localViews: Int?
+        let comments, localViews: Int?
         let platform: String?
-        let firstFrame: [Size]?
-        let width, height, videoRepeat: Int?
 
         enum CodingKeys: String, CodingKey {
             case accessKey = "access_key"
@@ -411,21 +412,21 @@ class NewsVkAPI: Codable {
             case canSubscribe = "can_subscribe"
             case canAddToFaves = "can_add_to_faves"
             case canAdd = "can_add"
-            case comments, date
+            case date
             case videoDescription = "description"
-            case duration, image, id
+            case duration, image
+            case firstFrame = "first_frame"
+            case width, height, id
             case ownerID = "owner_id"
             case title
             case trackCode = "track_code"
-            case type, views
+            case videoRepeat = "repeat"
+            case type, views, comments
             case localViews = "local_views"
             case platform
-            case firstFrame = "first_frame"
-            case width, height
-            case videoRepeat = "repeat"
         }
 
-        init(accessKey: String, canComment: Int, canLike: Int, canRepost: Int, canSubscribe: Int, canAddToFaves: Int, canAdd: Int, comments: Int, date: Int, videoDescription: String, duration: Int, image: [Size], id: Int, ownerID: Int, title: String, trackCode: String, type: AttachmentType, views: Int, localViews: Int?, platform: String?, firstFrame: [Size]?, width: Int?, height: Int?, videoRepeat: Int?) {
+        init(accessKey: String, canComment: Int, canLike: Int, canRepost: Int, canSubscribe: Int, canAddToFaves: Int, canAdd: Int, date: Int, videoDescription: String, duration: Int, image: [Size], firstFrame: [Size]?, width: Int?, height: Int?, id: Int, ownerID: Int, title: String, trackCode: String, videoRepeat: Int?, type: AttachmentType, views: Int, comments: Int?, localViews: Int?, platform: String?) {
             self.accessKey = accessKey
             self.canComment = canComment
             self.canLike = canLike
@@ -433,23 +434,23 @@ class NewsVkAPI: Codable {
             self.canSubscribe = canSubscribe
             self.canAddToFaves = canAddToFaves
             self.canAdd = canAdd
-            self.comments = comments
             self.date = date
             self.videoDescription = videoDescription
             self.duration = duration
             self.image = image
+            self.firstFrame = firstFrame
+            self.width = width
+            self.height = height
             self.id = id
             self.ownerID = ownerID
             self.title = title
             self.trackCode = trackCode
+            self.videoRepeat = videoRepeat
             self.type = type
             self.views = views
+            self.comments = comments
             self.localViews = localViews
             self.platform = platform
-            self.firstFrame = firstFrame
-            self.width = width
-            self.height = height
-            self.videoRepeat = videoRepeat
         }
     }
 
@@ -683,8 +684,8 @@ class NewsVkAPI: Codable {
         let photo50, photo100: String
         let online: Int
         let onlineInfo: OnlineInfo
-        let onlineApp, onlineMobile: Int?
         let deactivated: String?
+        let onlineApp, onlineMobile: Int?
 
         enum CodingKeys: String, CodingKey {
             case id
@@ -698,12 +699,12 @@ class NewsVkAPI: Codable {
             case photo100 = "photo_100"
             case online
             case onlineInfo = "online_info"
+            case deactivated
             case onlineApp = "online_app"
             case onlineMobile = "online_mobile"
-            case deactivated
         }
 
-        init(id: Int, firstName: String, lastName: String, isClosed: Bool?, canAccessClosed: Bool?, sex: Int, screenName: String?, photo50: String, photo100: String, online: Int, onlineInfo: OnlineInfo, onlineApp: Int?, onlineMobile: Int?, deactivated: String?) {
+        init(id: Int, firstName: String, lastName: String, isClosed: Bool?, canAccessClosed: Bool?, sex: Int, screenName: String?, photo50: String, photo100: String, online: Int, onlineInfo: OnlineInfo, deactivated: String?, onlineApp: Int?, onlineMobile: Int?) {
             self.id = id
             self.firstName = firstName
             self.lastName = lastName
@@ -715,9 +716,9 @@ class NewsVkAPI: Codable {
             self.photo100 = photo100
             self.online = online
             self.onlineInfo = onlineInfo
+            self.deactivated = deactivated
             self.onlineApp = onlineApp
             self.onlineMobile = onlineMobile
-            self.deactivated = deactivated
         }
     }
 
