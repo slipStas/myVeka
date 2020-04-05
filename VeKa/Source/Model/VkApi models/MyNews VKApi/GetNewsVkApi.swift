@@ -50,9 +50,7 @@ class GetNewsVkApi {
             for i in 0..<items.count {
                 
                 let newsRealm = NewsRealm()
-                print("profiles count - \(profiles.count)")
-                print("items count - \(items.count)")
-                print("i - \(i)")
+                
                 newsRealm.text = items[i].text
                 newsRealm.id = i
                 for profile in profiles {

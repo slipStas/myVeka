@@ -79,7 +79,7 @@ extension MyNewsViewController : UITableViewDataSource {
         
         var urlImage = URL(string: news[indexPath.row].avatar )
         if urlImage == nil {
-            urlImage = URL(string: "https://sun9-30.userapi.com/c840527/v840527644/2aa1c/cWRbJ1CDI08.jpg")
+            urlImage = URL(string: "https://vk.com/images/camera_400.png?ava=1")
         }
         let cacheKey = String(news[indexPath.row].id) + news[indexPath.row].avatar
         
