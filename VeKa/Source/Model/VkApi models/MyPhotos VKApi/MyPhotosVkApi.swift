@@ -29,32 +29,32 @@ class MyPhotosVkAPI: Codable {
 
     // MARK: - Item
     class Item: Codable {
-        let id, albumID, ownerID: Int
+        let id/*, albumID, ownerID*/: Int
         let sizes: [Size]
-        let text: String
-        let date: Int
-        let postID: Int?
-        let lat, long: Double?
+//        let text: String
+//        let date: Int
+//        let postID: Int?
+//        let lat, long: Double?
 
         enum CodingKeys: String, CodingKey {
             case id
-            case albumID = "album_id"
-            case ownerID = "owner_id"
-            case sizes, text, date
-            case postID = "post_id"
-            case lat, long
+//            case albumID = "album_id"
+//            case ownerID = "owner_id"
+            case sizes//, text, date
+//            case postID = "post_id"
+//            case lat, long
         }
 
-        init(id: Int, albumID: Int, ownerID: Int, sizes: [Size], text: String, date: Int, postID: Int?, lat: Double?, long: Double?) {
+        init(id: Int/*, albumID: Int, ownerID: Int*/, sizes: [Size]/*, text: String, date: Int, postID: Int?, lat: Double?, long: Double?*/) {
             self.id = id
-            self.albumID = albumID
-            self.ownerID = ownerID
+//            self.albumID = albumID
+//            self.ownerID = ownerID
             self.sizes = sizes
-            self.text = text
-            self.date = date
-            self.postID = postID
-            self.lat = lat
-            self.long = long
+//            self.text = text
+//            self.date = date
+//            self.postID = postID
+//            self.lat = lat
+//            self.long = long
         }
     }
 
