@@ -77,12 +77,20 @@ extension MyNewsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myNewsTableView.dequeueReusableCell(withIdentifier: "myNewsTable", for: indexPath) as! MyNewsTableViewCell
         
+        var urlImage = URL(string: news[indexPath.row].avatar )
+        if urlImage == nil {
+            urlImage = URL(string: "https://sun9-30.userapi.com/c840527/v840527644/2aa1c/cWRbJ1CDI08.jpg")
+        }
+        let cacheKey = String(news[indexPath.row].id) + news[indexPath.row].avatar
+        
         cell.avatarOwnerNews.layer.masksToBounds = true
         cell.avatarOwnerNews.layer.cornerRadius = cell.avatarOwnerNews.frame.height / 2
         
         cell.textOfNews.isEditable = false
         cell.textOfNews.isScrollEnabled = true
-        cell.avatarOwnerNews.image = #imageLiteral(resourceName: "icon_1")
+        cell.avatarOwnerNews.kf.setImage(with: ImageResource(downloadURL: urlImage!, cacheKey: cacheKey))
+
+        //cell.avatarOwnerNews.image = #imageLiteral(resourceName: "icon_1")
         cell.nameOwnerNewsLabel.text = news[indexPath.row].name
         cell.textOfNews.text = news[indexPath.row].text
         

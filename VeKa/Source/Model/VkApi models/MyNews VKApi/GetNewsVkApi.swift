@@ -43,6 +43,7 @@ class GetNewsVkApi {
             self.getNewsVkApi = news
             let items = news.response.items
             let profiles = news.response.profiles
+            let groups = news.response.groups
             
             
             
@@ -54,6 +55,18 @@ class GetNewsVkApi {
                 print("i - \(i)")
                 newsRealm.text = items[i].text
                 newsRealm.id = i
+                for profile in profiles {
+                    if profile.id == items[i].sourceID {
+                        newsRealm.avatar = profile.photo50
+                        newsRealm.avatar = profile.firstName + " " + profile.lastName
+                    }
+                }
+                for group in groups {
+                    if -group.id == items[i].sourceID {
+                        newsRealm.avatar = group.photo50
+                        newsRealm.name = group.name
+                    }
+                }
                 
                 do {
                     try Session.shared.realm.write {
