@@ -84,7 +84,7 @@ class NewsVkAPI: Codable {
         let sourceID, date: Int
         let postType: PostTypeEnum
         let text: String
-        let markedAsAds: Int
+        let markedAsAds: Int?
         let attachments: [ItemAttachment]?
         let postSource: ItemPostSource
         let comments: Comments
@@ -96,6 +96,8 @@ class NewsVkAPI: Codable {
         let topicID, signerID: Int?
         let copyHistory: [CopyHistory]?
         let categoryAction: CategoryAction?
+        let copyright: Copyright?
+        let geo: Geo?
 
         enum CodingKeys: String, CodingKey {
             case canDoubtCategory = "can_doubt_category"
@@ -115,9 +117,10 @@ class NewsVkAPI: Codable {
             case signerID = "signer_id"
             case copyHistory = "copy_history"
             case categoryAction = "category_action"
+            case copyright, geo
         }
 
-        init(canDoubtCategory: Bool?, canSetCategory: Bool?, type: PostTypeEnum, sourceID: Int, date: Int, postType: PostTypeEnum, text: String, markedAsAds: Int, attachments: [ItemAttachment]?, postSource: ItemPostSource, comments: Comments, likes: Likes, reposts: Reposts, views: Views, isFavorite: Bool, postID: Int, topicID: Int?, signerID: Int?, copyHistory: [CopyHistory]?, categoryAction: CategoryAction?) {
+        init(canDoubtCategory: Bool?, canSetCategory: Bool?, type: PostTypeEnum, sourceID: Int, date: Int, postType: PostTypeEnum, text: String, markedAsAds: Int?, attachments: [ItemAttachment]?, postSource: ItemPostSource, comments: Comments, likes: Likes, reposts: Reposts, views: Views, isFavorite: Bool, postID: Int, topicID: Int?, signerID: Int?, copyHistory: [CopyHistory]?, categoryAction: CategoryAction?, copyright: Copyright?, geo: Geo?) {
             self.canDoubtCategory = canDoubtCategory
             self.canSetCategory = canSetCategory
             self.type = type
@@ -138,21 +141,25 @@ class NewsVkAPI: Codable {
             self.signerID = signerID
             self.copyHistory = copyHistory
             self.categoryAction = categoryAction
+            self.copyright = copyright
+            self.geo = geo
         }
     }
 
     // MARK: - ItemAttachment
     class ItemAttachment: Codable {
-        let type: VideoType
+        let type: AttachmentType
+        let photo: AttachmentPhoto?
         let video: Video?
-        let photo: PurplePhoto?
         let audio: Audio?
+        let link: Link?
 
-        init(type: VideoType, video: Video?, photo: PurplePhoto?, audio: Audio?) {
+        init(type: AttachmentType, photo: AttachmentPhoto?, video: Video?, audio: Audio?, link: Link?) {
             self.type = type
-            self.video = video
             self.photo = photo
+            self.video = video
             self.audio = audio
+            self.link = link
         }
     }
 
@@ -190,8 +197,153 @@ class NewsVkAPI: Codable {
         }
     }
 
-    // MARK: - PurplePhoto
-    class PurplePhoto: Codable {
+    // MARK: - Link
+    class Link: Codable {
+        let url: String
+        let title, linkDescription: String
+        let target: String?
+        let photo: LinkPhoto?
+        let isFavorite: Bool
+        let caption: String?
+        let previewArticle: PreviewArticle?
+
+        enum CodingKeys: String, CodingKey {
+            case url, title
+            case linkDescription = "description"
+            case target, photo
+            case isFavorite = "is_favorite"
+            case caption
+            case previewArticle = "preview_article"
+        }
+
+        init(url: String, title: String, linkDescription: String, target: String?, photo: LinkPhoto?, isFavorite: Bool, caption: String?, previewArticle: PreviewArticle?) {
+            self.url = url
+            self.title = title
+            self.linkDescription = linkDescription
+            self.target = target
+            self.photo = photo
+            self.isFavorite = isFavorite
+            self.caption = caption
+            self.previewArticle = previewArticle
+        }
+    }
+
+    // MARK: - LinkPhoto
+    class LinkPhoto: Codable {
+        let id, albumID, ownerID: Int
+        let sizes: [Size]
+        let text: String
+        let date: Int
+
+        enum CodingKeys: String, CodingKey {
+            case id
+            case albumID = "album_id"
+            case ownerID = "owner_id"
+            case sizes, text, date
+        }
+
+        init(id: Int, albumID: Int, ownerID: Int, sizes: [Size], text: String, date: Int) {
+            self.id = id
+            self.albumID = albumID
+            self.ownerID = ownerID
+            self.sizes = sizes
+            self.text = text
+            self.date = date
+        }
+    }
+
+    // MARK: - Size
+    class Size: Codable {
+        let type: SizeType?
+        let url: String
+        let width, height: Int
+        let withPadding: Int?
+
+        enum CodingKeys: String, CodingKey {
+            case type, url, width, height
+            case withPadding = "with_padding"
+        }
+
+        init(type: SizeType?, url: String, width: Int, height: Int, withPadding: Int?) {
+            self.type = type
+            self.url = url
+            self.width = width
+            self.height = height
+            self.withPadding = withPadding
+        }
+    }
+
+    enum SizeType: String, Codable {
+        case k = "k"
+        case l = "l"
+        case m = "m"
+        case o = "o"
+        case p = "p"
+        case q = "q"
+        case r = "r"
+        case s = "s"
+        case w = "w"
+        case x = "x"
+        case y = "y"
+        case z = "z"
+    }
+
+    // MARK: - PreviewArticle
+    class PreviewArticle: Codable {
+        let id, ownerID: Int
+        let ownerName: String
+        let ownerPhoto: String
+        let state: String
+        let canReport: Bool
+        let title, subtitle: String
+        let views, shares: Int
+        let isFavorite: Bool
+        let url, viewURL: String
+        let noFooter: Bool
+        let accessKey: String
+        let publishedDate: Int
+        let photo: LinkPhoto
+
+        enum CodingKeys: String, CodingKey {
+            case id
+            case ownerID = "owner_id"
+            case ownerName = "owner_name"
+            case ownerPhoto = "owner_photo"
+            case state
+            case canReport = "can_report"
+            case title, subtitle, views, shares
+            case isFavorite = "is_favorite"
+            case url
+            case viewURL = "view_url"
+            case noFooter = "no_footer"
+            case accessKey = "access_key"
+            case publishedDate = "published_date"
+            case photo
+        }
+
+        init(id: Int, ownerID: Int, ownerName: String, ownerPhoto: String, state: String, canReport: Bool, title: String, subtitle: String, views: Int, shares: Int, isFavorite: Bool, url: String, viewURL: String, noFooter: Bool, accessKey: String, publishedDate: Int, photo: LinkPhoto) {
+            self.id = id
+            self.ownerID = ownerID
+            self.ownerName = ownerName
+            self.ownerPhoto = ownerPhoto
+            self.state = state
+            self.canReport = canReport
+            self.title = title
+            self.subtitle = subtitle
+            self.views = views
+            self.shares = shares
+            self.isFavorite = isFavorite
+            self.url = url
+            self.viewURL = viewURL
+            self.noFooter = noFooter
+            self.accessKey = accessKey
+            self.publishedDate = publishedDate
+            self.photo = photo
+        }
+    }
+
+    // MARK: - AttachmentPhoto
+    class AttachmentPhoto: Codable {
         let id, albumID, ownerID: Int
         let userID: Int?
         let sizes: [Size]
@@ -227,43 +379,9 @@ class NewsVkAPI: Codable {
         }
     }
 
-    // MARK: - Size
-    class Size: Codable {
-        let type: SizeType?
-        let url: String
-        let width, height: Int
-        let withPadding: Int?
-
-        enum CodingKeys: String, CodingKey {
-            case type, url, width, height
-            case withPadding = "with_padding"
-        }
-
-        init(type: SizeType?, url: String, width: Int, height: Int, withPadding: Int?) {
-            self.type = type
-            self.url = url
-            self.width = width
-            self.height = height
-            self.withPadding = withPadding
-        }
-    }
-
-    enum SizeType: String, Codable {
-        case l = "l"
-        case m = "m"
-        case o = "o"
-        case p = "p"
-        case q = "q"
-        case r = "r"
-        case s = "s"
-        case w = "w"
-        case x = "x"
-        case y = "y"
-        case z = "z"
-    }
-
-    enum VideoType: String, Codable {
+    enum AttachmentType: String, Codable {
         case audio = "audio"
+        case link = "link"
         case photo = "photo"
         case video = "video"
     }
@@ -278,7 +396,7 @@ class NewsVkAPI: Codable {
         let image: [Size]
         let id, ownerID: Int
         let title, trackCode: String
-        let type: VideoType
+        let type: AttachmentType
         let views: Int
         let localViews: Int?
         let platform: String?
@@ -307,7 +425,7 @@ class NewsVkAPI: Codable {
             case videoRepeat = "repeat"
         }
 
-        init(accessKey: String, canComment: Int, canLike: Int, canRepost: Int, canSubscribe: Int, canAddToFaves: Int, canAdd: Int, comments: Int, date: Int, videoDescription: String, duration: Int, image: [Size], id: Int, ownerID: Int, title: String, trackCode: String, type: VideoType, views: Int, localViews: Int?, platform: String?, firstFrame: [Size]?, width: Int?, height: Int?, videoRepeat: Int?) {
+        init(accessKey: String, canComment: Int, canLike: Int, canRepost: Int, canSubscribe: Int, canAddToFaves: Int, canAdd: Int, comments: Int, date: Int, videoDescription: String, duration: Int, image: [Size], id: Int, ownerID: Int, title: String, trackCode: String, type: AttachmentType, views: Int, localViews: Int?, platform: String?, firstFrame: [Size]?, width: Int?, height: Int?, videoRepeat: Int?) {
             self.accessKey = accessKey
             self.canComment = canComment
             self.canLike = canLike
@@ -407,77 +525,17 @@ class NewsVkAPI: Codable {
 
     // MARK: - CopyHistoryAttachment
     class CopyHistoryAttachment: Codable {
-        let type: PurpleType
-        let photo: LinkPhoto?
+        let type: AttachmentType
+        let photo: AttachmentPhoto?
         let video: Video?
         let link: Link?
 
-        init(type: PurpleType, photo: LinkPhoto?, video: Video?, link: Link?) {
+        init(type: AttachmentType, photo: AttachmentPhoto?, video: Video?, link: Link?) {
             self.type = type
             self.photo = photo
             self.video = video
             self.link = link
         }
-    }
-
-    // MARK: - Link
-    class Link: Codable {
-        let url: String
-        let title, linkDescription, target: String
-        let photo: LinkPhoto?
-        let isFavorite: Bool
-
-        enum CodingKeys: String, CodingKey {
-            case url, title
-            case linkDescription = "description"
-            case target, photo
-            case isFavorite = "is_favorite"
-        }
-
-        init(url: String, title: String, linkDescription: String, target: String, photo: LinkPhoto?, isFavorite: Bool) {
-            self.url = url
-            self.title = title
-            self.linkDescription = linkDescription
-            self.target = target
-            self.photo = photo
-            self.isFavorite = isFavorite
-        }
-    }
-
-    // MARK: - LinkPhoto
-    class LinkPhoto: Codable {
-        let id, albumID, ownerID: Int
-        let sizes: [Size]
-        let text: String
-        let date: Int
-        let userID: Int?
-        let accessKey: String?
-
-        enum CodingKeys: String, CodingKey {
-            case id
-            case albumID = "album_id"
-            case ownerID = "owner_id"
-            case sizes, text, date
-            case userID = "user_id"
-            case accessKey = "access_key"
-        }
-
-        init(id: Int, albumID: Int, ownerID: Int, sizes: [Size], text: String, date: Int, userID: Int?, accessKey: String?) {
-            self.id = id
-            self.albumID = albumID
-            self.ownerID = ownerID
-            self.sizes = sizes
-            self.text = text
-            self.date = date
-            self.userID = userID
-            self.accessKey = accessKey
-        }
-    }
-
-    enum PurpleType: String, Codable {
-        case link = "link"
-        case photo = "photo"
-        case video = "video"
     }
 
     // MARK: - CopyHistoryPostSource
@@ -497,6 +555,63 @@ class NewsVkAPI: Codable {
 
     enum PostTypeEnum: String, Codable {
         case post = "post"
+    }
+
+    // MARK: - Copyright
+    class Copyright: Codable {
+        let id: Int
+        let link: String
+        let type, name: String
+
+        init(id: Int, link: String, type: String, name: String) {
+            self.id = id
+            self.link = link
+            self.type = type
+            self.name = name
+        }
+    }
+
+    // MARK: - Geo
+    class Geo: Codable {
+        let type, coordinates: String
+        let place: Place
+
+        init(type: String, coordinates: String, place: Place) {
+            self.type = type
+            self.coordinates = coordinates
+            self.place = place
+        }
+    }
+
+    // MARK: - Place
+    class Place: Codable {
+        let created, id: Int
+        let isDeleted: Bool
+        let latitude, longitude: Int
+        let title: String
+        let totalCheckins, updated: Int
+        let country, city: String
+
+        enum CodingKeys: String, CodingKey {
+            case created, id
+            case isDeleted = "is_deleted"
+            case latitude, longitude, title
+            case totalCheckins = "total_checkins"
+            case updated, country, city
+        }
+
+        init(created: Int, id: Int, isDeleted: Bool, latitude: Int, longitude: Int, title: String, totalCheckins: Int, updated: Int, country: String, city: String) {
+            self.created = created
+            self.id = id
+            self.isDeleted = isDeleted
+            self.latitude = latitude
+            self.longitude = longitude
+            self.title = title
+            self.totalCheckins = totalCheckins
+            self.updated = updated
+            self.country = country
+            self.city = city
+        }
     }
 
     // MARK: - Likes
@@ -521,12 +636,17 @@ class NewsVkAPI: Codable {
     // MARK: - ItemPostSource
     class ItemPostSource: Codable {
         let type: PostSourceType
-        let platform: String?
+        let platform: Platform?
 
-        init(type: PostSourceType, platform: String?) {
+        init(type: PostSourceType, platform: Platform?) {
             self.type = type
             self.platform = platform
         }
+    }
+
+    enum Platform: String, Codable {
+        case android = "android"
+        case iphone = "iphone"
     }
 
     // MARK: - Reposts

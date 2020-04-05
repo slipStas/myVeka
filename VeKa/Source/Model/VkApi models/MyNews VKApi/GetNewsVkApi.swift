@@ -29,6 +29,7 @@ class GetNewsVkApi {
         urlNews.path = "/method/newsfeed.get"
         urlNews.queryItems = [
             URLQueryItem(name: "filters", value: "post"),
+            URLQueryItem(name: "count", value: "100"),
             URLQueryItem(name: "v", value: "5.102")
         ]
         
@@ -50,7 +51,7 @@ class GetNewsVkApi {
             
             
             for i in 0..<items.count {
-                
+                print(items.count)
                 let newsRealm = NewsRealm()
                 
                 newsRealm.text = items[i].text
