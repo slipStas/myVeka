@@ -51,7 +51,6 @@ class GetNewsVkApi {
             
             
             for i in 0..<items.count {
-                print(items.count)
                 let newsRealm = NewsRealm()
                 
                 newsRealm.text = items[i].text
