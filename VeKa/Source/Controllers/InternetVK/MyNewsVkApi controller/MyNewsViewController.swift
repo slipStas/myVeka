@@ -90,7 +90,6 @@ extension MyNewsViewController : UITableViewDataSource {
         cell.textOfNews.isScrollEnabled = true
         cell.avatarOwnerNews.kf.setImage(with: ImageResource(downloadURL: urlImage!, cacheKey: cacheKey))
 
-        //cell.avatarOwnerNews.image = #imageLiteral(resourceName: "icon_1")
         cell.nameOwnerNewsLabel.text = news[indexPath.row].name
         cell.textOfNews.text = news[indexPath.row].text
         

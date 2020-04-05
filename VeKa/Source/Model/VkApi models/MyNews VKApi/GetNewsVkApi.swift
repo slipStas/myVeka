@@ -77,20 +77,6 @@ class GetNewsVkApi {
                     print("error")
                 }
             }
-//            for i in 0..<profiles.count {
-//                
-//                newsRealm.avatar = profiles[i].photo100
-//                newsRealm.name = profiles[i].firstName + " " + profiles[i].lastName
-//                
-//                do {
-//                    try Session.shared.realm.write {
-//                        Session.shared.realm.add(newsRealm, update: .all)
-//                    }
-//                } catch {
-//                    completionHandler(false)
-//                    print("error")
-//                }
-//            }
            completionHandler(true)
         }
     }
