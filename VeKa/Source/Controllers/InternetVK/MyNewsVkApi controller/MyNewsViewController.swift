@@ -69,6 +69,7 @@ class MyNewsViewController: UIViewController {
     }
 }
 
+
 extension MyNewsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return news.count
@@ -93,16 +94,12 @@ extension MyNewsViewController : UITableViewDataSource {
         cell.nameOwnerNewsLabel.text = news[indexPath.row].name
         cell.textOfNews.text = news[indexPath.row].text
         
-        if cell.textOfNews.contentSize.height > 300 {
+        if cell.textOfNews.contentSize.height >= 300 {
             myNewsTableView.rowHeight = 300
         } else {
             myNewsTableView.rowHeight = cell.textOfNews.contentSize.height + cell.avatarOwnerNews.frame.height + 32
         }
-        
-        
-        
+  
         return cell
     }
-    
-    
 }
