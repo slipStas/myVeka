@@ -18,6 +18,7 @@ class MyNewsViewController: UIViewController {
     let getNews = GetNewsVkApi()
     let avatarSetings = AvatarSettings()
     var token : NotificationToken?
+    var refreshControll = UIRefreshControl()
     
     func pairTableAndRealm() {
         
@@ -48,11 +49,23 @@ class MyNewsViewController: UIViewController {
             }
         }
     }
+    @objc func updateNews() {
+        getNews.getNews { (state) in
+            if state {
+                print("news was added")
+            } else {
+                print("Error with data from Realm")
+            }
+            self.refreshControll.endRefreshing()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //myNewsTableView.rowHeight = 200
+        myNewsTableView.refreshControl = refreshControll
+        refreshControll.attributedTitle = NSAttributedString(string: "Updating news")
+        refreshControll.addTarget(self, action: #selector(updateNews), for: .valueChanged)
         
         if self.news.count == 0 {
             
