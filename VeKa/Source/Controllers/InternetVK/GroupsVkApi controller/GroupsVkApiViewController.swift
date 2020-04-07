@@ -11,7 +11,7 @@ import Kingfisher
 import RealmSwift
 
 class GroupsVkApiViewController: UIViewController {
-
+    
     @IBOutlet weak var groupsVkApiTableView: UITableView!
     
     let getGroups = GetGroupsVkApi()
@@ -21,7 +21,7 @@ class GroupsVkApiViewController: UIViewController {
     
     func pairTableAndRealm() {
         
-    token = self.groups.observe { [weak self] (changes: RealmCollectionChange) in
+        token = self.groups.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.groupsVkApiTableView else { return }
             switch changes {
             case .initial(let changedData):

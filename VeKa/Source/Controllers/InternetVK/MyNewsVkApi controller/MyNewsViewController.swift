@@ -11,7 +11,7 @@ import RealmSwift
 import Kingfisher
 
 class MyNewsViewController: UIViewController {
-
+    
     @IBOutlet weak var myNewsTableView: UITableView!
     
     let news = Session.shared.realm.objects(NewsRealm.self)
@@ -22,7 +22,7 @@ class MyNewsViewController: UIViewController {
     
     func pairTableAndRealm() {
         
-    token = self.news.observe { [weak self] (changes: RealmCollectionChange) in
+        token = self.news.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.myNewsTableView else { return }
             switch changes {
             case .initial(let changedData):
@@ -107,7 +107,7 @@ extension MyNewsViewController : UITableViewDataSource {
         cell.textOfNews.isEditable = false
         cell.textOfNews.isScrollEnabled = true
         cell.avatarOwnerNews.kf.setImage(with: ImageResource(downloadURL: urlImage!, cacheKey: cacheKey))
-
+        
         cell.nameOwnerNewsLabel.text = news[indexPath.row].name
         cell.textOfNews.text = news[indexPath.row].text
         
@@ -116,7 +116,7 @@ extension MyNewsViewController : UITableViewDataSource {
         } else {
             myNewsTableView.rowHeight = cell.textOfNews.contentSize.height + cell.avatarOwnerNews.frame.height + 32
         }
-  
+        
         return cell
     }
 }

@@ -11,7 +11,7 @@ import Kingfisher
 import RealmSwift
 
 class MyPhotosVkApiViewController: UIViewController {
-
+    
     @IBOutlet weak var myPhotosVkApi: UICollectionView!
     
     let countImagesInLine: CGFloat = 3
