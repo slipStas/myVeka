@@ -50,13 +50,15 @@ class MyNewsViewController: UIViewController {
         }
     }
     @objc func updateNews() {
-        getNews.getNews { (state) in
-            if state {
-                print("news was added")
-            } else {
-                print("Error with data from Realm")
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.getNews.getNews { (state) in
+                if state {
+                    print("news was added")
+                } else {
+                    print("Error with data from Realm")
+                }
+                self.refreshControll.endRefreshing()
             }
-            self.refreshControll.endRefreshing()
         }
     }
     
@@ -69,16 +71,18 @@ class MyNewsViewController: UIViewController {
         
         if self.news.count == 0 {
             
-            getNews.getNews { (state) in
-                if state {
-                    print("news was added")
-                } else {
-                    print("Error with data from Realm")
+            DispatchQueue.main.async {
+                self.getNews.getNews { (state) in
+                    if state {
+                        print("news was added")
+                    } else {
+                        print("Error with data from Realm")
+                    }
                 }
+                self.pairTableAndRealm()
             }
         }
         myNewsTableView.dataSource = self
-        pairTableAndRealm()
     }
 }
 
