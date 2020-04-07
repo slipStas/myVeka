@@ -112,11 +112,21 @@
                                             <action selector="registrationInFireBase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7MS-tw-AvP"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wy-Jf-oHy">
+                                        <rect key="frame" x="184" y="660.5" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.95712417360000002" green="0.9675115943" blue="0.47831219429999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="delleteKeychaine:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eze-lV-knt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="32b-L2-MWN" firstAttribute="centerX" secondItem="LHt-PY-aam" secondAttribute="centerX" id="019-Y9-wOu"/>
                                     <constraint firstItem="9C8-EK-UDN" firstAttribute="centerX" secondItem="LHt-PY-aam" secondAttribute="centerX" id="95x-vc-pFu"/>
                                     <constraint firstItem="SMb-eg-yzY" firstAttribute="centerX" secondItem="LHt-PY-aam" secondAttribute="centerX" id="ADr-Xz-1sB"/>
+                                    <constraint firstItem="6Wy-Jf-oHy" firstAttribute="top" secondItem="53J-dR-qhb" secondAttribute="bottom" constant="30" id="BoD-8H-bTy"/>
                                     <constraint firstItem="kHA-uI-pJW" firstAttribute="leading" secondItem="LHt-PY-aam" secondAttribute="leading" constant="100" id="Dvf-gE-0eO"/>
                                     <constraint firstItem="D1X-W4-v9V" firstAttribute="centerY" secondItem="kHA-uI-pJW" secondAttribute="centerY" id="IwM-EY-V82"/>
                                     <constraint firstItem="Q94-nZ-UBl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LHt-PY-aam" secondAttribute="leading" constant="16" id="U9S-gK-kK7"/>
@@ -134,6 +144,7 @@
                                     <constraint firstItem="tWt-VD-DgO" firstAttribute="top" secondItem="32b-L2-MWN" secondAttribute="bottom" constant="20" id="pG1-ve-aem"/>
                                     <constraint firstAttribute="bottom" secondItem="kHA-uI-pJW" secondAttribute="bottom" constant="30" id="r8b-Fh-1dn"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Q94-nZ-UBl" secondAttribute="trailing" constant="16" id="sqN-mE-Erf"/>
+                                    <constraint firstItem="6Wy-Jf-oHy" firstAttribute="centerX" secondItem="53J-dR-qhb" secondAttribute="centerX" id="u1K-pN-OAv"/>
                                     <constraint firstItem="SMb-eg-yzY" firstAttribute="top" secondItem="tWt-VD-DgO" secondAttribute="bottom" constant="5" id="vXb-eZ-Xeq"/>
                                     <constraint firstItem="XrP-qC-oOc" firstAttribute="top" secondItem="Ip5-sv-Kr1" secondAttribute="bottom" constant="20" id="wnB-EO-JgN"/>
                                 </constraints>
@@ -153,6 +164,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="delleteKeychaineButton" destination="6Wy-Jf-oHy" id="kCm-W9-C19"/>
                         <outlet property="internetLoginButton" destination="53J-dR-qhb" id="kiZ-N7-Sd4"/>
                         <outlet property="loadingView" destination="SMb-eg-yzY" id="qQA-7C-3Bt"/>
                         <outlet property="loginButton" destination="kHA-uI-pJW" id="FxY-Qf-qsP"/>

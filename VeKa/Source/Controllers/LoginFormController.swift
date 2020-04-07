@@ -40,6 +40,8 @@ class LoginFormController: UIViewController {
     
     @IBOutlet weak var registrationFireBaseButton: UIButton!
     
+    @IBOutlet weak var delleteKeychaineButton: UIButton!
+    
     @IBAction func registrationInFireBase(_ sender: Any) {
         setupBlurBackground()
         setupAlert()
@@ -62,6 +64,13 @@ class LoginFormController: UIViewController {
     @IBAction func checkUserDataFireBase(_ sender: Any) {
         checkUsersData()
     }
+    @IBAction func delleteKeychaine(_ sender: Any) {
+        KeychainWrapper.standard.set("", forKey: Session.Keys.hardToken.rawValue)
+        KeychainWrapper.standard.set("", forKey: Session.Keys.hardUserId.rawValue)
+        Session.shared.hardToken = ""
+        Session.shared.hardUserId = ""
+        print("Keychaine was reset")
+    }
     
     
     override func viewDidLoad() {
@@ -77,6 +86,7 @@ class LoginFormController: UIViewController {
         loginButton.setTitle("Log In", for: .normal)
         registrationFireBaseButton.setTitle("Registration", for: .normal)
         internetLoginButton.setTitle("Authorise in VK", for: .normal)
+        delleteKeychaineButton.setTitle("Reset Keychaine", for: .normal)
         
         // Жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
