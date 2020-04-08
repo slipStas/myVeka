@@ -70,6 +70,12 @@ class LoginFormController: UIViewController {
         Session.shared.hardToken = ""
         Session.shared.hardUserId = ""
         print("Keychaine was reset")
+        Session.shared.realm.beginWrite()
+        Session.shared.realm.deleteAll()
+        do {
+            try! Session.shared.realm.commitWrite()
+            print("delete data from realm")
+        }
     }
     
     

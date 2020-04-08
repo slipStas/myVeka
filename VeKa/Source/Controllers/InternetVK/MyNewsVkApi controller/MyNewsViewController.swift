@@ -32,17 +32,19 @@ class MyNewsViewController: UIViewController {
             case .update(_, let deletions, let insertions, let modifications):
                 tableView.beginUpdates()
                 if insertions.count > 0 {
+                    print("update tableView")
                     tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
-                                         with: .right)
+                                         with: .bottom)
                 }
                 if deletions.count > 0 {
                     tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
                                          with: .left)
                 }
-                if modifications.count > 0 {
-                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
-                                         with: .right)
-                }
+//                if modifications.count > 0 {
+//                    print("modification tableView")
+////                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+////                                         with: .right)
+//                }
                 tableView.endUpdates()
             case .error(let error):
                 fatalError("\(error)")
