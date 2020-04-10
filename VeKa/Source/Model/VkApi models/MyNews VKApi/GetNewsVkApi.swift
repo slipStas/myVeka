@@ -58,7 +58,7 @@ class GetNewsVkApi {
                 for profile in profiles {
                     if profile.id == items[i].sourceID {
                         newsRealm.avatar = profile.photo50
-                        newsRealm.avatar = profile.firstName + " " + profile.lastName
+                        newsRealm.name = profile.firstName + " " + profile.lastName
                     }
                 }
                 for group in groups {
