@@ -55,10 +55,11 @@ class MyNewsViewController: UIViewController {
         DispatchQueue.global(qos: .userInteractive).async {
             self.getNews.getNews { (state) in
                 if state {
-                    print("news was added")
+                    print("news was refreshed")
                 } else {
                     print("Error with data from Realm")
                 }
+                self.pairTableAndRealm()
                 self.refreshControll.endRefreshing()
             }
         }
