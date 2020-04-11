@@ -43,7 +43,7 @@ class MyNewsViewController: UIViewController {
                 if modifications.count > 0 {
                     print("modification tableView")
                     tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
-                                         with: .automatic)
+                                         with: .bottom)
                 }
                 tableView.endUpdates()
             case .error(let error):
