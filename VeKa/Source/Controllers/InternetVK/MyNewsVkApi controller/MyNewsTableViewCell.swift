@@ -14,12 +14,13 @@ class MyNewsTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarOwnerNews: UIImageView!
     @IBOutlet weak var nameOwnerNewsLabel: UILabel!
     @IBOutlet weak var textOfNews: UITextView!
-    @IBOutlet weak var imageNewsView: UIImageView!
+    @IBOutlet weak var imageNewsView: UIImageView?
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         avatarOwnerNews.image = nil
+        imageNewsView?.image = nil
         nameOwnerNewsLabel.text = nil
         textOfNews.text = nil
 

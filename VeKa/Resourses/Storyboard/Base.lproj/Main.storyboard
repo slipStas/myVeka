@@ -1210,7 +1210,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idF-ca-6W0">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idF-ca-6W0">
                                                     <rect key="frame" x="8" y="292" width="398" height="192"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -1225,16 +1225,6 @@
                                                         <constraint firstAttribute="height" constant="44" id="zVm-eh-wnq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzR-f4-cJ8">
-                                                    <rect key="frame" x="360" y="15" width="46" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="gNg-T2-NYb"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <segue destination="HlN-BZ-gAB" kind="show" identifier="newsImagesSegue" id="4LI-jz-G2R"/>
-                                                    </connections>
-                                                </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nbt-87-y84">
                                                     <rect key="frame" x="8" y="60" width="398" height="224"/>
                                                     <constraints>
@@ -1246,15 +1236,14 @@
                                                 <constraint firstItem="Iq2-yM-oUB" firstAttribute="leading" secondItem="0CT-l6-T2o" secondAttribute="trailing" constant="8" id="0hT-LN-Rgh"/>
                                                 <constraint firstItem="0CT-l6-T2o" firstAttribute="leading" secondItem="0vk-5A-hbb" secondAttribute="leading" constant="8" id="3nZ-6F-6yv"/>
                                                 <constraint firstItem="Nbt-87-y84" firstAttribute="leading" secondItem="0vk-5A-hbb" secondAttribute="leading" constant="8" id="6D4-ln-dfE"/>
+                                                <constraint firstItem="idF-ca-6W0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0CT-l6-T2o" secondAttribute="bottom" constant="8" id="9RC-dG-FFD"/>
                                                 <constraint firstItem="Iq2-yM-oUB" firstAttribute="top" secondItem="0CT-l6-T2o" secondAttribute="top" id="Fh8-7G-kFA"/>
                                                 <constraint firstItem="idF-ca-6W0" firstAttribute="centerX" secondItem="0vk-5A-hbb" secondAttribute="centerX" id="Hfv-sK-oN9"/>
-                                                <constraint firstItem="PzR-f4-cJ8" firstAttribute="centerY" secondItem="0CT-l6-T2o" secondAttribute="centerY" id="NWf-bL-SCZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="Nbt-87-y84" secondAttribute="trailing" constant="8" id="PxT-y1-ERZ"/>
                                                 <constraint firstItem="0CT-l6-T2o" firstAttribute="top" secondItem="0vk-5A-hbb" secondAttribute="top" constant="8" id="Rpl-m1-gXU"/>
                                                 <constraint firstAttribute="trailing" secondItem="idF-ca-6W0" secondAttribute="trailing" constant="8" id="SEk-ey-WET"/>
-                                                <constraint firstAttribute="trailing" secondItem="PzR-f4-cJ8" secondAttribute="trailing" constant="8" id="V6S-nt-FUp"/>
                                                 <constraint firstItem="Nbt-87-y84" firstAttribute="top" secondItem="0CT-l6-T2o" secondAttribute="bottom" constant="8" id="W3q-9e-hZ4"/>
-                                                <constraint firstItem="PzR-f4-cJ8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Iq2-yM-oUB" secondAttribute="trailing" constant="20" id="YVr-nE-2k6"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Iq2-yM-oUB" secondAttribute="trailing" constant="8" id="eIB-6P-cJj"/>
                                                 <constraint firstItem="idF-ca-6W0" firstAttribute="leading" secondItem="0vk-5A-hbb" secondAttribute="leading" constant="8" id="nzF-aT-9qg"/>
                                                 <constraint firstAttribute="bottom" secondItem="idF-ca-6W0" secondAttribute="bottom" constant="8" id="q6j-2h-UdK"/>
                                                 <constraint firstItem="idF-ca-6W0" firstAttribute="top" secondItem="Nbt-87-y84" secondAttribute="bottom" constant="8" id="x6y-3l-uhL"/>
@@ -1287,73 +1276,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zxr-U5-a57" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1992.753623188406" y="3212.9464285714284"/>
-        </scene>
-        <!--My News Images View Controller-->
-        <scene sceneID="bKp-D3-4t5">
-            <objects>
-                <viewController modalPresentationStyle="fullScreen" id="HlN-BZ-gAB" customClass="MyNewsImagesViewController" customModule="VeKa" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eU1-j2-FCw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jqq-oq-aCp">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SOy-S9-JiD">
-                                    <size key="itemSize" width="412" height="513"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myNewsImages" id="uyh-wM-gDy" customClass="MyNewsImagesCollectionViewCell" customModule="VeKa" customModuleProvider="target">
-                                        <rect key="frame" x="1" y="0.0" width="412" height="513"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="M2P-BJ-hOM">
-                                            <rect key="frame" x="0.0" y="0.0" width="412" height="513"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GdM-pg-NLT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="412" height="513"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="GdM-pg-NLT" secondAttribute="height" multiplier="1:1" id="saP-px-RA5"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="GdM-pg-NLT" firstAttribute="top" secondItem="M2P-BJ-hOM" secondAttribute="top" id="1UT-zh-tZ3"/>
-                                                <constraint firstItem="GdM-pg-NLT" firstAttribute="centerX" secondItem="M2P-BJ-hOM" secondAttribute="centerX" id="CUC-Wd-Z5L"/>
-                                                <constraint firstAttribute="trailing" secondItem="GdM-pg-NLT" secondAttribute="trailing" id="Mca-k8-apr"/>
-                                                <constraint firstItem="GdM-pg-NLT" firstAttribute="leading" secondItem="M2P-BJ-hOM" secondAttribute="leading" id="Z1N-hU-lYI"/>
-                                                <constraint firstItem="GdM-pg-NLT" firstAttribute="centerY" secondItem="M2P-BJ-hOM" secondAttribute="centerY" id="atZ-Ki-bc4"/>
-                                                <constraint firstAttribute="bottom" secondItem="GdM-pg-NLT" secondAttribute="bottom" id="mlZ-bs-IgU"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="412" height="513"/>
-                                        <connections>
-                                            <outlet property="myNewsImage" destination="GdM-pg-NLT" id="Rjv-QX-38I"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Jqq-oq-aCp" firstAttribute="top" secondItem="Kzs-3b-3ar" secondAttribute="top" id="QR2-0G-Qdz"/>
-                            <constraint firstItem="Jqq-oq-aCp" firstAttribute="leading" secondItem="Kzs-3b-3ar" secondAttribute="leading" id="mgj-Us-8bk"/>
-                            <constraint firstItem="Kzs-3b-3ar" firstAttribute="bottom" secondItem="Jqq-oq-aCp" secondAttribute="bottom" id="oS3-hd-Z0f"/>
-                            <constraint firstItem="Kzs-3b-3ar" firstAttribute="trailing" secondItem="Jqq-oq-aCp" secondAttribute="trailing" id="pbO-aH-lva"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Kzs-3b-3ar"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="G6o-EG-106"/>
-                    <connections>
-                        <outlet property="newsImagesCollection" destination="Jqq-oq-aCp" id="NoO-Xl-FOT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="htx-D3-eCi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2740.579710144928" y="3212.9464285714284"/>
         </scene>
     </scenes>
     <resources>

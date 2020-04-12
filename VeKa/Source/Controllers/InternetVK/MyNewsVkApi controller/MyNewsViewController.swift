@@ -15,8 +15,6 @@ class MyNewsViewController: UIViewController {
     @IBOutlet weak var myNewsTableView: UITableView!
     
     let news = Session.shared.realm.objects(NewsRealm.self)
-    //var newsImages : [String] = []
-    var imagesUrl : [String] = []
     let getNews = GetNewsVkApi()
     let avatarSetings = AvatarSettings()
     var token : NotificationToken?
@@ -106,7 +104,9 @@ extension MyNewsViewController : UITableViewDataSource {
         }
         let urlImageNews = URL(string: news[indexPath.row].photos.first ?? "https://vk.com/images/camera_400.png?ava=1")
         let cacheKey = String(news[indexPath.row].id) + news[indexPath.row].avatar
-        let cacheKeyImage = String(news[indexPath.row].id) + (news[indexPath.row].photos.first ?? "")
+        let cacheKeyImage = String(news[indexPath.row].avatar) + (news[indexPath.row].photos.first ?? "")
+        
+        cell.imageNewsView?.removeFromSuperview()
         
         cell.avatarOwnerNews.layer.masksToBounds = true
         cell.avatarOwnerNews.layer.cornerRadius = cell.avatarOwnerNews.frame.height / 2
@@ -117,27 +117,23 @@ extension MyNewsViewController : UITableViewDataSource {
         
         cell.nameOwnerNewsLabel.text = news[indexPath.row].name
         cell.textOfNews.text = news[indexPath.row].text
-        cell.imageNewsView.kf.setImage(with: ImageResource(downloadURL: urlImageNews!, cacheKey: cacheKeyImage))
+        
+        if self.news[indexPath.row].photos.isEmpty {
+            cell.imageNewsView?.removeFromSuperview()
+        } else {
+            //cell.imageNewsView?.kf.setImage(with: ImageResource(downloadURL: urlImageNews!, cacheKey: cacheKeyImage))
+        }
         
         if cell.textOfNews.contentSize.height >= 300 {
             myNewsTableView.rowHeight = 300
         } else {
-            myNewsTableView.rowHeight = cell.textOfNews.contentSize.height + cell.avatarOwnerNews.frame.height + 40 + cell.imageNewsView.frame.height
+            myNewsTableView.rowHeight = cell.textOfNews.contentSize.height + cell.avatarOwnerNews.frame.height + 40 + (cell.imageNewsView?.frame.height ?? 0)
         }
-        
-        for item in news[indexPath.row].photos {
-            imagesUrl.append(item)
-        }
+        let screenSize: CGSize = UIScreen.main.bounds.size
+        let myView = UIView(frame: CGRect(x: 0, y: myNewsTableView.rowHeight, width: screenSize.width - 10, height: 100))
+        myView.backgroundColor = .blue
+        //cell.addSubview(myView)
         
         return cell
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifire = segue.identifier, identifire == "newsImagesSegue" {
-            if let destinationVC = segue.destination as? MyNewsImagesViewController {
-                let images = self.imagesUrl
-                destinationVC.newsImagesArray = images
-            }
-        }
     }
 }
