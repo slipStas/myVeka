@@ -33,6 +33,8 @@
 		8E3EA7A4232D802C00F118DB /* MyGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3EA7A3232D802C00F118DB /* MyGroupsTableViewCell.swift */; };
 		8E3EA7A7232D808D00F118DB /* AllGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3EA7A6232D808D00F118DB /* AllGroupsTableViewCell.swift */; };
 		8E3EA7A9232D80A900F118DB /* AllGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3EA7A8232D80A900F118DB /* AllGroupsViewController.swift */; };
+		8E47B4052443208500141B5E /* MyNewsImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47B4042443208500141B5E /* MyNewsImagesViewController.swift */; };
+		8E47B407244320A300141B5E /* MyNewsImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47B406244320A300141B5E /* MyNewsImagesCollectionViewCell.swift */; };
 		8E4DABB7233C8EF00091BE70 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DABB6233C8EF00091BE70 /* HelperExtensions.swift */; };
 		8E587CBD24376A9E005A950D /* GetNewsVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E587CBC24376A9E005A950D /* GetNewsVkApi.swift */; };
 		8E587CBF24377873005A950D /* NewsVkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E587CBE24377873005A950D /* NewsVkApi.swift */; };
@@ -101,6 +103,8 @@
 		8E3EA7A3232D802C00F118DB /* MyGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		8E3EA7A6232D808D00F118DB /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		8E3EA7A8232D80A900F118DB /* AllGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsViewController.swift; sourceTree = "<group>"; };
+		8E47B4042443208500141B5E /* MyNewsImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsImagesViewController.swift; sourceTree = "<group>"; };
+		8E47B406244320A300141B5E /* MyNewsImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E4DABB6233C8EF00091BE70 /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		8E587CBC24376A9E005A950D /* GetNewsVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewsVkApi.swift; sourceTree = "<group>"; };
 		8E587CBE24377873005A950D /* NewsVkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVkApi.swift; sourceTree = "<group>"; };
@@ -325,6 +329,15 @@
 			path = AllGroupsList;
 			sourceTree = "<group>";
 		};
+		8E47B4012443200800141B5E /* NewsImages controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E47B4042443208500141B5E /* MyNewsImagesViewController.swift */,
+				8E47B406244320A300141B5E /* MyNewsImagesCollectionViewCell.swift */,
+			);
+			path = "NewsImages controller";
+			sourceTree = "<group>";
+		};
 		8E587CBB24376A34005A950D /* MyNews VKApi */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +370,7 @@
 		8E8E692D2433667200F11AA7 /* MyNewsVkApi controller */ = {
 			isa = PBXGroup;
 			children = (
+				8E47B4012443200800141B5E /* NewsImages controller */,
 				8E8E692E243366B400F11AA7 /* MyNewsViewController.swift */,
 				8E8E6930243366E500F11AA7 /* MyNewsTableViewCell.swift */,
 			);
@@ -620,6 +634,7 @@
 				8E4DABB7233C8EF00091BE70 /* HelperExtensions.swift in Sources */,
 				8E155E002406FC8200995089 /* UserVkAPI.swift in Sources */,
 				8E3EA79D232D668000F118DB /* FriendInfoViewController.swift in Sources */,
+				8E47B4052443208500141B5E /* MyNewsImagesViewController.swift in Sources */,
 				8EE7A350233D9C73008CDE46 /* Header.swift in Sources */,
 				8EF93C282329883600EBEC86 /* LoginFormController.swift in Sources */,
 				8E3EA7A9232D80A900F118DB /* AllGroupsViewController.swift in Sources */,
@@ -641,6 +656,7 @@
 				8E155E072407033800995089 /* FriendsVkApiTableViewCell.swift in Sources */,
 				8ED7DB41233EE70D00DCD205 /* News.swift in Sources */,
 				8E155E14240828DC00995089 /* GroupsVkApiViewController.swift in Sources */,
+				8E47B407244320A300141B5E /* MyNewsImagesCollectionViewCell.swift in Sources */,
 				8E5C694A23480774002C745A /* FriendsPhotosViewController.swift in Sources */,
 				8E8E692F243366B400F11AA7 /* MyNewsViewController.swift in Sources */,
 				8EF1A3032331641700D81510 /* User.swift in Sources */,

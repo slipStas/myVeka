@@ -14,6 +14,7 @@ class MyNewsTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarOwnerNews: UIImageView!
     @IBOutlet weak var nameOwnerNewsLabel: UILabel!
     @IBOutlet weak var textOfNews: UITextView!
+    @IBOutlet weak var imageNewsView: UIImageView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
