@@ -55,6 +55,19 @@ class GetNewsVkApi {
                 
                 newsRealm.text = items[i].text
                 newsRealm.id = i
+                if let attachments = items[i].attachments {
+                    for photo in attachments {
+                        if let size = photo.photo {
+                            for o in size.sizes {
+                                if o.type == .some(.q) {
+                                    newsRealm.photos.append(o.url)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                //newsRealm.photos.append(items[i].attachments[0])
                 for profile in profiles {
                     if profile.id == items[i].sourceID {
                         newsRealm.avatar = profile.photo50

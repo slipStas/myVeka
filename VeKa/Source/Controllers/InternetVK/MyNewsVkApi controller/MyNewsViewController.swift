@@ -100,11 +100,13 @@ extension MyNewsViewController : UITableViewDataSource {
         
         myNewsTableView.rowHeight = cell.avatarOwnerImage.frame.height + 16
         
-        var urlImage = URL(string: news[indexPath.row].avatar )
-        if urlImage == nil {
-            urlImage = URL(string: "https://vk.com/images/camera_400.png?ava=1")
-        }
+        let urlImage = URL(string: news[indexPath.row].avatar)
+       
         let cacheKey = String(news[indexPath.row].id) + news[indexPath.row].avatar
+        
+        let urlImageNews = URL(string: news[indexPath.row].photos.first ?? "https://vk.com/images/camera_400.png?ava=1")
+    
+        let cacheKeyNews = String(news[indexPath.row].avatar) + (news[indexPath.row].photos.first ?? "0")
         
         cell.avatarOwnerImage.layer.masksToBounds = true
         cell.avatarOwnerImage.layer.cornerRadius = cell.avatarOwnerImage.frame.height / 2
@@ -113,19 +115,33 @@ extension MyNewsViewController : UITableViewDataSource {
         cell.nameOwnerNewsLabel.text = news[indexPath.row].name
        
         cell.textView.text = news[indexPath.row].text
+        cell.textView.isEditable = false
+        
+        cell.imageNewsView.layer.masksToBounds = true
+        cell.imageNewsView.layer.cornerRadius = cell.imageNewsView.frame.width / 20
         
         if cell.textView.text.isEmpty {
-            cell.textView.removeFromSuperview()
-            
-        } else if cell.textView.contentSize.height >= 300 {
-            myNewsTableView.rowHeight = 300
+            cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 0)
+        }
+        
+        if cell.textView.contentSize.height >= 300 {
+            cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 300)
+            myNewsTableView.rowHeight += cell.textView.frame.height + 8
         } else {
-            myNewsTableView.rowHeight += cell.textView.contentSize.height + 16
+            cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: cell.textView.contentSize.height)
+            myNewsTableView.rowHeight += cell.textView.frame.height + 8
         }
         
         
         
-
+        if news[indexPath.row].photos.isEmpty {
+            cell.imageNewsView.removeFromSuperview()
+        } else {
+            let heightText = cell.textView.frame.height + cell.avatarOwnerImage.frame.height + 24
+            cell.imageNewsView.frame = CGRect(x: 8, y: 8 + heightText, width: self.view.frame.width - 16, height: self.view.frame.width - 16)
+            cell.imageNewsView.kf.setImage(with: ImageResource(downloadURL: urlImageNews!, cacheKey: cacheKeyNews))
+            myNewsTableView.rowHeight += cell.imageNewsView.frame.height + 16
+        }
         return cell
     }
 }

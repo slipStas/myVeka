@@ -62,16 +62,72 @@ class NewsVkAPI: Codable {
     class Item: Codable {
         let text: String
         let sourceID: Int
+        let attachments: [ItemAttachment]?
         
         enum CodingKeys: String, CodingKey {
+            case attachments
             case sourceID = "source_id"
             case text
         }
         
-        init(sourceID: Int, text: String) {
+        init(sourceID: Int, text: String, attachments: [ItemAttachment]?) {
+            self.attachments = attachments
             self.sourceID = sourceID
             self.text = text
         }
+    }
+    
+    // MARK: - ItemAttachment
+    class ItemAttachment: Codable {
+        let photo: AttachmentPhoto?
+
+        init(photo: AttachmentPhoto?) {
+            self.photo = photo
+           
+        }
+    }
+    
+    // MARK: - AttachmentPhoto
+    class AttachmentPhoto: Codable {
+        let sizes: [Size]
+        let text: String
+
+//        enum CodingKeys: String, CodingKey {
+//            case sizes, text
+//        }
+        init(sizes: [Size], text: String) {
+            self.sizes = sizes
+            self.text = text
+        }
+    }
+    
+    // MARK: - Size
+    class Size: Codable {
+        let type: SizeType?
+        let url: String
+
+//        enum CodingKeys: String, CodingKey {
+//            case type, url
+//        }
+        init(type: SizeType?, url: String) {
+            self.type = type
+            self.url = url
+        }
+    }
+    
+    enum SizeType: String, Codable {
+        case k = "k"
+        case l = "l"
+        case m = "m"
+        case o = "o"
+        case p = "p"
+        case q = "q"
+        case r = "r"
+        case s = "s"
+        case w = "w"
+        case x = "x"
+        case y = "y"
+        case z = "z"
     }
     
     // MARK: - Profile
