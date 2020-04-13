@@ -26,6 +26,13 @@ class MyNewsTableViewCell: UITableViewCell {
         textView.font = .systemFont(ofSize: 13)
         return textView
     }()
+    
+    lazy var imageNewsView : UIImageView = {
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.width))
+        image.layer.masksToBounds = true
+        image.layer.cornerRadius = self.imageNewsView.frame.width / 10
+        return image
+    }()
    
     
     //MARK: prepareForReuse
@@ -35,11 +42,13 @@ class MyNewsTableViewCell: UITableViewCell {
         self.avatarOwnerImage.image = nil
         self.nameOwnerNewsLabel.text = nil
         self.textView.text = nil
+        self.imageNewsView.image = nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         addSubview(avatarOwnerImage)
         addSubview(nameOwnerNewsLabel)
         addSubview(textView)
+        addSubview(imageNewsView)
     }
 }

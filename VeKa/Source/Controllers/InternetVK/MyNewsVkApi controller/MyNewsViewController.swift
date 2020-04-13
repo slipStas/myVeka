@@ -98,6 +98,8 @@ extension MyNewsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myNewsTableView.dequeueReusableCell(withIdentifier: "myNewsTable", for: indexPath) as! MyNewsTableViewCell
         
+        myNewsTableView.rowHeight = cell.avatarOwnerImage.frame.height + 16
+        
         var urlImage = URL(string: news[indexPath.row].avatar )
         if urlImage == nil {
             urlImage = URL(string: "https://vk.com/images/camera_400.png?ava=1")
@@ -114,57 +116,15 @@ extension MyNewsViewController : UITableViewDataSource {
         
         if cell.textView.text.isEmpty {
             cell.textView.removeFromSuperview()
-            myNewsTableView.rowHeight = cell.avatarOwnerImage.frame.height + 16
+            
         } else if cell.textView.contentSize.height >= 300 {
             myNewsTableView.rowHeight = 300
         } else {
-            myNewsTableView.rowHeight = cell.textView.contentSize.height + cell.avatarOwnerImage.frame.height + 32
+            myNewsTableView.rowHeight += cell.textView.contentSize.height + 16
         }
         
         
-        //self.myNewsTableView.rowHeight = 16 + cell.avatarOwnerNews.frame.height
         
-        //let screenSize: CGSize = UIScreen.main.bounds.size
-        
-        if !news[indexPath.row].text.isEmpty {
-//            let textView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
-//            textView.backgroundColor = .red
-//            cell.addSubview(textView)
-            
-            // Creating constraints using NSLayoutConstraint
-//            NSLayoutConstraint(item: textView,
-//                               attribute: .leading,
-//                               relatedBy: .equal,
-//                               toItem: cell.contentView,
-//                               attribute: .leadingMargin,
-//                               multiplier: 1.0,
-//                               constant: 8.0).isActive = true
-//
-//            NSLayoutConstraint(item: textView,
-//                               attribute: .trailing,
-//                               relatedBy: .equal,
-//                               toItem: cell.contentView,
-//                               attribute: .trailingMargin,
-//                               multiplier: 1.0,
-//                               constant: 8).isActive = true
-//
-//            NSLayoutConstraint(item: textView,
-//                               attribute: .top,
-//                               relatedBy: .equal,
-//                               toItem: cell.avatarOwnerNews,
-//                               attribute: .bottomMargin,
-//                               multiplier: 1.0,
-//                               constant: 10.0).isActive = true
-//
-//            let margins = cell.contentView.layoutMarginsGuide
-//
-//            textView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-//            textView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-//            textView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-//            textView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            //textView.text = news[indexPath.row].text
-
-        }
 
         return cell
     }
