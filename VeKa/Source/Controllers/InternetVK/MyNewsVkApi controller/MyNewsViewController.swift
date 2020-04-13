@@ -118,7 +118,7 @@ extension MyNewsViewController : UITableViewDataSource {
         cell.textView.isEditable = false
         
         cell.imageNewsView.layer.masksToBounds = true
-        cell.imageNewsView.layer.cornerRadius = cell.imageNewsView.frame.width / 20
+        cell.imageNewsView.layer.cornerRadius = cell.imageNewsView.frame.width / 35
         
         if cell.textView.text.isEmpty {
             cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 0)
@@ -135,7 +135,7 @@ extension MyNewsViewController : UITableViewDataSource {
         
         
         if news[indexPath.row].photos.isEmpty {
-            cell.imageNewsView.removeFromSuperview()
+            cell.imageNewsView.frame = CGRect(x: 8, y: 8, width: 0, height: 0)
         } else {
             let heightText = cell.textView.frame.height + cell.avatarOwnerImage.frame.height + 24
             cell.imageNewsView.frame = CGRect(x: 8, y: 8 + heightText, width: self.view.frame.width - 16, height: self.view.frame.width - 16)
