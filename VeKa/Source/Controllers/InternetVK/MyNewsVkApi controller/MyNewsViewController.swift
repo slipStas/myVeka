@@ -108,9 +108,21 @@ extension MyNewsViewController : UITableViewDataSource {
         cell.avatarOwnerImage.layer.cornerRadius = cell.avatarOwnerImage.frame.height / 2
         cell.avatarOwnerImage.kf.setImage(with: ImageResource(downloadURL: urlImage!, cacheKey: cacheKey))
 
-//        cell.nameOwnerNewsLabel.text = news[indexPath.row].name
+        cell.nameOwnerNewsLabel.text = news[indexPath.row].name
+       
+        cell.textView.text = news[indexPath.row].text
         
-        self.myNewsTableView.rowHeight = 300//16 + cell.avatarOwnerNews.frame.height
+        if cell.textView.text.isEmpty {
+            cell.textView.removeFromSuperview()
+            myNewsTableView.rowHeight = cell.avatarOwnerImage.frame.height + 16
+        } else if cell.textView.contentSize.height >= 300 {
+            myNewsTableView.rowHeight = 300
+        } else {
+            myNewsTableView.rowHeight = cell.textView.contentSize.height + cell.avatarOwnerImage.frame.height + 32
+        }
+        
+        
+        //self.myNewsTableView.rowHeight = 16 + cell.avatarOwnerNews.frame.height
         
         //let screenSize: CGSize = UIScreen.main.bounds.size
         
@@ -154,19 +166,6 @@ extension MyNewsViewController : UITableViewDataSource {
 
         }
 
-        /*
-        cell.textOfNews.isEditable = false
-        cell.textOfNews.isScrollEnabled = true
-        
-        cell.textOfNews.text = news[indexPath.row].text
-        
-        if cell.textOfNews.contentSize.height >= 300 {
-            myNewsTableView.rowHeight = 300
-        } else {
-            myNewsTableView.rowHeight = cell.textOfNews.contentSize.height + cell.avatarOwnerNews.frame.height + 32
-        }
-         */
-        
         return cell
     }
 }
