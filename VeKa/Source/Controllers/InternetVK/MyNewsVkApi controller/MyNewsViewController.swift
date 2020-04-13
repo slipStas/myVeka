@@ -51,6 +51,7 @@ class MyNewsViewController: UIViewController {
             }
         }
     }
+    
     @objc func updateNews() {
         DispatchQueue.global(qos: .userInteractive).async {
             self.getNews.getNews { (state) in
@@ -116,10 +117,7 @@ extension MyNewsViewController : UITableViewDataSource {
        
         cell.textView.text = news[indexPath.row].text
         cell.textView.isEditable = false
-        
-        cell.imageNewsView.layer.masksToBounds = true
-        cell.imageNewsView.layer.cornerRadius = cell.imageNewsView.frame.width / 35
-        
+       
         if cell.textView.text.isEmpty {
             cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 0)
         }
@@ -131,8 +129,6 @@ extension MyNewsViewController : UITableViewDataSource {
             cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: cell.textView.contentSize.height)
             myNewsTableView.rowHeight += cell.textView.frame.height + 8
         }
-        
-        
         
         if news[indexPath.row].photos.isEmpty {
             cell.imageNewsView.frame = CGRect(x: 8, y: 8, width: 0, height: 0)

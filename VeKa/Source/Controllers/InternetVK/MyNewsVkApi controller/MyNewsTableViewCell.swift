@@ -30,6 +30,7 @@ class MyNewsTableViewCell: UITableViewCell {
     
     lazy var imageNewsView : UIImageView = {
         let image = UIImageView(frame: CGRect(x: 8, y: 374, width: self.frame.width - 16, height: self.frame.width - 16))
+        image.contentMode = .scaleAspectFit
         return image
     }()
    

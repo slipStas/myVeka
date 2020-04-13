@@ -59,7 +59,7 @@ class GetNewsVkApi {
                     for photo in attachments {
                         if let size = photo.photo {
                             for o in size.sizes {
-                                if o.type == .some(.q) {
+                                if o.type == .some(.r) {
                                     newsRealm.photos.append(o.url)
                                 }
                             }
