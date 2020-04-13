@@ -10,21 +10,18 @@ import UIKit
 
 class MyNewsTableViewCell: UITableViewCell {
 
-    
-    @IBOutlet weak var avatarOwnerNews: UIImageView!
-    @IBOutlet weak var nameOwnerNewsLabel: UILabel!
-    @IBOutlet weak var textOfNews: UITextView!
-    
+    lazy var avatarOwnerImage : UIImageView = {
+        let view = UIImageView(frame: CGRect(x: 8, y: 8, width: 100, height: 100))
+        return view
+    }()
+   
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        avatarOwnerNews.image = nil
-        nameOwnerNewsLabel.text = nil
-        textOfNews.text = nil
-
-        isHidden = false
-        isSelected = false
-        isHighlighted = false
+        self.avatarOwnerImage.image = nil
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        addSubview(avatarOwnerImage)
+    }
 }

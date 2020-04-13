@@ -67,7 +67,7 @@ class MyNewsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         myNewsTableView.refreshControl = refreshControll
         refreshControll.attributedTitle = NSAttributedString(string: "Updating news")
         refreshControll.addTarget(self, action: #selector(updateNews), for: .valueChanged)
@@ -104,14 +104,60 @@ extension MyNewsViewController : UITableViewDataSource {
         }
         let cacheKey = String(news[indexPath.row].id) + news[indexPath.row].avatar
         
-        cell.avatarOwnerNews.layer.masksToBounds = true
-        cell.avatarOwnerNews.layer.cornerRadius = cell.avatarOwnerNews.frame.height / 2
+        cell.avatarOwnerImage.layer.masksToBounds = true
+        cell.avatarOwnerImage.layer.cornerRadius = cell.avatarOwnerImage.frame.height / 2
+        cell.avatarOwnerImage.kf.setImage(with: ImageResource(downloadURL: urlImage!, cacheKey: cacheKey))
+
+//        cell.nameOwnerNewsLabel.text = news[indexPath.row].name
         
+        self.myNewsTableView.rowHeight = 300//16 + cell.avatarOwnerNews.frame.height
+        
+        //let screenSize: CGSize = UIScreen.main.bounds.size
+        
+        if !news[indexPath.row].text.isEmpty {
+//            let textView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
+//            textView.backgroundColor = .red
+//            cell.addSubview(textView)
+            
+            // Creating constraints using NSLayoutConstraint
+//            NSLayoutConstraint(item: textView,
+//                               attribute: .leading,
+//                               relatedBy: .equal,
+//                               toItem: cell.contentView,
+//                               attribute: .leadingMargin,
+//                               multiplier: 1.0,
+//                               constant: 8.0).isActive = true
+//
+//            NSLayoutConstraint(item: textView,
+//                               attribute: .trailing,
+//                               relatedBy: .equal,
+//                               toItem: cell.contentView,
+//                               attribute: .trailingMargin,
+//                               multiplier: 1.0,
+//                               constant: 8).isActive = true
+//
+//            NSLayoutConstraint(item: textView,
+//                               attribute: .top,
+//                               relatedBy: .equal,
+//                               toItem: cell.avatarOwnerNews,
+//                               attribute: .bottomMargin,
+//                               multiplier: 1.0,
+//                               constant: 10.0).isActive = true
+//
+//            let margins = cell.contentView.layoutMarginsGuide
+//
+//            textView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+//            textView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+//            textView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+//            textView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            //textView.text = news[indexPath.row].text
+
+        }
+
+        /*
         cell.textOfNews.isEditable = false
         cell.textOfNews.isScrollEnabled = true
-        cell.avatarOwnerNews.kf.setImage(with: ImageResource(downloadURL: urlImage!, cacheKey: cacheKey))
         
-        cell.nameOwnerNewsLabel.text = news[indexPath.row].name
         cell.textOfNews.text = news[indexPath.row].text
         
         if cell.textOfNews.contentSize.height >= 300 {
@@ -119,6 +165,7 @@ extension MyNewsViewController : UITableViewDataSource {
         } else {
             myNewsTableView.rowHeight = cell.textOfNews.contentSize.height + cell.avatarOwnerNews.frame.height + 32
         }
+         */
         
         return cell
     }
