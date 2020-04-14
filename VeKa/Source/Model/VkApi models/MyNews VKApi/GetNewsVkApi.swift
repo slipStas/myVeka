@@ -20,7 +20,6 @@ class GetNewsVkApi {
     
     func getNews(completionHandler: @escaping(Bool) -> ()) {
         
-        
         let accessParameters: Parameters = ["access_token" : token, "user_id" : userId]
 
         var urlNews = URLComponents()
@@ -67,7 +66,6 @@ class GetNewsVkApi {
                     }
                 }
                 
-                //newsRealm.photos.append(items[i].attachments[0])
                 for profile in profiles {
                     if profile.id == items[i].sourceID {
                         newsRealm.avatar = profile.photo50

@@ -22,15 +22,15 @@ class MyNewsTableViewCell: UITableViewCell {
     }()
     
     lazy var textView : UITextView = {
-        let textView = UITextView(frame: CGRect(x: 8, y: 66, width: self.frame.width - 16, height: 100))
+        let textView = UITextView(frame: .zero)
 
         textView.font = .systemFont(ofSize: 13)
         return textView
     }()
     
     lazy var imageNewsView : UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 8, y: 374, width: self.frame.width - 16, height: self.frame.width - 16))
-        image.contentMode = .scaleAspectFit
+        let image = UIImageView(frame: .zero)
+        image.contentMode = .scaleAspectFill
         return image
     }()
    
