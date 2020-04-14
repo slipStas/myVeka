@@ -126,7 +126,7 @@ extension MyNewsViewController : UITableViewDataSource {
             cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 300)
             myNewsTableView.rowHeight += cell.textView.frame.height + 8
         } else {
-            cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: cell.textView.contentSize.height)
+            cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: cell.textView.contentSize.height + 15)
             myNewsTableView.rowHeight += cell.textView.frame.height + 8
         }
         
