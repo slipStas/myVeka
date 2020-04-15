@@ -18,7 +18,7 @@ class GetNewsVkApi {
     let token = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
     let url = "https://api.vk.com.method/"
     
-    func getNews(completionHandler: @escaping(Bool) -> ()) {
+    func getNews(table: UITableView, completionHandler: @escaping(Bool) -> ()) {
         
         let accessParameters: Parameters = ["access_token" : token, "user_id" : userId]
 
@@ -82,6 +82,7 @@ class GetNewsVkApi {
                 do {
                     try Session.shared.realm.write {
                         Session.shared.realm.add(newsRealm, update: .all)
+                        table.reloadData()
                     }
                 } catch {
                     completionHandler(false)

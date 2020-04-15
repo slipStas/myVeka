@@ -54,7 +54,7 @@ class MyNewsViewController: UIViewController {
     
     @objc func updateNews() {
         DispatchQueue.global(qos: .userInteractive).async {
-            self.getNews.getNews { (state) in
+            self.getNews.getNews(table: self.myNewsTableView) { (state) in
                 if state {
                     self.pairTableAndRealm()
                     print("news was refreshed")
@@ -77,7 +77,7 @@ class MyNewsViewController: UIViewController {
         if self.news.count == 0 {
             
             DispatchQueue.global(qos: .userInteractive).async {
-                self.getNews.getNews { (state) in
+                self.getNews.getNews(table: self.myNewsTableView) { (state) in
                     if state {
                         self.pairTableAndRealm()
                         print("news was added")
