@@ -84,7 +84,9 @@ class MyNewsViewController: UIViewController {
                         print("Error with data from Realm")
                     }
                 }
-                self.pairTableAndRealm()
+                DispatchQueue.main.async {
+                    self.pairTableAndRealm()
+                }
             }
         }
         myNewsTableView.dataSource = self
