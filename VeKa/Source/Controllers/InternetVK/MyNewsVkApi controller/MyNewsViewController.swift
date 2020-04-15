@@ -56,12 +56,12 @@ class MyNewsViewController: UIViewController {
         DispatchQueue.global(qos: .userInteractive).async {
             self.getNews.getNews { (state) in
                 if state {
-                    
+                    self.pairTableAndRealm()
                     print("news was refreshed")
                 } else {
                     print("Error with data from Realm")
                 }
-                self.pairTableAndRealm()
+                
                 self.refreshControll.endRefreshing()
             }
         }
@@ -79,14 +79,13 @@ class MyNewsViewController: UIViewController {
             DispatchQueue.global(qos: .userInteractive).async {
                 self.getNews.getNews { (state) in
                     if state {
+                        self.pairTableAndRealm()
                         print("news was added")
                     } else {
                         print("Error with data from Realm")
                     }
                 }
-                DispatchQueue.main.async {
-                    self.pairTableAndRealm()
-                }
+                
             }
         }
         myNewsTableView.dataSource = self
