@@ -85,7 +85,6 @@ class MyNewsViewController: UIViewController {
                         print("Error with data from Realm")
                     }
                 }
-                
             }
         }
         myNewsTableView.dataSource = self
