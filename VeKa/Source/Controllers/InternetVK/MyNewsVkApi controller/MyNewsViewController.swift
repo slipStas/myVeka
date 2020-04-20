@@ -104,9 +104,9 @@ extension MyNewsViewController : UITableViewDataSource {
        
         let cacheKey = String(news[indexPath.row].id) + news[indexPath.row].avatar
         
-        let urlImageNews = URL(string: news[indexPath.row].photos.first ?? "https://vk.com/images/camera_400.png?ava=1")
+        let urlImageNews = URL(string: news[indexPath.row].photos.first?.url ?? "https://vk.com/images/camera_400.png?ava=1")
     
-        let cacheKeyNews = String(news[indexPath.row].avatar) + (news[indexPath.row].photos.first ?? "0")
+        let cacheKeyNews = String(news[indexPath.row].avatar) + (news[indexPath.row].photos.first?.url ?? "0")
         
         cell.avatarOwnerImage.layer.masksToBounds = true
         cell.avatarOwnerImage.layer.cornerRadius = cell.avatarOwnerImage.frame.height / 2
@@ -135,7 +135,7 @@ extension MyNewsViewController : UITableViewDataSource {
             cell.imageView?.removeFromSuperview()
         } else {
             let heightText = cell.textView.frame.height + cell.avatarOwnerImage.frame.height + 24
-            cell.imageNewsView.frame = CGRect(x: 8, y: heightText, width: self.view.frame.width - 16, height: self.view.frame.width - 16)
+            cell.imageNewsView.frame = CGRect(x: 8, y: heightText, width: self.view.frame.width - 16, height: (self.view.frame.width - CGFloat(16 * news[indexPath.row].photos.first!.aspectRatio)))
             cell.imageNewsView.kf.setImage(with: ImageResource(downloadURL: urlImageNews!, cacheKey: cacheKeyNews))
             cell.imageNewsView.layer.masksToBounds = true
             cell.imageNewsView.layer.cornerRadius = 5

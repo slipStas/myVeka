@@ -15,9 +15,19 @@ class NewsRealm : Object {
     @objc dynamic var avatar = ""
     @objc dynamic var text = ""
     @objc dynamic var id = 0
-    var photos = List<String>()
+    var photos = List<PhotoRealm>()
     
     override class func primaryKey() -> String? {
         return "id"
+    }
+}
+
+class PhotoRealm : Object {
+    
+    @objc dynamic var url = ""
+    @objc dynamic var width = 0
+    @objc dynamic var height = 0
+    @objc dynamic var aspectRatio: Int {
+        return width / height
     }
 }

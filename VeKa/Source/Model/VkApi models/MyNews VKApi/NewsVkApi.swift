@@ -92,9 +92,6 @@ class NewsVkAPI: Codable {
         let sizes: [Size]
         let text: String
 
-//        enum CodingKeys: String, CodingKey {
-//            case sizes, text
-//        }
         init(sizes: [Size], text: String) {
             self.sizes = sizes
             self.text = text
@@ -105,13 +102,13 @@ class NewsVkAPI: Codable {
     class Size: Codable {
         let type: SizeType?
         let url: String
+        let width, height: Int
 
-//        enum CodingKeys: String, CodingKey {
-//            case type, url
-//        }
-        init(type: SizeType?, url: String) {
+        init(type: SizeType?, url: String, width: Int, height: Int) {
             self.type = type
             self.url = url
+            self.width = width
+            self.height = height
         }
     }
     

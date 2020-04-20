@@ -59,7 +59,12 @@ class GetNewsVkApi {
                         if let size = photo.photo {
                             for o in size.sizes {
                                 if o.type == .some(.r) {
-                                    newsRealm.photos.append(o.url)
+                                    let photoRealm = PhotoRealm()
+                                    photoRealm.height = o.height
+                                    photoRealm.width = o.width
+                                    photoRealm.url = o.url
+                                    
+                                    newsRealm.photos.append(photoRealm)
                                 }
                             }
                         }
