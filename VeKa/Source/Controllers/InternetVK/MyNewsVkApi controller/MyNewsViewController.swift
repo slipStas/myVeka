@@ -32,12 +32,10 @@ class MyNewsViewController: UIViewController {
             case .update(_, let deletions, let insertions, let modifications):
                 tableView.beginUpdates()
                 if modifications.count > 0 {
-                    print("modification tableView")
                     tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
                                          with: .automatic)
                 }
                 if insertions.count > 0 {
-                    print("update tableView")
                     tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
                                          with: .bottom)
                 }
@@ -57,7 +55,6 @@ class MyNewsViewController: UIViewController {
             self.getNews.getNews(table: self.myNewsTableView) { (state) in
                 if state {
                     self.pairTableAndRealm()
-                    print("news was refreshed")
                 } else {
                     print("Error with data from Realm")
                 }
@@ -69,7 +66,7 @@ class MyNewsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         myNewsTableView.refreshControl = refreshControll
         refreshControll.attributedTitle = NSAttributedString(string: "Updating news")
         refreshControll.addTarget(self, action: #selector(updateNews), for: .valueChanged)
@@ -80,7 +77,6 @@ class MyNewsViewController: UIViewController {
                 self.getNews.getNews(table: self.myNewsTableView) { (state) in
                     if state {
                         self.pairTableAndRealm()
-                        print("news was added")
                     } else {
                         print("Error with data from Realm")
                     }
@@ -91,7 +87,6 @@ class MyNewsViewController: UIViewController {
     }
 }
 
-
 extension MyNewsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return news.count
@@ -101,24 +96,21 @@ extension MyNewsViewController : UITableViewDataSource {
         let cell = myNewsTableView.dequeueReusableCell(withIdentifier: "myNewsTable", for: indexPath) as! MyNewsTableViewCell
         
         let urlImage = URL(string: news[indexPath.row].avatar)
-       
         let cacheKey = String(news[indexPath.row].id) + news[indexPath.row].avatar
-        
         let urlImageNews = URL(string: news[indexPath.row].photos.first?.url ?? "https://vk.com/images/camera_400.png?ava=1")
-    
         let cacheKeyNews = String(news[indexPath.row].avatar) + (news[indexPath.row].photos.first?.url ?? "0")
         
         cell.avatarOwnerImage.layer.masksToBounds = true
         cell.avatarOwnerImage.layer.cornerRadius = cell.avatarOwnerImage.frame.height / 2
         cell.avatarOwnerImage.kf.setImage(with: ImageResource(downloadURL: urlImage!, cacheKey: cacheKey))
-
+        
         cell.nameOwnerNewsLabel.text = news[indexPath.row].name
-       
+        
         myNewsTableView.rowHeight = cell.avatarOwnerImage.frame.height + 16
         
         cell.textView.text = news[indexPath.row].text
         cell.textView.isEditable = false
-       
+        
         if cell.textView.text == "" {
             cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 0)
             cell.textView.removeFromSuperview()
