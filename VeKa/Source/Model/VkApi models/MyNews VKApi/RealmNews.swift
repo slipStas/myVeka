@@ -25,9 +25,9 @@ class NewsRealm : Object {
 class PhotoRealm : Object {
     
     @objc dynamic var url = ""
-    @objc dynamic var width = 0
-    @objc dynamic var height = 0
-    @objc dynamic var aspectRatio: Int {
-        return width / height
+    @objc dynamic var width: Float = 0
+    @objc dynamic var height: Float = 0
+    @objc dynamic var aspectRatio: Float {
+        return height / width
     }
 }

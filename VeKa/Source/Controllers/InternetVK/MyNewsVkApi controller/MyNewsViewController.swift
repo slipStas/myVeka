@@ -135,7 +135,7 @@ extension MyNewsViewController : UITableViewDataSource {
             cell.imageView?.removeFromSuperview()
         } else {
             let heightText = cell.textView.frame.height + cell.avatarOwnerImage.frame.height + 24
-            cell.imageNewsView.frame = CGRect(x: 8, y: heightText, width: self.view.frame.width - 16, height: (self.view.frame.width - CGFloat(16 * news[indexPath.row].photos.first!.aspectRatio)))
+            cell.imageNewsView.frame = CGRect(x: 8, y: heightText, width: self.view.frame.width - 16, height: (self.view.frame.width - 16) * CGFloat(news[indexPath.row].photos.first!.aspectRatio))
             cell.imageNewsView.kf.setImage(with: ImageResource(downloadURL: urlImageNews!, cacheKey: cacheKeyNews))
             cell.imageNewsView.layer.masksToBounds = true
             cell.imageNewsView.layer.cornerRadius = 5
