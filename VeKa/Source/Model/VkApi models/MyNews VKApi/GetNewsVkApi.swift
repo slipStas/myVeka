@@ -54,6 +54,7 @@ class GetNewsVkApi {
                 
                 newsRealm.text = items[i].text
                 newsRealm.id = i
+                newsRealm.date = items[i].date
                 if let attachments = items[i].attachments {
                     for photo in attachments {
                         if let size = photo.photo {

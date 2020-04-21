@@ -15,6 +15,7 @@ class NewsRealm : Object {
     @objc dynamic var avatar = ""
     @objc dynamic var text = ""
     @objc dynamic var id = 0
+    @objc dynamic var date = 0
     var photos = List<PhotoRealm>()
     
     override class func primaryKey() -> String? {

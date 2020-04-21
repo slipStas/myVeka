@@ -106,6 +106,16 @@ extension MyNewsViewController : UITableViewDataSource {
         
         cell.nameOwnerNewsLabel.text = news[indexPath.row].name
         
+        let timeResult = news[indexPath.row].date
+        let date = Date(timeIntervalSince1970: TimeInterval(timeResult))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date)
+        
+        cell.dateLabel.text = localDate
+        
         myNewsTableView.rowHeight = cell.avatarOwnerImage.frame.height + 16
         
         cell.textView.text = news[indexPath.row].text

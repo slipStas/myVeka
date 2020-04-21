@@ -62,18 +62,21 @@ class NewsVkAPI: Codable {
     class Item: Codable {
         let text: String
         let sourceID: Int
+        let date: Int
         let attachments: [ItemAttachment]?
         
         enum CodingKeys: String, CodingKey {
             case attachments
             case sourceID = "source_id"
             case text
+            case date
         }
         
-        init(sourceID: Int, text: String, attachments: [ItemAttachment]?) {
+        init(sourceID: Int, text: String, date: Int, attachments: [ItemAttachment]?) {
             self.attachments = attachments
             self.sourceID = sourceID
             self.text = text
+            self.date = date
         }
     }
     
