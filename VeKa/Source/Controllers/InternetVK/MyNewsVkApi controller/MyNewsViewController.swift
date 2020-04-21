@@ -113,6 +113,7 @@ extension MyNewsViewController : UITableViewDataSource {
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeZone = .current
         dateFormatter.dateFormat = "EEE, d MMM, yy, HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
         
         let localDate = dateFormatter.string(from: date)
         
