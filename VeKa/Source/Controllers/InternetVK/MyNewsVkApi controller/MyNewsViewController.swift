@@ -109,8 +109,8 @@ extension MyNewsViewController : UITableViewDataSource {
         let timeResult = news[indexPath.row].date
         let date = Date(timeIntervalSince1970: TimeInterval(timeResult))
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
-        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+        dateFormatter.timeStyle = DateFormatter.Style.medium
+        dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeZone = .current
         let localDate = dateFormatter.string(from: date)
         
@@ -118,25 +118,21 @@ extension MyNewsViewController : UITableViewDataSource {
         
         myNewsTableView.rowHeight = cell.avatarOwnerImage.frame.height + 16
         
-        cell.textView.text = news[indexPath.row].text
-        cell.textView.isEditable = false
+        cell.textNewsLabel.text = news[indexPath.row].text
         
-        if cell.textView.text == "" {
-            cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 0)
-            cell.textView.removeFromSuperview()
-        } else if cell.textView.contentSize.height >= 300 {
-            cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 300)
-            myNewsTableView.rowHeight += cell.textView.frame.height + 8
-        } else if cell.textView.contentSize.height < 300 {
-            cell.textView.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: cell.textView.contentSize.height + 15)
-            myNewsTableView.rowHeight += cell.textView.frame.height + 8
+        if cell.textNewsLabel.text == "" {
+            cell.textNewsLabel.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 0)
+            cell.textNewsLabel.removeFromSuperview()
+        } else {
+            cell.textNewsLabel.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: cell.textNewsLabel.optimalHeight + 15)
+            myNewsTableView.rowHeight += cell.textNewsLabel.frame.height + 8
         }
         
         if news[indexPath.row].photos.isEmpty {
             cell.imageNewsView.frame = CGRect(x: 8, y: 8, width: 0, height: 0)
             cell.imageView?.removeFromSuperview()
         } else {
-            let heightText = cell.textView.frame.height + cell.avatarOwnerImage.frame.height + 24
+            let heightText = cell.textNewsLabel.frame.height + cell.avatarOwnerImage.frame.height + 24
             cell.imageNewsView.frame = CGRect(x: 8, y: heightText, width: self.view.frame.width - 16, height: (self.view.frame.width - 16) * CGFloat(news[indexPath.row].photos.first!.aspectRatio))
             cell.imageNewsView.kf.setImage(with: ImageResource(downloadURL: urlImageNews!, cacheKey: cacheKeyNews))
             cell.imageNewsView.layer.masksToBounds = true

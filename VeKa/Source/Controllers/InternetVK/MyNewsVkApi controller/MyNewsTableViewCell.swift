@@ -29,10 +29,12 @@ class MyNewsTableViewCell: UITableViewCell {
         return date
     }()
     
-    lazy var textView : UITextView = {
-        let textView = UITextView(frame: .zero)
+    lazy var textNewsLabel : UILabel = {
+        let textView = UILabel(frame: .zero)
 
         textView.font = .systemFont(ofSize: 13)
+        textView.numberOfLines = 0
+        
         return textView
     }()
     
@@ -49,16 +51,17 @@ class MyNewsTableViewCell: UITableViewCell {
         
         self.avatarOwnerImage.image = nil
         self.nameOwnerNewsLabel.text = nil
-        self.textView.text = nil
         self.imageNewsView.image = nil
         self.dateLabel.text = nil
+        self.textNewsLabel.text = nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         addSubview(avatarOwnerImage)
         addSubview(nameOwnerNewsLabel)
-        addSubview(textView)
         addSubview(imageNewsView)
         addSubview(dateLabel)
+        addSubview(textNewsLabel)
     }
 }
+
