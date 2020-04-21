@@ -112,6 +112,8 @@ extension MyNewsViewController : UITableViewDataSource {
         dateFormatter.timeStyle = DateFormatter.Style.medium
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeZone = .current
+        dateFormatter.dateFormat = "EEE, d MMM, yy, HH:mm:ss"
+        
         let localDate = dateFormatter.string(from: date)
         
         cell.dateLabel.text = localDate
