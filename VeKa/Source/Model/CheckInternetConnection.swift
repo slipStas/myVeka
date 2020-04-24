@@ -22,11 +22,10 @@ public class CheckInternet {
             }
         }
         
-        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
-        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+        var flags = SCNetworkReachabilityFlags(rawValue: 0)
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
             return false
         }
-        
         
         // Working for Cellular and WIFI
         let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
