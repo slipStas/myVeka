@@ -60,7 +60,7 @@ class FriendsVkApiViewController: UIViewController {
                 if state {
                     print("friends was added")
                 } else {
-                    print("Error with data from Realm")
+                    print("Error with data from server")
                 }
             }
         }

@@ -8,22 +8,29 @@
 
 import UIKit
 
-class MyNewsTableViewCell: UITableViewCell {
+enum TextSize {
+    case full
+    case low
+}
 
+class MyNewsTableViewCell: UITableViewCell {
+    
+    var textSize : TextSize = .full
+    
     lazy var avatarOwnerImage : UIImageView = {
         let view = UIImageView(frame: CGRect(x: 8, y: 8, width: 50, height: 50))
         return view
     }()
     
     lazy var nameOwnerNewsLabel : UILabel = {
-        let label = UILabel(frame: CGRect(x: 66, y: 25, width: self.frame.width - 66, height: 20))
+        let label = UILabel(frame: CGRect(x: 66, y: 16, width: self.frame.width - 66, height: 20))
         label.font = .systemFont(ofSize: 15)
         
         return label
     }()
     
     lazy var dateLabel : UILabel = {
-        let date = UILabel(frame: CGRect(x: 66, y: 45, width: self.frame.width - 66, height: 20))
+        let date = UILabel(frame: CGRect(x: 66, y: 34, width: self.frame.width - 66, height: 20))
         date.font = .systemFont(ofSize: 10)
         date.textColor = .gray
         
@@ -50,7 +57,48 @@ class MyNewsTableViewCell: UITableViewCell {
         
         return image
     }()
+    
+    @objc func tapShowMore() {
+        print("show less pressed")
+        switch self.textSize {
+        case .full:
+            self.textSize = .low
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.7,
+                           initialSpringVelocity: 0,
+                           options: [],
+                           animations: {
+                            self.textNewsLabel.frame = CGRect(x: self.textNewsLabel.frame.minX, y: self.textNewsLabel.frame.minY, width: self.textNewsLabel.frame.width, height: 200)
+                            self.buttonInText.center.y -= self.textNewsLabel.optimalHeight - 200
+                            self.imageNewsView.center.y -= self.textNewsLabel.optimalHeight - 200
+                            self.contentView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height - self.textNewsLabel.optimalHeight - 200)
+                            self.buttonInText.setTitle("show more...", for: .normal)
+            })
+        case .low:
+            self.textSize = .full
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.7,
+                           initialSpringVelocity: 0,
+                           options: [],
+                           animations: {
+                            self.textNewsLabel.frame = CGRect(x: self.textNewsLabel.frame.minX, y: self.textNewsLabel.frame.minY, width: self.textNewsLabel.frame.width, height: self.textNewsLabel.optimalHeight)
+                            self.buttonInText.center.y += self.textNewsLabel.optimalHeight - 200
+                            self.imageNewsView.center.y += self.textNewsLabel.optimalHeight - 200
+                            self.buttonInText.setTitle("show less...", for: .normal)
+            })
+        }
+        
+    }
    
+    override func awakeFromNib() {
+        super .awakeFromNib()
+
+        buttonInText.isEnabled = true
+        buttonInText.isUserInteractionEnabled = true
+        buttonInText.addTarget(self, action: #selector(tapShowMore), for: .touchUpInside)
+    }
     
     //MARK: prepareForReuse
     override func prepareForReuse() {
@@ -70,7 +118,8 @@ class MyNewsTableViewCell: UITableViewCell {
         addSubview(imageNewsView)
         addSubview(dateLabel)
         addSubview(textNewsLabel)
-        self.textNewsLabel.addSubview(buttonInText)
+        addSubview(buttonInText)
     }
+    
 }
 

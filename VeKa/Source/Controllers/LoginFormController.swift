@@ -49,16 +49,9 @@ class LoginFormController: UIViewController {
     }
     
     @IBAction func authVkButton(_ sender: Any) {
-        let token = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
-        if !token.isEmpty {
-            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
-            self.present(newViewController, animated: true, completion: nil)
-        } else {
-            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "authoriseInVK") as! AuthoriseViewController
-            self.present(newViewController, animated: true, completion: nil)
-        }
+        let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "authoriseInVK") as! AuthoriseViewController
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     @IBAction func checkUserDataFireBase(_ sender: Any) {

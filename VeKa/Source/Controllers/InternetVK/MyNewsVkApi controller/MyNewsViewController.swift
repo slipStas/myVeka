@@ -56,7 +56,7 @@ class MyNewsViewController: UIViewController {
                 if state {
                     self.pairTableAndRealm()
                 } else {
-                    print("Error with data from Realm")
+                    print("Error with data from server")
                 }
                 
                 self.refreshControll.endRefreshing()
@@ -71,15 +71,12 @@ class MyNewsViewController: UIViewController {
         refreshControll.attributedTitle = NSAttributedString(string: "Updating news")
         refreshControll.addTarget(self, action: #selector(updateNews), for: .valueChanged)
         
-        if self.news.count == 0 {
-            
-            DispatchQueue.global(qos: .userInteractive).async {
-                self.getNews.getNews(table: self.myNewsTableView) { (state) in
-                    if state {
-                        self.pairTableAndRealm()
-                    } else {
-                        print("Error with data from Realm")
-                    }
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.getNews.getNews(table: self.myNewsTableView) { (state) in
+                if state {
+                    self.pairTableAndRealm()
+                } else {
+                    print("Error with data from server")
                 }
             }
         }
@@ -123,9 +120,17 @@ extension MyNewsViewController : UITableViewDataSource {
         
         cell.textNewsLabel.text = news[indexPath.row].text
         
-        if cell.textNewsLabel.text == "" {
+        if cell.textNewsLabel.text!.isEmpty {
             cell.textNewsLabel.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: 0)
             cell.textNewsLabel.removeFromSuperview()
+        } else if cell.textNewsLabel.optimalHeight >= 200 {
+            cell.textNewsLabel.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: cell.textNewsLabel.optimalHeight + 15)
+            cell.buttonInText.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + cell.textNewsLabel.frame.height + 8, width: 80, height: 20)
+            cell.buttonInText.setTitle("Show less...", for: .normal)
+            cell.buttonInText.setTitleColor(.systemBlue, for: .normal)
+            cell.buttonInText.titleLabel?.font = .systemFont(ofSize: 13)            
+            
+            myNewsTableView.rowHeight += cell.textNewsLabel.frame.height + cell.buttonInText.frame.height
         } else {
             cell.textNewsLabel.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: cell.textNewsLabel.optimalHeight + 15)
             myNewsTableView.rowHeight += cell.textNewsLabel.frame.height + 8
@@ -135,13 +140,16 @@ extension MyNewsViewController : UITableViewDataSource {
             cell.imageNewsView.frame = CGRect(x: 8, y: 8, width: 0, height: 0)
             cell.imageView?.removeFromSuperview()
         } else {
-            let heightText = cell.textNewsLabel.frame.height + cell.avatarOwnerImage.frame.height + 24
+            var heightText: CGFloat = 0
+            heightText = cell.textNewsLabel.frame.height + cell.avatarOwnerImage.frame.height + cell.buttonInText.frame.height + 16
+            
             cell.imageNewsView.frame = CGRect(x: 8, y: heightText, width: self.view.frame.width - 16, height: (self.view.frame.width - 16) * CGFloat(news[indexPath.row].photos.first!.aspectRatio))
             cell.imageNewsView.kf.setImage(with: ImageResource(downloadURL: urlImageNews!, cacheKey: cacheKeyNews))
             cell.imageNewsView.layer.masksToBounds = true
             cell.imageNewsView.layer.cornerRadius = 5
             myNewsTableView.rowHeight += cell.imageNewsView.frame.height + 8
         }
+        
         return cell
     }
 }
