@@ -36,9 +36,10 @@ class AuthoriseViewController: UIViewController {
         ]
                 
         let request = URLRequest(url: urlComponents.url!)
-      
-        self.webView.load(request)
         
+        DispatchQueue.main.async {
+            self.webView.load(request)
+        }
     }
     
     override func viewDidLoad() {
@@ -48,14 +49,18 @@ class AuthoriseViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if CheckInternet.Connection() {
-            print("internet connection is OK")
-            self.authoriseInVk()
-        } else {
-            print("internet connection is  NOT OK")
-            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
-            self.present(newViewController, animated: true, completion: nil)
+        DispatchQueue.global(qos: .userInteractive).async {
+            if CheckInternet.Connection() {
+                print("internet connection is OK")
+                self.authoriseInVk()
+            } else {
+                print("internet connection is  NOT OK")
+                DispatchQueue.main.async {
+                    let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
+                    self.present(newViewController, animated: true, completion: nil)
+                }
+            }
         }
     }
 }
@@ -64,7 +69,9 @@ extension AuthoriseViewController: WKNavigationDelegate {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
-            print(Float(webView.estimatedProgress))
+            DispatchQueue.main.async {
+                print(Float(self.webView.estimatedProgress))
+            }
         }
     }
     
