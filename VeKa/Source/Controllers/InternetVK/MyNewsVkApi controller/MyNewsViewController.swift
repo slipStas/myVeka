@@ -138,6 +138,8 @@ extension MyNewsViewController : UITableViewDataSource, UITableViewDelegate {
             myNewsTableView.rowHeight += cell.textNewsLabel.frame.height + cell.buttonInText.frame.height
         } else {
             cell.textNewsLabel.frame = CGRect(x: 8, y: cell.avatarOwnerImage.frame.height + 16, width: cell.contentView.frame.width - 16, height: cell.textNewsLabel.optimalHeight + 15)
+            cell.buttonInText.frame = .zero
+            cell.buttonInText.removeFromSuperview()
             myNewsTableView.rowHeight += cell.textNewsLabel.frame.height + 8
         }
         
