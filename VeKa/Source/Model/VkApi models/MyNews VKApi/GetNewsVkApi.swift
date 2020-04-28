@@ -88,7 +88,9 @@ class GetNewsVkApi {
                 do {
                     try Session.shared.realm.write {
                         Session.shared.realm.add(newsRealm, update: .all)
-                        table.reloadData()
+                        DispatchQueue.main.async {
+                            table.reloadData()
+                        }
                     }
                 } catch {
                     completionHandler(false)

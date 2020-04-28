@@ -93,7 +93,7 @@ class MyNewsTableViewCell: UITableViewCell {
     }
    
     override func awakeFromNib() {
-        super .awakeFromNib()
+        super.awakeFromNib()
 
         buttonInText.isEnabled = true
         buttonInText.isUserInteractionEnabled = true

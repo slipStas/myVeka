@@ -23,30 +23,28 @@ class MyNewsViewController: UIViewController {
     func pairTableAndRealm() {
         token = self.news.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.myNewsTableView else { return }
-            DispatchQueue.main.async {
-                switch changes {
-                case .initial(let changedData):
-                    if self?.news.count != changedData.count {
-                        tableView.reloadData()
-                    }
-                case .update(_, let deletions, let insertions, let modifications):
-                    tableView.beginUpdates()
-                    if modifications.count > 0 {
-                        tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
-                                             with: .automatic)
-                    }
-                    if insertions.count > 0 {
-                        tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
-                                             with: .bottom)
-                    }
-                    if deletions.count > 0 {
-                        tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
-                                             with: .left)
-                    }
-                    tableView.endUpdates()
-                case .error(let error):
-                    fatalError("\(error)")
+            switch changes {
+            case .initial(let changedData):
+                if self?.news.count != changedData.count {
+                    tableView.reloadData()
                 }
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.beginUpdates()
+                if modifications.count > 0 {
+                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .automatic)
+                }
+                if insertions.count > 0 {
+                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .automatic)
+                }
+                if deletions.count > 0 {
+                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                         with: .automatic)
+                }
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
             }
         }
     }
@@ -55,11 +53,12 @@ class MyNewsViewController: UIViewController {
         DispatchQueue.global(qos: .userInteractive).async {
             self.getNews.getNews(table: self.myNewsTableView) { (state) in
                 if state {
-                    self.pairTableAndRealm()
+                    DispatchQueue.main.async {
+                        self.pairTableAndRealm()
+                    }
                 } else {
                     print("Error with data from server")
                 }
-                
                 self.refreshControll.endRefreshing()
             }
         }
