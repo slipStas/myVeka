@@ -49,16 +49,9 @@ class LoginFormController: UIViewController {
     }
     
     @IBAction func authVkButton(_ sender: Any) {
-        let token = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
-        if !token.isEmpty {
-            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
-            self.present(newViewController, animated: true, completion: nil)
-        } else {
-            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "authoriseInVK") as! AuthoriseViewController
-            self.present(newViewController, animated: true, completion: nil)
-        }
+        let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "authoriseInVK") as! AuthoriseViewController
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     @IBAction func checkUserDataFireBase(_ sender: Any) {
@@ -104,7 +97,7 @@ class LoginFormController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHidden), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -116,7 +109,7 @@ class LoginFormController: UIViewController {
             NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         }
 
-    @objc func keyboardWasShow(notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         // Получаем размер клавиатуры
         let info = notification.userInfo! as NSDictionary
         let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size

@@ -20,18 +20,15 @@ class NewsVkAPI: Codable {
         let items: [Item]
         let profiles: [Profile]
         let groups: [Group]
-        let nextFrom: String
         
         enum CodingKeys: String, CodingKey {
             case items, profiles, groups
-            case nextFrom = "next_from"
         }
         
-        init(items: [Item], profiles: [Profile], groups: [Group], nextFrom: String) {
+        init(items: [Item], profiles: [Profile], groups: [Group]) {
             self.items = items
             self.profiles = profiles
             self.groups = groups
-            self.nextFrom = nextFrom
         }
     }
     
@@ -62,18 +59,21 @@ class NewsVkAPI: Codable {
     class Item: Codable {
         let text: String
         let sourceID: Int
+        let date: Int
         let attachments: [ItemAttachment]?
         
         enum CodingKeys: String, CodingKey {
             case attachments
             case sourceID = "source_id"
             case text
+            case date
         }
         
-        init(sourceID: Int, text: String, attachments: [ItemAttachment]?) {
+        init(sourceID: Int, text: String, date: Int, attachments: [ItemAttachment]?) {
             self.attachments = attachments
             self.sourceID = sourceID
             self.text = text
+            self.date = date
         }
     }
     
@@ -92,9 +92,6 @@ class NewsVkAPI: Codable {
         let sizes: [Size]
         let text: String
 
-//        enum CodingKeys: String, CodingKey {
-//            case sizes, text
-//        }
         init(sizes: [Size], text: String) {
             self.sizes = sizes
             self.text = text
@@ -105,13 +102,13 @@ class NewsVkAPI: Codable {
     class Size: Codable {
         let type: SizeType?
         let url: String
+        let width, height: Int
 
-//        enum CodingKeys: String, CodingKey {
-//            case type, url
-//        }
-        init(type: SizeType?, url: String) {
+        init(type: SizeType?, url: String, width: Int, height: Int) {
             self.type = type
             self.url = url
+            self.width = width
+            self.height = height
         }
     }
     

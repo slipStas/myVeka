@@ -11,6 +11,7 @@ import WebKit
 import Alamofire
 import SwiftKeychainWrapper
 
+
 class AuthoriseViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView! {
@@ -20,6 +21,7 @@ class AuthoriseViewController: UIViewController {
     }
     
     func authoriseInVk() {
+        
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "oauth.vk.com"
@@ -35,17 +37,44 @@ class AuthoriseViewController: UIViewController {
                 
         let request = URLRequest(url: urlComponents.url!)
         
-        webView.load(request)
+        DispatchQueue.main.async {
+            self.webView.load(request)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        authoriseInVk()
+            
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            if CheckInternet.Connection() {
+                print("internet connection is OK")
+                self.authoriseInVk()
+            } else {
+                print("internet connection is  NOT OK")
+                DispatchQueue.main.async {
+                    let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
+                    self.present(newViewController, animated: true, completion: nil)
+                }
+            }
+        }
     }
 }
 
 extension AuthoriseViewController: WKNavigationDelegate {
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            DispatchQueue.main.async {
+                print(Float(self.webView.estimatedProgress))
+            }
+        }
+    }
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         
         guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
@@ -66,18 +95,19 @@ extension AuthoriseViewController: WKNavigationDelegate {
                 
         if let token = params["access_token"] {
             KeychainWrapper.standard.set(token, forKey: Session.Keys.hardToken.rawValue)
-            Session.shared.hardToken = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue) ?? ""
+            Session.shared.hardToken = KeychainWrapper.standard.string(forKey: Session.Keys.hardToken.rawValue)!
         }
+        
         if let userId = params["user_id"] {
             KeychainWrapper.standard.set(userId, forKey: Session.Keys.hardUserId.rawValue)
-            Session.shared.hardUserId = KeychainWrapper.standard.string(forKey: Session.Keys.hardUserId.rawValue) ?? ""
+            Session.shared.hardUserId = KeychainWrapper.standard.string(forKey: Session.Keys.hardUserId.rawValue)!
         }
-        if !Session.shared.hardToken.isEmpty {
-            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
-            self.present(newViewController, animated: true, completion: nil)
-            print("token is not empty = \(Session.shared.hardToken)")
-        }
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "VkApi") as! TabBarViewController
+        self.present(newViewController, animated: true, completion: nil)
+        print("token is not empty = \(Session.shared.hardToken)")
+        
         decisionHandler(.cancel)
     }
 }

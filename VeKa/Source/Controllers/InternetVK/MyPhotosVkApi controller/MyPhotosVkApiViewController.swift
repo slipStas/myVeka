@@ -34,7 +34,7 @@ class MyPhotosVkApiViewController: UIViewController {
             if state {
                 self.myPhotosVkApi.reloadData()
             } else {
-                print("Error with data from Realm")
+                print("Error with data from server")
             }
         }
         self.myPhotosVkApi.dataSource = self

@@ -60,7 +60,7 @@ class GroupsVkApiViewController: UIViewController {
                 if state {
                     print("Groups was added")
                 } else {
-                    print("Error with data from Realm")
+                    print("Error with data from server")
                 }
             }
         }

@@ -54,12 +54,18 @@ class GetNewsVkApi {
                 
                 newsRealm.text = items[i].text
                 newsRealm.id = i
+                newsRealm.date = items[i].date
                 if let attachments = items[i].attachments {
                     for photo in attachments {
                         if let size = photo.photo {
                             for o in size.sizes {
                                 if o.type == .some(.r) {
-                                    newsRealm.photos.append(o.url)
+                                    let photoRealm = PhotoRealm()
+                                    photoRealm.height = Float(o.height)
+                                    photoRealm.width = Float(o.width)
+                                    photoRealm.url = o.url
+                                    
+                                    newsRealm.photos.append(photoRealm)
                                 }
                             }
                         }
@@ -82,7 +88,9 @@ class GetNewsVkApi {
                 do {
                     try Session.shared.realm.write {
                         Session.shared.realm.add(newsRealm, update: .all)
-                        table.reloadData()
+                        DispatchQueue.main.async {
+                            table.reloadData()
+                        }
                     }
                 } catch {
                     completionHandler(false)
